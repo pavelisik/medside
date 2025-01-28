@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import Container from './components/Container';
 import Post from './components/Post';
 import './App.css';
 
@@ -24,9 +25,41 @@ function App() {
 
     return (
         <div className="App">
+            <Container />
+
+            {/* <Container>
+                
+                <Header>                    
+                    <MainLogo />                    
+                    <SearchForm />
+                </Header>
+
+                <MainMenu />
+
+                <Content>
+                    <BlockFull />
+                    <BlockHalf />
+                    <BlockHalf />
+                </Content>
+
+                <Footer>
+                    <FooterLeft>
+                        <FooterMenu />
+                        <FooterSocials />
+                    </FooterLeft>
+                    <FooterRight>
+                        <FooterLogo />
+                        <FooterDescription />
+                        <FooterInfo />
+                    </FooterRight>
+                </Footer>
+
+            </Container> */}
+
+            {/* 
             {posts.map((item, key) => (
                 <Post post={item} key={item.id} />
-            ))}
+            ))} */}
         </div>
     );
 }

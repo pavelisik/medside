@@ -1,0 +1,5227 @@
+/*
+Theme Name: medside.ru
+Theme URI: http://medside.ru
+Description: theme for medside.ru
+Version: 1.0
+*/
+
+/* --- Reset.css ------------------------------- */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+em,
+img,
+strong,
+sub,
+sup,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+li {
+    list-style: none;
+}
+a {
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+    background: transparent;
+    outline: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td,
+td img {
+    vertical-align: top;
+}
+button,
+input,
+label,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+input[type='text'],
+input[type='password'],
+textarea {
+    padding: 0;
+}
+input[type='checkbox'] {
+    vertical-align: bottom;
+}
+input[type='radio'] {
+    vertical-align: text-bottom;
+}
+
+/* --- Design blocks --------------------------- */
+*,
+:after,
+:before {
+    box-sizing: inherit;
+}
+html {
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
+        sans-serif;
+    color: #242424;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 17px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-text-size-adjust: 100%;
+}
+body {
+    background: #ffffff;
+    overflow-x: hidden;
+}
+p {
+    margin: 0.625rem 0 1.25rem;
+}
+b,
+strong {
+    font-weight: 600;
+}
+label,
+input[type='button'],
+input[type='submit'],
+button {
+    cursor: pointer;
+    width: 500px;
+}
+a,
+a:visited {
+    color: #2d768b;
+    font-weight: 600;
+    text-decoration: none;
+}
+a:hover {
+    color: #242424;
+    text-decoration: underline;
+}
+a:focus,
+a:active {
+    outline: 0;
+}
+a img {
+    text-decoration: none !important;
+    border: 0;
+}
+hr {
+    border: none;
+    border-bottom: 1px solid #e7e7e7;
+    margin: 1rem 0;
+}
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+iframe,
+img {
+    border: 0;
+}
+sup {
+    font-size: smaller;
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 25px 0 20px 0;
+    color: #242424;
+    font-weight: 600;
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+}
+a h1,
+a h2,
+a h3,
+a h4,
+a h5,
+a h6 {
+    color: #2d768b;
+}
+a:hover h1,
+a:hover h2,
+a:hover h3,
+a:hover h4,
+a:hover h5,
+a:hover h6 {
+    color: #242424;
+}
+h1 {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    margin: 15px 0 22px 0;
+    line-height: 1.08;
+}
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.25em;
+}
+h4 {
+    font-size: 1.15rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.9rem;
+}
+@media (max-width: 699px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.75em;
+    }
+}
+sub,
+sup {
+    position: relative;
+    bottom: -0.25em;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+}
+/* --- шрифт для иконок -------------------------------- */
+@font-face {
+    font-family: 'icomoon';
+    src: url('./fonts/icomoon.eot?pv2itd');
+    src: url('./fonts/icomoon.eot?pv2itd#iefix') format('embedded-opentype'),
+        url('./fonts/icomoon.ttf?pv2itd') format('truetype'),
+        url('./fonts/icomoon.woff?pv2itd') format('woff'),
+        url('./fonts/icomoon.svg?pv2itd#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icon-image,
+.icon-text:before,
+.icon-text:after {
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Layout blocks -------------------------------- */
+#container {
+    min-width: 320px;
+    max-width: 1240px;
+    margin: 0 auto;
+    clear: both;
+    float: none;
+}
+#header {
+    position: relative;
+}
+#header .header-container {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    border-bottom: 1px solid #e7e7e7;
+    padding: 14px 16px;
+}
+#content {
+    position: relative;
+    background: #ffffff;
+    margin: 0 auto;
+}
+#content #center {
+    padding: 20px 16px;
+}
+.fixedPosition {
+    position: fixed;
+    width: 100%;
+}
+@media (max-width: 1023px) {
+    /* тень в шапке */
+    #header .header-container {
+        -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2);
+        margin: 0 0 5px 0;
+    }
+    /* отступ сверху из-за тени в шапке */
+    #content #center {
+        padding-top: 15px;
+    }
+}
+@media (min-width: 1024px) {
+    #content {
+        display: inline-block;
+        padding-right: 363px;
+        width: 100%;
+    }
+    #content.nosb {
+        padding-right: 0;
+    }
+    #content #center {
+        position: relative;
+        padding-left: 20px;
+        padding-right: 20px;
+        float: left;
+        width: 100%;
+    }
+    #header {
+        margin-bottom: 8px;
+    }
+    #header .header-container {
+        padding: 20px 20px;
+    }
+}
+@media (min-width: 1200px) {
+    #content #center {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 50px;
+    }
+    #content.nosb #center {
+        padding-bottom: 20px;
+    }
+    #header .header-container {
+        padding: 25px 50px 23px 50px;
+    }
+}
+@media (max-width: 360px) {
+    #header .header-container,
+    #content #center {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+}
+
+/* --- Header -------------------------- */
+#header .header-left {
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    align-self: center;
+    overflow: hidden;
+}
+#header .main_logo {
+    display: block;
+    float: left;
+    /* размер уменьшенного изображения */
+    width: auto;
+    height: 36px;
+    overflow: hidden;
+}
+#header .logo {
+    width: auto;
+    height: 36px;
+    max-width: inherit;
+}
+#header #search {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#search .search-group {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+#header #search input::-moz-focus-inner {
+    outline: none;
+    border: 0;
+}
+#header #search .search_body:focus {
+    outline: 0;
+}
+#header #search .search_body::placeholder {
+    color: #747474;
+}
+#header #search .search_body {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid #d5d5d5;
+    border-right: 0;
+    display: block;
+    padding: 0.2rem 0.75rem;
+    background-color: #f8f8f8;
+    border-radius: 0;
+    color: #484848;
+    line-height: 1.55;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+#header #search .search-close {
+    display: none;
+}
+#header #search .search-button {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 36px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#header #search input#button {
+    color: #ffffff;
+    font-size: 17px;
+    width: 50px;
+    height: 36px;
+    background-color: #9ab51f;
+    border: 1px solid #9ab51f;
+    border-radius: 0 4px 4px 0;
+    -webkit-transition: background-color 0.1s ease-in-out,
+        border-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out,
+        border-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#header #search input#button:hover {
+    background-color: #859c1b;
+    border: 1px solid #859c1b;
+}
+#header #search .search-button .inner {
+    display: none;
+}
+@media (max-width: 600px) {
+    #header #search {
+        position: relative;
+    }
+    #header #search .search_body {
+        position: absolute;
+        left: -9999em;
+        padding-right: 0;
+        border-radius: 0 4px 4px 0;
+    }
+    #header #search .search-button {
+        position: absolute;
+        right: 0;
+        border-radius: 4px;
+    }
+    #header #search .search-button .inner {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        cursor: pointer;
+    }
+    #header #search input#button {
+        border-radius: 4px;
+    }
+    #header .search-selected .main_logo {
+        width: 36px;
+        overflow: hidden;
+    }
+    #header .search-selected #search {
+        width: 100%;
+    }
+    #header .search-selected #search .search_body {
+        left: 0;
+        height: 36px;
+        padding-right: 65px;
+    }
+    #header .search-selected #search .search-button,
+    #header .search-selected #search input#button {
+        border-radius: 0 4px 4px 0;
+    }
+    #header .search-selected #search .search-close {
+        display: inline-block;
+        position: absolute;
+        top: 7px;
+        right: 45px;
+        color: #c2c2c2;
+    }
+    .search-close:before {
+        font-size: 11px;
+        content: '\ed6a';
+    }
+}
+@media (max-width: 450px) {
+    #header #search input#button,
+    #header #search .search-button {
+        width: 36px;
+    }
+}
+@media (max-width: 360px) {
+    #header #search {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+}
+@media (min-width: 430px) and (max-width: 600px) {
+    #header #search .search_body {
+        left: 0;
+        padding-right: 67px;
+        height: 36px;
+    }
+    #header #search .search-button .inner {
+        display: none;
+    }
+    #header #search .search-button,
+    #header #search input#button {
+        border-radius: 0 4px 4px 0;
+    }
+}
+@media (min-width: 700px) and (max-width: 1023px) {
+    #header #search {
+        padding-left: 15%;
+    }
+}
+@media (min-width: 1024px) {
+    #header .header-left {
+        padding-left: 0;
+    }
+    #header .main_logo {
+        width: 279px;
+        height: 50px;
+    }
+    #header .logo {
+        height: 50px;
+    }
+    #header #search {
+        padding-left: 12rem;
+        padding-top: 6px;
+    }
+}
+@media (min-width: 1200px) {
+    #header #search {
+        padding-right: 0;
+    }
+}
+
+#header .nav-block {
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#header .nav-block:before {
+    font-size: 14px;
+    content: '\e902';
+    color: #8b8b8b;
+    position: relative;
+    top: 7px;
+}
+@media (min-width: 1024px) {
+    #header .nav-block {
+        display: none;
+    }
+}
+
+/* --- Main Top Menu ------------------------------ */
+.main-top-menu .menu-item > a {
+    font-size: 0.8em;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #484848;
+    white-space: nowrap;
+}
+.main-top-menu .menu-item > a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.drop-item > a:after {
+    content: '\edbd';
+    font-size: 11px;
+    color: #7a7a7a;
+    margin-left: 5px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.main-top-menu .menu-item > a:hover:after {
+    color: #424242;
+}
+.main-top-menu .top_menu_body {
+    display: block;
+    text-align: left;
+    padding: 10px 26px 15px 26px;
+    background-color: #f8f8f8;
+}
+.top_menu_body a {
+    font-weight: 400;
+}
+.top_menu_body a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.top_menu_body .body-column {
+    height: auto;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 40px 0 0;
+}
+.top_menu_body .body-column li {
+    font-size: 0.9em;
+}
+.top_menu_body .column-last {
+    margin-right: 0;
+}
+.top_menu_body .new-list {
+    column-gap: 40px;
+}
+.top_menu_body .new-list li {
+    font-size: 0.9em;
+}
+.main-top-menu a.all_items:after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    margin-left: 6px;
+    position: relative;
+    bottom: 1px;
+}
+.main-top-menu a.all_items:hover:after {
+    color: #424242;
+}
+
+@media (max-width: 1023px) {
+    .main-top-menu {
+        display: none;
+    }
+    /* выдвижное меню */
+    .main-top-menu.visible {
+        display: block;
+        position: absolute;
+        background-color: #ffffff;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        max-height: 100vh;
+        width: 100%;
+        z-index: 6000;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    .main-top-menu.visible .mob-head {
+        cursor: pointer;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e7e7e7;
+        padding: 14px 16px;
+        color: #484848;
+        font-size: 0.94rem;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+    }
+    .main-top-menu.visible .close {
+        align-self: center;
+    }
+    .main-top-menu.visible .close:before {
+        font-size: 11px;
+        content: '\ed6a';
+        color: #8a8a8a;
+        position: relative;
+        top: -1px;
+        right: 7px;
+    }
+    .main-top-menu.visible > ul:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 50px;
+        -webkit-box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+    }
+    .main-top-menu > ul {
+        background-color: #ffffff;
+    }
+    .main-top-menu > ul > li {
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .main-top-menu .menu-item > a {
+        display: block;
+        padding: 15px 17px;
+        text-transform: none;
+        font-size: 0.94em;
+        -webkit-tap-highlight-color: #0000;
+    }
+    .drop-item > a.current:after {
+        content: '\edb5';
+    }
+    .main-top-menu .top_menu_body {
+        padding: 18px 26px 16px 26px;
+        -webkit-box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+    .main-top-menu .body_disable {
+        display: none;
+    }
+    .top_menu_body .body-column li,
+    .top_menu_body .new-list li {
+        margin: 0 0 7px 0;
+    }
+    .item04 .new-list {
+        columns: 3 240px;
+        -webkit-columns: 3 240px;
+        -moz-columns: 3 240px;
+    }
+    .item07 .new-list {
+        columns: 3 220px;
+        -webkit-columns: 3 220px;
+        -moz-columns: 3 220px;
+    }
+    .item08 .new-list {
+        columns: 2 300px;
+        -webkit-columns: 2 300px;
+        -moz-columns: 2 300px;
+    }
+    .main-top-menu a.all_items {
+        margin-top: 5px;
+        display: block;
+        text-align: right;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+    .main-top-menu .nobr_letter {
+        float: left;
+        margin-right: 5px;
+        clear: both;
+    }
+}
+@media (min-width: 1024px) {
+    .main-top-menu {
+        position: relative;
+        text-align: center;
+        margin: 0 0 8px 0;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e7e7e7;
+        -webkit-box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.2);
+        clear: both;
+    }
+    .main-top-menu > ul > li {
+        display: inline-block;
+        margin: 0 7.5px;
+    }
+    .main-top-menu .menu-item > a {
+        padding: 12px 10px;
+        display: block;
+        position: relative;
+    }
+    .main-top-menu .top_menu_body {
+        position: absolute;
+        border: 1px solid #e3e3e3;
+        border-top-width: 0;
+        left: 50px;
+        top: 100%;
+        width: auto;
+        -webkit-border-bottom-right-radius: 8px;
+        -webkit-border-bottom-left-radius: 8px;
+        -moz-border-radius-bottomright: 8px;
+        -moz-border-radius-bottomleft: 8px;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
+            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
+            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
+            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+        opacity: 1;
+        visibility: visible;
+    }
+    .main-top-menu .body_disable {
+        opacity: 0;
+        visibility: hidden;
+        -moz-transition: opacity 0.13s ease-out, visibility 0.01s linear 0.1s;
+        -webkit-transition: opacity 0.13s ease-out, visibility 0.01s linear 0.1s;
+        -o-transition: opacity 0.13s ease-out, visibility 0.01s linear 0.1s;
+        transition: opacity 0.13s ease-out, visibility 0.01s linear 0.1s;
+    }
+    .main-top-menu a.all_items {
+        float: right;
+        margin: 10px 0 0 0;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
+    .main-top-menu .nobr_letter {
+        float: left;
+        margin-right: 3px;
+        clear: both;
+    }
+    .item04 .new-list {
+        columns: 4 180px;
+        -webkit-columns: 4 180px;
+        -moz-columns: 4 180px;
+        column-gap: 20px;
+    }
+    .item07 .new-list {
+        columns: 3 200px;
+        -webkit-columns: 3 200px;
+        -moz-columns: 3 200px;
+    }
+    .item08 .new-list {
+        columns: 3 300px;
+        -webkit-columns: 3 300px;
+        -moz-columns: 3 300px;
+    }
+    .main-top-menu .body01 {
+        left: 16px;
+    }
+    .main-top-menu .body02 {
+        left: 11%;
+    }
+    .main-top-menu .body03 {
+        left: 24.5%;
+    }
+    .main-top-menu .body04 {
+        left: 16px;
+        margin-right: 16px;
+    }
+    .main-top-menu .body07,
+    .main-top-menu .body08 {
+        left: auto;
+        right: 16px;
+        margin-left: 16px;
+    }
+    .main-top-menu .mob-head {
+        display: none;
+    }
+}
+@media (min-width: 1070px) and (max-width: 1199px) {
+    .main-top-menu > ul > li {
+        margin: 0 10px;
+    }
+}
+@media (min-width: 1200px) {
+    .main-top-menu > ul > li {
+        margin: 0 0.89em;
+    }
+    .main-top-menu .body02 {
+        left: 14.7%;
+    }
+    .main-top-menu .body03 {
+        left: 27%;
+    }
+}
+@media (max-width: 360px) {
+    .main-top-menu.visible .mob-head {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+}
+
+/* --- Sidebar ------------------------- */
+.sidebar-block {
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 0.85rem;
+}
+.sidebar-block h2 {
+    background-color: #f8f8f8;
+    color: #484848;
+    border: 1px solid #e7e7e7;
+    margin: 0;
+    padding: 14px 20px;
+    font-weight: 400;
+    font-size: 0.94rem;
+    letter-spacing: 0.025em;
+    cursor: default;
+}
+.sidebar-block h3 {
+    margin: 0 0 0.625em;
+    font-size: 0.94rem;
+    position: relative;
+    top: -5px;
+    word-break: break-word;
+}
+.sidebar-block a:hover img {
+    border: 1px #b7b7b7 solid;
+}
+.sidebar-block-body {
+    padding: 20px 20px 20px 20px;
+    border: 1px solid #e7e7e7;
+    border-top: none;
+}
+.sidebar-block-single {
+    margin: 0 0 20px 0;
+    width: 100%;
+    display: inline-block;
+}
+.sidebar-block-single p {
+    line-height: 1.25;
+    margin: 0.625rem 0 0.15rem 0;
+    word-break: break-word;
+}
+.sidebar-block .sidebar-block-body ul {
+    margin: 0 0 20px 0;
+}
+.sidebar-block .sidebar-block-body ul > li {
+    margin: 0 0 0.325rem;
+    padding: 0 0 0 1.525rem;
+    position: relative;
+}
+.sidebar-block .sidebar-block-body ul > li:before {
+    font-size: 5px;
+    content: '\e903';
+    color: #797979;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.sidebar-block hr {
+    margin: 30px 0 15px 0;
+}
+.go-link {
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.94rem;
+}
+.go-link:hover {
+    text-decoration: none;
+}
+.go-link::after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    left: 8px;
+}
+.go-link:hover::after {
+    color: #424242;
+}
+.sidebar-doctors-block .doctor-one {
+    display: table;
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.sidebar-doctors-block .doctor-left {
+    width: 92px;
+    padding: 4px 0 0 0;
+    display: table-cell;
+    vertical-align: top;
+}
+.sidebar-doctors-block .doctor-left img {
+    width: 90px;
+    border: 1px solid #d5d5d5;
+    height: auto;
+}
+.sidebar-doctors-block h3 {
+    font-size: 0.94rem;
+    margin: 0 0 10px 0;
+    position: static;
+}
+.similar-block .sidebar-block-body,
+.comments-block .sidebar-block-body {
+    padding-bottom: 0;
+}
+.similar-block .sidebar-block-single img,
+.sprav-block .sidebar-block-single img {
+    float: left;
+    width: 110px;
+    border: 1px #d5d5d5 solid;
+    margin: 0 10px 0 0;
+    box-sizing: content-box;
+}
+.sprav-block ul li a {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* блок с группой vk и facebook */
+.socialgroup-block h2 {
+    border-bottom: none;
+}
+.socialgroup-block .sidebar-block-body {
+    padding: 0;
+    height: 252px;
+    border-top: 1px solid #e7e7e7;
+    overflow: hidden;
+}
+.socialgroup-block > ul > li {
+    margin: 0;
+    padding: 14px 20px;
+    color: #626262;
+    font-size: 0.94rem;
+    letter-spacing: 0.025em;
+    background-color: #ffffff;
+    font-weight: 400;
+    line-height: 1.25;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #e7e7e7;
+    border-bottom: none;
+}
+.socialgroup-block > ul > li:hover {
+    background-color: #f8f8f8;
+    color: #484848;
+    border-color: #e7e7e7;
+    border-bottom: none;
+}
+.socialgroup-block .fb-tab {
+    float: right;
+    width: 54%;
+}
+.socialgroup-block .vk-tab {
+    width: 44%;
+}
+.socialgroup-block .vk-tab.current,
+.socialgroup-block .fb-tab.current {
+    background-color: #f8f8f8;
+    color: #484848;
+    border: 1px solid #e7e7e7;
+    border-bottom: none;
+    transition: background-color 0.05s ease-in-out,
+        border-color 0.05s ease-in-out, color 0.05s ease-in-out;
+    cursor: default;
+}
+.socialgroup-block .fb-block {
+    padding: 15px;
+}
+
+/* блок с комментариями */
+.comments-block .sidebar-block-single a {
+    font-size: 0.94rem;
+    display: inline-block;
+    max-width: calc(100% - 74px);
+    line-height: 1.25;
+}
+.comments-block .comment-date {
+    float: right;
+    color: #9f9f9f;
+}
+.comments-block .sidebar-block-single .comment-avatar {
+    margin: 0;
+    float: none;
+}
+.comments-block .sidebar-block-single .comment-avatar.doctor {
+    padding-left: 2px;
+}
+.comments-block .sidebar-block-single .comment-avatar:before {
+    font-size: 17px;
+    position: relative;
+    top: 2px;
+}
+.comments-block .comment-autor {
+    color: #859c1b;
+}
+.comments-block .sidebar-block-single p {
+    word-break: break-word;
+    margin: 8px 0 0 0;
+}
+
+/* оформление баннера rusfond */
+.rusfond-block .sidebar-block-body {
+    border-top: 1px solid #e7e7e7;
+    height: 365px;
+    position: relative;
+    text-align: center;
+}
+.rusfond-block .top {
+    line-height: 1.2em;
+    color: #cc0000;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.3em;
+}
+.rusfond-block .help {
+    display: block;
+    font-size: 0.85em;
+}
+.rusfond-block .link a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.rusfond-block .link a:hover {
+    color: #242424;
+}
+.rusfond-block .active {
+    margin: 15px 0 0 0;
+}
+.rusfond-block .icons a {
+    display: inline-block;
+    margin: 0 3px 0 0;
+}
+.rusfond-block .icons a:last-child {
+    margin: 0;
+}
+.rusfond-block .icon img {
+    border: 1px #d5d5d5 solid;
+    padding: 4px;
+    width: 70px;
+    height: 70px;
+}
+.rusfond-block .icon img.curr {
+    border: 1px #a0a0a0 solid;
+}
+.rusfond-block .letters {
+    margin: 10px 0 0 0;
+    max-height: 130px;
+    overflow: hidden;
+}
+.rusfond-block .letters .letter {
+    color: #242424;
+    font-weight: 400;
+    text-decoration: none;
+    padding: 5px 0 10px 0;
+}
+.rusfond-block .letters .letter:hover b {
+    color: #242424;
+    text-decoration: underline;
+}
+.rusfond-block .letters .letter b {
+    font-size: 1.33em;
+    color: #2d768b;
+    font-weight: 600;
+    display: block;
+    margin: 0 0 5px 0;
+}
+.rusfond-block #letter0 {
+    display: block;
+}
+.rusfond-block #letter1,
+.rusfond-block #letter2,
+.rusfond-block #letter3 {
+    display: none;
+}
+.rusfond-block .bottom {
+    color: #cc0000;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+/* оформление рекламных блоков в сайдбаре */
+.side-banner-ads .sidebar-block-body,
+.side-banner-yandex .sidebar-block-body,
+.side-banner-yandex02 .sidebar-block-body {
+    border-top: 1px solid #e7e7e7;
+}
+
+/* выравнивание блока по центру */
+.side-banner-yandex .sidebar-block-body div,
+.side-banner-yandex02 .sidebar-block-body div {
+    display: table;
+    margin: 0px auto;
+}
+
+/* корректировки стилей для видео-блоков яндекса */
+.side-banner-yandex .sidebar-block-body {
+    padding: 15px 10px 15px 10px;
+}
+
+/* корректировки рекламных блоков, но не уверен что нужны */
+.single-blockin {
+    margin: 0.625rem 0 1.25rem;
+}
+.adsbygoogle {
+    margin: 0 auto 0 auto;
+    width: 300px;
+    height: 400px;
+}
+.sidebar-block.banner-fixed {
+    position: fixed;
+    top: 10px;
+}
+.side-banner-yandex.banner-fixed {
+    width: 343px;
+}
+.sidebar-block.banner-bottom {
+    position: absolute;
+    bottom: 0px;
+}
+@media (max-width: 1023px) {
+    #right {
+        display: none;
+    }
+}
+@media (min-width: 1024px) {
+    #content #right {
+        width: 343px;
+        float: right;
+        margin-right: -343px;
+        margin-top: 20px;
+    }
+}
+
+/* --- Footer -------------------------- */
+#footer {
+    width: 100%;
+    padding-bottom: 1.5rem;
+    color: #747474;
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
+    -webkit-box-shadow: 0 -4px 4px -4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -4px 4px -4px rgba(0, 0, 0, 0.2);
+    clear: both;
+}
+@media (max-width: 1023px) {
+    /* отступ в футере из-за тени */
+    #footer {
+        margin-top: 5px;
+    }
+}
+#footer p {
+    font-size: 0.875em;
+}
+#footer a {
+    color: #747474;
+}
+#footer li {
+    margin-bottom: 0.5rem;
+    font-size: 0.875em;
+    line-height: 22px;
+}
+.footer-inner {
+    position: relative;
+    padding: 22px 16px 0 16px;
+}
+.footer-left {
+    text-align: left;
+    float: left;
+}
+.footer-right {
+    text-align: right;
+    position: absolute;
+}
+.footer-social li {
+    margin: 0;
+    display: inline-block;
+}
+.footer-social {
+    margin: 25px 0 0 0;
+}
+.footer-social a {
+    background-color: #a3a3a3;
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: top;
+    -webkit-transition: background-color 0.1s ease-in-out,
+        border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out,
+        border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out,
+        color 0.1s ease-in-out;
+}
+.footer-social a:hover {
+    background-color: #747474;
+    text-decoration: none;
+}
+.footer-social a:before {
+    color: #ffffff;
+    line-height: 40px;
+    position: relative;
+}
+.footer-social .vk-icon:before {
+    content: '\e905';
+    font-size: 29px;
+    top: 1px;
+    left: -1px;
+}
+.footer-social .fb-icon:before {
+    content: '\eee8';
+    font-size: 33px;
+    top: 6px;
+    left: -1px;
+}
+.footer-social .tw-icon:before {
+    content: '\eeed';
+    font-size: 31px;
+    top: 0px;
+    left: 1px;
+}
+.footer-logo {
+    display: inline-block;
+    margin: 0 0 25px 0;
+    padding-right: 16px;
+}
+.footer-logo img {
+    height: 36px;
+}
+.footer-description {
+    margin-bottom: 1.5em;
+    clear: both;
+}
+.footer-info {
+    text-align: right;
+    font-size: 0.875em;
+}
+.footer-info p {
+    display: inline-block;
+    margin-top: 0;
+}
+.footer-info a {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px 0 0 15px;
+}
+@media (max-width: 699px) {
+    .footer-left {
+        padding: 0 80px 0 0;
+    }
+    .footer-social {
+        margin: 20px 0 15px 0;
+    }
+    .footer-right {
+        text-align: left;
+        display: contents;
+    }
+    .footer-logo {
+        position: absolute;
+        display: block;
+        right: 0;
+    }
+    .footer-logo img {
+        object-fit: cover;
+        object-position: 0 0;
+        width: 60px;
+        height: 60px;
+    }
+    .footer-info {
+        text-align: center;
+    }
+    .footer-info p,
+    .footer-info strong {
+        display: block;
+    }
+    .footer-info a {
+        margin: 0;
+    }
+}
+@media (min-width: 700px) {
+    .footer-logo {
+        display: block;
+        padding-right: 0;
+    }
+}
+@media (min-width: 1024px) {
+    .footer-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .footer-inner {
+        padding: 30px 50px 20px 50px;
+    }
+    .footer-right {
+        right: 0px;
+        padding-right: 50px;
+        width: 920px;
+    }
+}
+@media (min-width: 700px) and (max-width: 1023px) {
+    .footer-right {
+        right: 16px;
+    }
+    .footer-description {
+        display: inline-block;
+        width: calc(100% - 280px);
+    }
+}
+@media (min-width: 1023px) and (max-width: 1199px) {
+    .footer-right {
+        right: 20px;
+    }
+    .footer-description {
+        display: inline-block;
+        width: calc(100% - 280px);
+    }
+}
+@media (max-width: 360px) {
+    .footer-inner,
+    .footer-logo {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+}
+
+/* --- Кнопка-ссылка наверх -------------------------- */
+#up-button {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    transition: opacity 0.5s, visibility 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    cursor: pointer;
+}
+#up-button:before {
+    content: '\edb5';
+    font-size: 20px;
+    color: #424242;
+    position: absolute;
+    left: 18px;
+    top: 20px;
+}
+#up-button.show {
+    opacity: 0.45;
+    visibility: visible;
+}
+#up-button.show:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+@media (min-width: 1200px) {
+    #up-button {
+        top: 0px;
+        left: 0px;
+        width: calc(4.5vw);
+    }
+}
+
+/* --- Рейтинг Stars Raiting --------------- */
+.wp-stars-wrapper {
+    font-size: 0;
+    display: inline-block;
+    position: relative;
+}
+.wp-stars-wrapper[data-tooltip]:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    text-align: center;
+    width: 110px !important;
+    max-width: 180px;
+    background: #f3f3f3;
+    color: #7b7b7b;
+    font-size: 0.71rem;
+    padding: 6px 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+    -webkit-box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.04);
+    -moz-box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.04);
+    box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.04);
+}
+@media (max-width: 600px) {
+    .wp-stars-wrapper[data-tooltip]:before {
+        padding: 4px 12px 6px 12px;
+        top: -12px;
+    }
+}
+.wp-stars-wrapper a {
+    text-decoration: none;
+    display: inline-block;
+    background: url('images/star-gray.gif') 0 -18px;
+    background-size: 18px;
+    width: 18px;
+    height: 18px;
+    -webkit-tap-highlight-color: #0000;
+}
+.wp-stars-wrapper:hover a,
+.wp-stars-wrapper.is-voted a {
+    background-position: left -18px;
+}
+.wp-stars-wrapper > a:hover ~ a {
+    background-position: left 0px;
+}
+.wp-stars-wrapper a:active {
+    background-position: left 0px;
+}
+.wp-stars-overlay {
+    background: url('images/star-gray.gif') right 0px top 0px;
+    background-size: 18px;
+    position: absolute;
+    height: 100%;
+    right: 0.5px;
+    top: 0;
+}
+.wp-stars-wrapper:hover .wp-stars-overlay {
+    display: none;
+}
+.rateit {
+    display: -moz-inline-box;
+    display: inline-block;
+    position: relative;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    top: 2px;
+}
+.rateit .rateit-range {
+    position: relative;
+    display: -moz-inline-box;
+    display: inline-block;
+    background: url('images/star-gray.gif') 0 0;
+    background-size: 18px;
+    height: 18px;
+    outline: none;
+}
+.rateit .rateit-range * {
+    display: block;
+}
+/* for IE 6 */
+* html .rateit,
+* html .rateit .rateit-range {
+    display: inline;
+}
+/* for IE 7 */
+* + html .rateit,
+* + html .rateit .rateit-range {
+    display: inline;
+}
+.rateit .rateit-hover,
+.rateit .rateit-selected {
+    position: absolute;
+    left: 0px;
+}
+.rateit .rateit-hover {
+    cursor: pointer;
+}
+.rateit .rateit-hover-rtl,
+.rateit .rateit-selected-rtl {
+    left: auto;
+    right: 0px;
+}
+.rateit .rateit-hover-rtl,
+.rateit .rateit-selected-rtl {
+    background-position: right -18px;
+}
+.rateit .rateit-selected,
+.rateit .rateit-preset,
+.rateit .rateit-preset-rtl,
+.rateit .rateit-hover {
+    background: url('images/star-gray.gif') left -18px;
+    background-size: 18px;
+}
+.rateit button.rateit-reset:hover,
+.rateit button.rateit-reset:focus {
+    background-position: 0 -18px;
+}
+.rateit button.rateit-reset {
+    width: 18px;
+    height: 18px;
+    display: -moz-inline-box;
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 0;
+}
+
+/* --- Стандартная статья-страница ----------------- */
+
+/* --- верхний блок с хлебными крошками и заголовком ---- */
+.price-limit {
+    max-width: calc(100% - 150px);
+}
+.clindoc-price-limit {
+    max-width: calc(100% - 180px);
+    word-break: break-word;
+}
+.breadcrumbs {
+    color: #747474;
+    font-size: 0.94rem;
+    margin: 0;
+}
+.breadcrumbs .sep {
+    position: relative;
+    bottom: 2px;
+    padding: 0 7px 0 7px;
+}
+.breadcrumbs .sep:before {
+    content: '\edb9';
+    font-size: 8px;
+    color: #b3b5b4;
+}
+.breadcrumbs a {
+    color: #747474 !important;
+    font-weight: 400;
+}
+.breadcrumbs a:hover {
+    text-decoration: none;
+}
+.breadcrumbs a span:hover {
+    color: #313131;
+}
+
+.adm_help_block {
+    position: absolute;
+    font-size: 0.82rem;
+    top: -3px;
+    right: 50px;
+    color: #cccccc;
+}
+.overup-block {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.overup-block > * {
+    display: block;
+    background-color: #f8f8f8;
+    color: #484848;
+    border: 1px solid #e7e7e7;
+    font-size: 0.94rem;
+    font-weight: 400;
+    line-height: 26px;
+    padding: 4px 12px 7px 12px;
+    text-align: right;
+}
+.overup-block a:hover {
+    text-decoration: none;
+    border: 1px solid #cecece;
+    color: #242424;
+}
+.overup-block a:visited {
+    color: #484848;
+}
+.overup-block span {
+    display: block;
+    color: #859c1b;
+}
+.overup-block strong {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+@media (max-width: 449px) {
+    .price-limit,
+    .clindoc-price-limit {
+        max-width: none;
+        display: table;
+    }
+    .clindoc-price-limit {
+        position: relative;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    .price-limit .breadcrumbs,
+    .clindoc-price-limit .breadcrumbs {
+        display: table-caption;
+        padding-bottom: 10px;
+    }
+    .price-limit h1 {
+        display: table-cell;
+        vertical-align: bottom;
+        width: 100%;
+        word-break: break-word;
+    }
+    .clindoc-price-limit h1 {
+        display: table-row;
+        width: 100%;
+        word-break: break-word;
+    }
+    .price-limit .overup-block {
+        display: table-cell;
+        position: static;
+        white-space: nowrap;
+        padding-left: 20px;
+    }
+    .clindoc-price-limit .overup-block {
+        display: block;
+        position: absolute;
+        top: auto;
+        right: 0;
+        margin-top: 20px;
+    }
+    .clindoc-price-limit .overup-block > * {
+        max-width: 120px;
+    }
+}
+@media (min-width: 450px) and (max-width: 1023px) {
+    .price-limit .overup-block,
+    .clindoc-price-limit .overup-block {
+        right: 16px;
+    }
+}
+@media (min-width: 1200px) {
+    .price-limit .overup-block,
+    .clindoc-price-limit .overup-block {
+        right: 50px;
+    }
+}
+
+/* --- верхний блок под заголовком -------------------------- */
+.title-bar {
+    display: table;
+    width: 100%;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+.right-title-bar {
+    float: right;
+    width: 60%;
+    margin: 0 0 35px 10px;
+}
+.main-image-block {
+    display: table-cell;
+    vertical-align: top;
+    width: 282px;
+}
+.main-image-block.doc-image {
+    width: 177px;
+    text-align: center;
+}
+.main-image-block.clin-image {
+    width: 200px;
+    text-align: center;
+}
+.main-image-block.author-image {
+    width: 177px;
+    text-align: center;
+}
+
+.main-image-block img {
+    border: 1px solid #aaaaaa;
+    width: 280px;
+    height: auto;
+    box-sizing: content-box;
+}
+.main-image-block.doc-image img {
+    max-width: 175px;
+    width: auto;
+}
+.main-image-block.clin-image img {
+    max-width: 200px;
+    width: auto;
+    border: none;
+}
+.main-image-block.author-image img {
+    max-width: 175px;
+    width: auto;
+}
+.main-image-block span {
+    font-size: 0.94rem;
+    color: #484848;
+    display: block;
+    text-align: center;
+    margin: 5px 0 0 0;
+}
+.main-image-block span a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.main-image-block span a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.main-image-block .clinic-raiting {
+    margin: 10px 0 0 0;
+}
+.main-image-block .clinic-numrew {
+    margin: 3px 0 0 0;
+}
+
+.title-bar .right-block {
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    font-size: 0.94rem;
+    padding: 0 0 0 20px;
+}
+.title-bar .wp-stars-outer {
+    float: left;
+    margin: 3px 0 0 0;
+}
+.title-bar .date {
+    float: right;
+    color: #484848;
+}
+.title-bar .date strong {
+    color: #242424;
+}
+
+/* иконки-значки */
+.title-bar .icons-block {
+    display: block;
+    clear: both;
+    margin: 45px 0 0 2px;
+}
+.title-bar .icons-block + .right-inner-block {
+    margin: 10px 0 0 0;
+}
+.title-bar .icons-block ul li {
+    display: inline-block;
+    margin: 0 0 10px 7px;
+}
+.title-bar .icons-block a img:hover {
+    opacity: 0.9;
+}
+.title-bar .icons-block li:first-child {
+    margin: 0 0 10px 0;
+}
+.title-bar .icons-block li:nth-child(11) {
+    margin: 0 0 10px 0;
+}
+
+/* иконки для докторов */
+.doc-top-icon {
+    float: right;
+    padding: 7px;
+    width: 36px;
+    height: 36px;
+    box-sizing: content-box;
+    border: 1px solid #e7e7e7;
+    margin: 0 0 0 10px;
+    text-align: center;
+}
+.doc-top-icon:before {
+    font-size: 33px;
+    color: #2c2c2c;
+}
+.doc-top-icon.kidsreception:before {
+    content: '\e908';
+}
+.doc-top-icon.departure:before {
+    content: '\e907';
+}
+.title-bar .right-inner-block {
+    margin: 45px 0 0 0;
+    position: relative;
+    clear: both;
+}
+.title-bar .clindoc-right-inner-block {
+    margin: 30px 0 0 0;
+}
+.title-bar .right-inner-block.clindoc {
+    margin: 25px 0 0 0;
+}
+.title-bar a.up-label {
+    position: absolute;
+    right: 0px;
+}
+.title-bar a.up-label img {
+    opacity: 0.8;
+}
+.title-bar a.up-label img:hover {
+    opacity: 0.7;
+}
+.title-bar .right-inner-block .up-label + ul {
+    max-width: calc(100% - 50px);
+}
+.title-bar .right-inner-block .post-list {
+    margin: 10px 0 0 10px;
+}
+.title-bar .right-inner-block .post-list li {
+    margin: 0 0 0.325rem;
+    padding: 0 0 0 1.525rem;
+    word-break: break-word;
+}
+.title-bar .right-inner-block .post-list li:before {
+    font-size: 5px;
+    content: '\e903';
+    color: #797979;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.title-bar .right-inner-block > ul > li {
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.title-bar .right-inner-block > ul a {
+    font-weight: 400;
+    color: #859c1b;
+}
+.title-bar .right-inner-block > ul a:hover {
+    text-decoration: none;
+    color: #242424;
+}
+.title-bar .metro-dot {
+    margin: 0 4px 0 0;
+}
+.title-bar .metro-dot span {
+    opacity: 0.8;
+    cursor: default;
+    margin: 0 4px 0 0;
+}
+.title-bar .right-inner-block .post-list .clinic-phones {
+    margin: -3px 0 0 0;
+}
+.title-bar .right-inner-block .post-list .clinic-phones:before {
+    top: 14px;
+}
+.title-bar .right-inner-block .post-list .clinic-phones strong {
+    display: inline-block;
+    line-height: 32px;
+    vertical-align: top;
+    margin-right: 7px;
+}
+.title-bar .right-block .phone {
+    display: inline-block;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    padding: 3px 8px 3px 5px;
+    margin: 1px 7px 5px 0;
+    vertical-align: top;
+}
+.title-bar .share-block-top {
+    margin: 25px 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+.title-bar .share-block-top ul li {
+    margin: 0 10px 0 0;
+}
+@media (max-width: 600px) {
+    .title-bar.right-title-bar {
+        display: block;
+        float: none;
+        width: 100%;
+        margin: 0;
+    }
+    .title-bar.right-title-bar .right-block {
+        display: block;
+        width: 100%;
+        padding: 5px 0 0 0;
+    }
+    .main-image-block {
+        display: table-row;
+    }
+    .main-image-block span {
+        width: 282px;
+    }
+    .main-image-block .clinic-raiting,
+    .main-image-block .clinic-numrew {
+        width: auto;
+    }
+    .title-bar .right-block {
+        padding: 20px 0 0 0;
+    }
+    .main-image-block.author-image + .right-block {
+        padding: 10px 0 0 0;
+    }
+    .title-bar .right-inner-block {
+        margin: 40px 0 0 0;
+    }
+    .title-bar .right-inner-block.clindoc-right-inner-block {
+        margin: 0;
+    }
+}
+@media (min-width: 601px) and (max-width: 1023px) {
+    .title-bar .right-inner-block.clindoc-right-inner-block {
+        margin: 30px 0 0 0;
+    }
+}
+@media (max-width: 449px) {
+    .main-image-block.doc-image {
+        text-align: left;
+    }
+    .main-image-block.clin-image {
+        display: block;
+        max-width: 165px;
+    }
+    .main-image-block.clin-image + .right-block {
+        display: block;
+    }
+    .main-image-block.doc-image img,
+    .main-image-block.clin-image img {
+        max-width: 165px;
+    }
+}
+@media (max-width: 360px) {
+    .doc-top-icon {
+        position: relative;
+        margin-bottom: -42px;
+    }
+    .doc-top-icon:nth-child(1) {
+        top: -22px;
+    }
+    .doc-top-icon:nth-child(2) {
+        position: absolute;
+        right: 0px;
+        top: -66px;
+    }
+}
+@media (min-width: 361px) and (max-width: 449px) {
+    .doc-top-icon {
+        position: relative;
+        margin-bottom: -42px;
+        top: -22px;
+    }
+}
+@media (min-width: 450px) and (max-width: 600px) {
+    .doc-top-icon {
+        position: relative;
+        margin-bottom: -22px;
+        top: -2px;
+    }
+}
+@media (max-width: 440px) {
+    .title-bar .long-date .date {
+        text-align: right;
+        margin: 0 0 16px 0;
+    }
+    .title-bar .long-date .date strong {
+        display: block;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1100px) {
+    .title-bar .long-date .wp-stars-outer {
+        float: none;
+        position: relative;
+        left: -2px;
+    }
+    .title-bar .long-date .date {
+        float: none;
+        display: block;
+        margin: 10px 0 0 0;
+    }
+    .title-bar .long-date .right-inner-block {
+        margin: 20px 0 0 0;
+    }
+}
+@media (min-width: 601px) and (max-width: 740px) {
+    .title-bar .long-date .wp-stars-outer {
+        float: none;
+        position: relative;
+        left: -2px;
+    }
+    .title-bar .long-date .date {
+        float: none;
+        display: block;
+        margin: 10px 0 0 0;
+    }
+    .title-bar .long-date .right-inner-block {
+        margin: 20px 0 0 0;
+    }
+}
+
+/* --- верхнее меню для статьи ---------------------- */
+.page-menu {
+    margin: 0;
+    padding: 0 0 0 25px;
+    font-size: 0.94rem;
+}
+#page-content .page-menu ul {
+    margin: 0;
+    columns: 2 auto;
+    -webkit-columns: 2 auto;
+    -moz-columns: 2 auto;
+    column-gap: 25px;
+}
+#page-content .page-menu li {
+    padding: 0;
+    margin: 0;
+    background: none;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-column-break-after: always;
+    page-break-after: always;
+    break-after: always;
+}
+#page-content .page-menu li:before {
+    display: none;
+    content: '';
+}
+.page-menu a {
+    display: block;
+    padding: 0 0 10px 0;
+    font-weight: 400;
+}
+.page-menu a:after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    line-height: 24px;
+    margin-left: 7px; /* spacing*/
+    padding-right: 6px; /* sizing */
+    padding-top: 1px;
+}
+.page-menu a:hover {
+    text-decoration: none;
+}
+.page-menu a:hover:after {
+    color: #424242;
+}
+.page-menu + * {
+    margin-top: 20px;
+}
+@media (max-width: 600px) {
+    #page-content .page-menu ul {
+        column-count: 1;
+    }
+    .page-menu {
+        padding: 0;
+    }
+}
+
+/* --- внутренняя часть статьи ---------------------- */
+#page-content {
+    margin-top: 30px;
+}
+#page-content.promo-page {
+    margin-top: -5px;
+}
+#page-content em strong,
+#page-content i strong,
+#page-content em b,
+#page-content i b {
+    font-style: normal;
+}
+#page-content strong em,
+#page-content strong i,
+#page-content b em,
+#page-content b i {
+    font-style: normal;
+}
+#page-content a em,
+#page-content a i,
+#page-content em a,
+#page-content i a {
+    font-style: normal;
+}
+#page-content h2 + p:empty {
+    display: none;
+}
+#page-content ul {
+    margin: 0.625rem 0 1.25rem;
+}
+#page-content li {
+    margin: 0 0 10px 15px;
+    padding: 0 0 0 1.625rem;
+    position: relative;
+}
+#page-content li:before {
+    font-size: 5px;
+    content: '\e903';
+    color: #797979;
+    position: absolute;
+    top: 12px;
+    left: 7px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#page-content table td li:before {
+    top: 9px;
+}
+
+@media (max-width: 600px) {
+    #page-content li {
+        margin-left: 7px;
+    }
+}
+@media (max-width: 360px) {
+    #page-content li {
+        margin-left: 5px;
+    }
+}
+
+#page-content img {
+    border: 1px solid #d5d5d5;
+    box-sizing: content-box;
+    display: block;
+}
+#page-content .alignleft {
+    float: left;
+    margin: 8px 20px 10px 0;
+    max-width: 50%;
+}
+#page-content .alignright {
+    float: right;
+    margin: 8px 0 10px 20px;
+    max-width: 50%;
+}
+#page-content .aligncenter,
+#page-content .alignnone {
+    margin: 20px auto 25px auto;
+    max-width: 90%;
+}
+#page-content .wp-caption.aligncenter img,
+#page-content .wp-caption.alignnone img {
+    margin: 0px auto 0px auto;
+}
+#page-content .wp-caption .wp-caption-text {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+#page-content .wp-caption.alignleft {
+    margin-right: 12px;
+}
+#page-content .wp-caption.alignleft .wp-caption-text {
+    width: calc(100% - 8px);
+}
+#page-content .wp-caption.alignright {
+    margin-left: 12px;
+}
+#page-content .wp-caption.alignright img {
+    margin-left: auto;
+}
+#page-content .wp-caption.alignright .wp-caption-text {
+    width: calc(100% - 8px);
+    margin-left: auto;
+}
+#page-content table {
+    margin: 20px auto 25px auto;
+    font-size: 0.82rem;
+    min-width: 80%;
+    border: 2px solid #e7e7e7;
+}
+#page-content table tr {
+    vertical-align: top;
+}
+#page-content table td {
+    border: 1px solid #e7e7e7;
+    padding: 12px 15px;
+    text-align: left;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+#page-content table li {
+    margin: 0 0 12px 5px;
+    background-position: 6px 9px;
+}
+#page-content td > :first-child,
+#page-content td > :first-child > :first-child,
+#page-content th > :first-child {
+    margin-top: 0;
+}
+#page-content td > :last-child,
+#page-content td > :last-child > :last-child,
+#page-content th > :last-child {
+    margin-bottom: 0;
+}
+@media (max-width: 1023px) {
+    #page-content table.big-table {
+        border: none;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    #page-content table.alignleft,
+    #page-content table.alignright {
+        float: none;
+        max-width: none;
+        margin: 20px auto 25px auto;
+    }
+}
+@media (min-width: 1024px) {
+    #page-content table.fixed {
+        table-layout: fixed;
+        width: 100%;
+    }
+}
+
+/* --- скрытие блока рекламы, когда он в таблице ---- */
+#page-content table tr td .advertising-block {
+    display: none;
+}
+/* --- контейнер с видео ---- */
+#page-content .video-container-out {
+    margin: 25px 0;
+    text-align: center;
+}
+@media (max-width: 600px) {
+    .video-container iframe,
+    .video-container object,
+    .video-container embed {
+        width: 100%;
+    }
+}
+#page-content .advertising-block {
+    clear: both;
+    width: 100%;
+    margin: 20px 0 25px 0;
+}
+#page-content .advertising-block > * {
+    margin: 0 auto;
+}
+#page-content .adsense-block {
+    /* конкретно для рекламы adsense	*/
+}
+#page-content .direct-block {
+    /* конкретно для рекламы direct */
+}
+
+/* блок с врачами внутри статьи и в сайдбаре */
+.doctors-block {
+    position: relative;
+    margin: 30px 0 0 0;
+}
+.doctors-block.bottom-doctors-block {
+    margin: 30px 0 30px 0;
+}
+.doctors-block .doctors-block-upper {
+    position: absolute;
+    right: 0px;
+    top: -53px;
+    color: #484848;
+}
+.doctors-block .doctors-block-upper a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.doctors-block .doctors-block-upper a:hover {
+    color: #242424;
+}
+.doctors-block .doctors-block-inside {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+.doctors-block .doctor-one {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.doctors-block a:hover,
+.sidebar-doctors-block a:hover {
+    text-decoration: none;
+}
+.doctors-block .doctor-more-link {
+    margin: 25px 0 0 0;
+}
+.doctors-block .doctor-more-link a {
+    display: block;
+    color: #626262;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    font-size: 0.94rem;
+    font-weight: 400;
+    padding: 5px 0 6px;
+    text-align: center;
+}
+.doctors-block .doctor-more-link a:hover {
+    border: 1px solid #cecece;
+    color: #484848;
+}
+.doctors-block .doctor-more-link span:after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    left: 8px;
+}
+.doctors-block .doctor-more-link a:hover span:after {
+    color: #424242;
+}
+.doctors-block .doctor-left {
+    width: 112px;
+    padding: 4px 0 0 0;
+    display: table-cell;
+    vertical-align: top;
+}
+#page-content .doctors-block .doctor-left img,
+.doctors-block .doctor-left img {
+    border: 1px solid #d5d5d5;
+    width: 110px;
+    height: auto;
+}
+#page-content .doctors-block .doctor-left img:hover,
+.doctors-block .doctor-left img:hover,
+.sidebar-doctors-block .doctor-left img:hover {
+    border: 1px solid #b7b7b7;
+}
+.doctors-block .doctor-right,
+.sidebar-doctors-block .doctor-right {
+    display: table-cell;
+    vertical-align: top;
+}
+.sidebar-doctors-block .doctor-right {
+    padding: 0 6px 0 12px;
+}
+.doctors-block .doctor-right {
+    padding: 0 6px 0 10px;
+}
+.sidebar-doctors-block .sidebar-block-body {
+    padding: 20px 25px 20px 25px;
+}
+.doctors-block h4 {
+    font-size: 0.94rem;
+    margin: 0 0 10px 0;
+    position: static;
+}
+.doctors-block h4 a:hover,
+.sidebar-doctors-block h3 a:hover {
+    text-decoration: underline;
+}
+.doctors-block .doctor-spec,
+.sidebar-doctors-block .doctor-spec {
+    display: block;
+    color: #747474;
+    font-size: 0.85rem;
+    margin: 0 0 10px 2px;
+}
+.doctors-block .doctor-small-button {
+    display: inline-block;
+    padding: 3px 20px 4px 0;
+    margin: 4px 0 0 0;
+}
+.sidebar-doctors-block .doctor-small-button {
+    display: inline-block;
+    padding: 3px 18px 4px 12px;
+    margin: 2px 0 0 0;
+    color: #747474;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+}
+.doctors-block .doctor-small-button:hover {
+    color: #242424;
+}
+.sidebar-doctors-block .doctor-small-button:hover {
+    border: 1px solid #cecece;
+    color: #242424;
+    text-decoration: none;
+}
+.doctors-block .doctor-numrew,
+.sidebar-doctors-block .doctor-numrew {
+    margin: 0 0 0 2px;
+    color: #747474;
+    display: block;
+    font-size: 0.94rem;
+}
+.doctors-block .doctor-numrew a,
+.sidebar-doctors-block .doctor-numrew a {
+    font-weight: 400;
+    color: #859c1b;
+}
+.doctors-block .doctor-numrew a:hover,
+.sidebar-doctors-block .doctor-numrew a:hover {
+    color: #242424;
+}
+.doctors-block .doctor-price,
+.sidebar-doctors-block .doctor-price {
+    font-size: 1.3rem;
+    margin-top: 3px;
+    display: block;
+}
+.doctors-block .doctor-price span,
+.sidebar-doctors-block .doctor-price span {
+    font-size: 0.94rem;
+}
+@media (min-width: 1024px) and (max-width: 1124px) {
+    .doctors-block .doctor-small-button {
+        font-size: 0.85rem;
+        padding: 3px 16px 4px 0;
+    }
+}
+@media (min-width: 620px) and (max-width: 700px) {
+    .doctors-block .doctor-small-button {
+        font-size: 0.85rem;
+        padding: 3px 16px 4px 0;
+    }
+}
+@media (max-width: 619px) {
+    .doctors-block {
+        margin-top: 20px;
+    }
+    .doctors-block .doctors-block-upper {
+        position: static;
+        margin: -15px 0 20px 0;
+    }
+    .doctors-block .doctor-one {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .doctors-block .doctor-more-link {
+        margin: 5px 0 0 0;
+    }
+}
+
+/* блок с диетами внутри статьи */
+.diets-block {
+    margin: 25px 0 25px 0;
+}
+.diets-block .diet-one {
+    display: table;
+    width: 100%;
+    margin: 0 0 25px 0;
+}
+.diets-block .diet-left {
+    display: table-cell;
+    vertical-align: top;
+    width: 152px;
+    padding: 4px 0 0 0;
+}
+.diets-block .diet-right {
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    padding: 0 0 0 20px;
+}
+.diets-block h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.06rem;
+    max-width: calc(100% - 120px);
+}
+.diets-block .diet-raiting {
+    position: absolute;
+    right: 0px;
+    top: -2px;
+    z-index: 6000;
+}
+#page-content .diet-spisok {
+    font-size: 0.94rem;
+    margin: 0;
+}
+#page-content .diet-spisok li {
+    margin: 0 0 0 7px;
+}
+#page-content .diet-spisok li:before {
+    top: 10px;
+}
+@media (max-width: 450px) {
+    .diets-block .diet-left {
+        display: block;
+    }
+    .diets-block .diet-right {
+        padding: 0 0 0 15px;
+    }
+    .diets-block h3 {
+        position: absolute;
+    }
+    #page-content .diet-spisok {
+        position: relative;
+        left: -167px;
+        top: 100px;
+        width: calc(100% + 165px);
+        margin-bottom: 95px;
+    }
+}
+@media (max-width: 600px) {
+    .diets-block .diet-raiting {
+        display: block;
+        position: relative;
+        left: -3px;
+        top: -3px;
+        margin-bottom: 4px;
+    }
+    .diets-block h3 {
+        max-width: none;
+    }
+}
+
+/* --- продуктовые таблицы для диет ------- */
+#page-content .products_table {
+    margin: 30px auto 25px auto;
+    border: none;
+}
+#page-content .products_table td {
+    padding: 10px 15px;
+}
+#page-content .products_table tr:first-child {
+    font-weight: 600;
+}
+#page-content .products_table .groups_line {
+    background-color: #f8f8f8;
+    padding: 15px;
+}
+#page-content .products_table h4 {
+    font-weight: 600;
+    font-size: 0.82rem;
+}
+#page-content .products_table td.first_column {
+    width: 40%;
+}
+#page-content .products_table .table_disclamer {
+    text-align: right;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    color: #747474;
+    padding: 15px 0 0 0;
+}
+@media (max-width: 1023px) {
+    #page-content table.products_table.big-table {
+        border: none;
+    }
+    #page-content .products_table .table_disclamer {
+        text-align: left;
+    }
+}
+
+/* --- блоки со списком рубрик/категорий --- */
+#page-content .cat-block-compact {
+    font-size: 0.94rem;
+    columns: 4 auto;
+    -webkit-columns: 4 auto;
+    -moz-columns: 4 auto;
+}
+#page-content .cat-block-compact li {
+    margin: 0 0 0.325rem 0;
+    padding: 0 0 0 1.525rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-column-break-after: always;
+    page-break-after: always;
+    break-after: always;
+}
+#page-content .cat-block-compact li:before {
+    top: 10px;
+}
+.cat-block-compact li a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.cat-block-compact li a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+@media (max-width: 400px) {
+    #page-content .cat-block-compact {
+        columns: 1 auto;
+        -webkit-columns: 1 auto;
+        -moz-columns: 1 auto;
+    }
+}
+@media (min-width: 401px) and (max-width: 600px) {
+    #page-content .cat-block-compact {
+        columns: 2 auto;
+        -webkit-columns: 2 auto;
+        -moz-columns: 2 auto;
+    }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+    #page-content .cat-block-compact {
+        columns: 3 auto;
+        -webkit-columns: 3 auto;
+        -moz-columns: 3 auto;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1240px) {
+    #page-content .cat-block-compact {
+        columns: 3 auto;
+        -webkit-columns: 3 auto;
+        -moz-columns: 3 auto;
+    }
+}
+
+/* --- блок со списком клиник перед картой --- */
+#page-content .clinic-list-block {
+    font-size: 0.94rem;
+    margin: 0;
+}
+#page-content .clinic-list-block li {
+    width: 100%;
+    padding: 7px 15px 8px 48px;
+    border: 1px solid #e7e7e7;
+    display: table;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+    position: relative;
+}
+#page-content .clinic-list-block li:before {
+    content: '\e909';
+    font-size: 22px;
+    color: #4d4d4d;
+    position: absolute;
+    left: 13px;
+    top: 16px;
+}
+#page-content .clinic-list-block li:hover {
+    background-color: #f8f8f8;
+}
+#page-content .clinic-list-block .left-part > * {
+    display: block;
+}
+#page-content .clinic-list-block .left-part {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+#page-content .clinic-list-block .clinic-link {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    color: #484848;
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    white-space: nowrap;
+}
+#page-content .clinic-list-block .clinic-link:after {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+#page-content .clinic-list-block .clinic-name {
+    line-height: 20px;
+    margin-bottom: 4px;
+}
+#page-content .clinic-list-block .clinic-address {
+    color: #747474;
+}
+#page-content .clinic-list-block .current_clinic {
+    background-color: #f8f8f8;
+    border: 1px solid #cecece;
+}
+#page-content .clinic-list-block li:hover .clinic-link {
+    color: #242424;
+}
+#page-content .clinic-list-block li:hover .clinic-link:after {
+    color: #859c1b;
+}
+@media (max-width: 1024px) {
+    #page-content .clinic-list-block .clinic-link:after {
+        color: #7a7a7a;
+    }
+    #page-content .clinic-list-block li:hover .clinic-link:after {
+        color: #424242;
+    }
+}
+@media (max-width: 650px) {
+    #page-content .clinic-list-block .clinic-address {
+        white-space: normal;
+        font-size: 0.84rem;
+    }
+    #page-content .clinic-list-block .clinic-link {
+        font-size: 0;
+        color: #ffffff;
+    }
+}
+
+/* ------- вывод карты -------- */
+#map-block {
+    width: 100%;
+    height: 180px;
+    border: 1px solid #e7e7e7;
+}
+#map-block.big-map {
+    height: 350px;
+}
+#map-block .metro-dot {
+    font-size: 0.94rem;
+    margin: 0 2px 0 5px;
+    opacity: 0.8;
+    cursor: default;
+}
+#map-block .metro-dot:first-child {
+    margin: 0 2px 0 0px;
+}
+#map-block .balloon-title {
+    margin-right: 15px;
+    color: #859c1b;
+    font-weight: 400;
+    font-size: 0.94rem;
+}
+#map-block a.balloon-title:hover {
+    color: #242424;
+}
+#map-block ymaps[class*='-balloon__content'] {
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
+        sans-serif;
+}
+#map-block ymaps[class*='-map-copyrights-promo'] {
+    left: 45px;
+    bottom: 1px;
+}
+#map-block.big-map ymaps[class*='-map-copyrights-promo'] {
+    left: 0px;
+    bottom: 0px;
+}
+#map-block.big-map ymaps[class*='-balloon-content__footer'] {
+    word-break: break-all;
+}
+
+/* ---- блок с докторами большой (для клиники) ------- */
+.doctors-block-big {
+    margin: 25px 0 25px 0;
+    font-size: 0.94rem;
+}
+.doctors-block-big .doctor-one {
+    display: table;
+    width: 100%;
+    margin: 5px 0 25px 0;
+}
+.doctors-block-big .doctor-left {
+    width: 112px;
+    padding: 4px 0 0 0;
+    display: table-cell;
+    vertical-align: top;
+}
+#page-content .doctors-block-big .doctor-left img {
+    border: 1px solid #d5d5d5;
+    width: 110px;
+    height: auto;
+}
+.doctors-block-big .doctor-right {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 0 0 20px;
+    position: relative;
+}
+.doctors-block-big .hidden-doctor {
+    display: none;
+}
+.doctors-block-big .doctor-raiting {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+.doctors-block-big .doctor-numrew {
+    position: absolute;
+    right: 0px;
+    top: 23px;
+    width: 90px;
+    text-align: center;
+}
+.doctors-block-big .doctor-numrew a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.doctors-block-big .doctor-numrew a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.doctors-block-big h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.06rem;
+    max-width: calc(100% - 100px);
+}
+#page-content .doctors-block-big ul {
+    margin: 0 0 12px 0;
+    max-width: calc(100% - 100px);
+}
+#page-content .doctors-block-big li {
+    margin: 0 0 0 7px;
+}
+#page-content .doctors-block-big li:before {
+    top: 10px;
+}
+#page-content .doctors-block-big ul a {
+    color: #859c1b;
+    font-weight: 400;
+}
+#page-content .doctors-block-big ul a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.doctors-block-big .doctor-text {
+    color: #484848;
+}
+.doctors-block-big .doctor-more {
+    width: 100%;
+    text-align: center;
+}
+.doctors-block-big .doctor-more span {
+    display: inline-block;
+    color: #484848;
+    font-weight: 400;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.doctors-block-big .doctor-more span:before {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.doctors-block-big .doctor-more span:hover:before {
+    color: #859c1b;
+}
+.doctors-block-big .doctor-more span:hover {
+    color: #242424;
+}
+.doctors-block-big .doctor-more-up span:before {
+    content: '\edb5';
+}
+@media (max-width: 500px) {
+    .doctors-block-big .doctor-left {
+        width: 92px;
+    }
+    #page-content .doctors-block-big .doctor-left img {
+        width: 90px;
+    }
+    .doctors-block-big h3 {
+        max-width: none;
+    }
+    .doctors-block-big .doctor-raiting {
+        position: static;
+    }
+    .doctors-block-big .doctor-numrew {
+        position: static;
+        display: block;
+        text-align: left;
+    }
+    #page-content .doctors-block-big ul {
+        margin: 0.625rem 0 0.7rem -12px;
+        max-width: none;
+    }
+    .doctors-block-big .doctor-text {
+        position: relative;
+        display: block;
+        left: -110px;
+        width: calc(100% + 110px);
+    }
+}
+@media (min-width: 501px) and (max-width: 600px) {
+    #page-content .doctors-block-big ul {
+        max-width: none;
+    }
+    #page-content .doctors-block-big li:first-child {
+        max-width: calc(100% - 110px);
+    }
+}
+
+/* ---- блок с услугами и диагностиками клиники ------- */
+#page-content .services-block {
+    font-size: 0.94rem;
+}
+#page-content .services-block li {
+    display: table;
+    margin-bottom: 7px;
+}
+#page-content .services-block li:before {
+    top: 10px;
+}
+.services-block .service-name {
+    display: table-cell;
+    white-space: nowrap;
+    padding: 0 7px 0 0;
+    max-width: 640px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.services-block .service-space {
+    display: table-cell;
+    width: 100%;
+}
+.services-block .service-space:before {
+    border-bottom: 1px dashed #e7e7e7;
+    content: '';
+    display: block;
+}
+.services-block .service-price {
+    display: table-cell;
+    white-space: nowrap;
+    padding: 0 0 0 7px;
+}
+@media (max-width: 900px) {
+    .services-block .service-name {
+        white-space: normal;
+        word-break: break-word;
+        padding: 0 20px 0 0;
+        width: 100%;
+    }
+    .services-block .service-space {
+        display: none;
+    }
+    .services-block .service-price {
+        vertical-align: bottom;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1240px) {
+    .services-block .service-name {
+        white-space: normal;
+        word-break: break-word;
+        padding: 0 20px 0 0;
+        width: 100%;
+    }
+    .services-block .service-space {
+        display: none;
+    }
+    .services-block .service-price {
+        vertical-align: bottom;
+    }
+}
+
+/* ---- блок со списком филиалов ------- */
+#page-content .branches-block {
+    font-size: 0.94rem;
+}
+#page-content .branches-block li {
+    margin: 0 0 0.325rem 0;
+}
+#page-content .branches-block li:before {
+    top: 10px;
+}
+
+/* ---- блок с похожими клиниками внизу ------- */
+.clinics-block {
+    margin: 10px 0 30px 0;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.clinics-block .clinic-one {
+    display: flex;
+    display: -webkit-flex;
+    flex: 0 1 33%;
+    -webkit-flex: 0 1 33%;
+    -ms-flex: 0 1 33%;
+}
+.clinics-block .clinic-left {
+    flex: 0 0 100px;
+    -webkit-flex: 0 0 100px;
+    -ms-flex: 0 0 100px;
+}
+.clinics-block .clinic-right {
+    padding: 0 6px 0 10px;
+    flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+}
+.clinics-block h4 {
+    font-size: 0.94rem;
+    margin: 0 0 10px 0;
+    word-wrap: break-word;
+}
+.clinics-block h4 + span {
+    margin: 0 0 5px 0;
+    display: block;
+}
+.clinics-block .clinic-more-link {
+    text-align: center;
+    margin: 25px 0 0 0;
+    width: 100%;
+}
+.clinics-block .clinic-more-link a {
+    font-size: 0.94rem;
+    color: #484848;
+    font-weight: 400;
+}
+.clinics-block .clinic-more-link a:before {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+}
+.clinics-block .clinic-more-link a:hover:before {
+    color: #859c1b;
+}
+.clinics-block .clinic-more-link a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+@media (min-width: 1024px) and (max-width: 1150px) {
+    .clinics-block .clinic-left {
+        flex: 0 0 80px;
+        -webkit-flex: 0 0 80px;
+        -ms-flex: 0 0 80px;
+    }
+}
+@media (min-width: 670px) and (max-width: 800px) {
+    .clinics-block .clinic-left {
+        flex: 0 0 80px;
+        -webkit-flex: 0 0 80px;
+        -ms-flex: 0 0 80px;
+    }
+}
+@media (max-width: 669px) {
+    .clinics-block {
+        flex-direction: column;
+        margin: 20px 0 0 0;
+    }
+    .clinics-block .clinic-one {
+        padding: 0 0 15px 0;
+    }
+    .clinics-block .clinic-more-link {
+        margin: 10px 0 0 0;
+    }
+}
+
+/* блок со ссылкой на страницу с поиском аптек */
+.drugstore-map-link {
+    margin: 20px 0 15px 0;
+}
+.drugstore-map-link a {
+    display: inline-block;
+    position: relative;
+    padding: 12px 0 12px 40px;
+    margin: 0 0 0 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #859c1b;
+}
+.drugstore-map-link a:before {
+    content: '\e904';
+    font-size: 31px;
+    color: #858585;
+    position: absolute;
+    left: 0px;
+    top: 7px;
+}
+.drugstore-map-link a:after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    left: 9px;
+    bottom: 1px;
+}
+.drugstore-map-link a:hover::before {
+    color: #000000;
+}
+.drugstore-map-link a:hover::after {
+    color: #424242;
+}
+.drugstore-map-link a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.drugstore-map-link + .prices-block {
+    margin-top: 0px;
+}
+@media (max-width: 650px) {
+    .drugstore-map-link a {
+        margin: 0;
+    }
+}
+
+/* --- блок с ценами на лекарства ---------------------- */
+.prices-block {
+    margin: 35px 0 20px 0;
+    font-size: 0.94rem;
+}
+#page-content .price-country {
+    margin: 0;
+    display: inline-block;
+}
+#page-content .price-country li {
+    display: inline-block;
+    background: #ffffff;
+    color: #626262;
+    border: 1px solid #e7e7e7;
+    border-bottom: none;
+    margin: 0 10px 0 0;
+    padding: 6px 20px;
+    font-weight: 400;
+    font-size: 0.94rem;
+    letter-spacing: 0.025em;
+    cursor: pointer;
+}
+#page-content .price-country li:before {
+    display: none;
+    content: '';
+}
+#page-content .price-country li:hover {
+    background: #f8f8f8;
+    color: #484848;
+}
+#page-content .price-country .country_current {
+    background: #747474;
+    color: #ffffff;
+    border-color: #747474;
+    cursor: default;
+}
+#page-content .price-country .country_current:hover {
+    background: #747474;
+    color: #ffffff;
+}
+#page-content .price-country li:first-child {
+    margin: 0px 10px 0px 20px;
+}
+#page-content .price-country li span:nth-child(1) {
+    display: none;
+}
+#page-content .price-country li span:nth-child(2) {
+    display: inline;
+}
+#page-content .price-country .country_current span:nth-child(1) {
+    display: inline;
+}
+#page-content .price-country .country_current span:nth-child(2) {
+    display: none;
+}
+.prices-block .inner {
+    padding: 20px 0 0 0;
+    border-top: 1px solid #e7e7e7;
+    clear: both;
+    display: none;
+}
+.prices-block .inner-visible {
+    display: block;
+}
+.prices-block h3 {
+    margin: 0;
+    font-size: 0.94rem;
+    color: #2d768b;
+}
+.prices-block.service-prices h3 {
+    margin: 25px 0 30px 0;
+    font-size: 1.25rem;
+    color: #242424;
+}
+.prices-block h3 span {
+    color: #747474;
+    font-weight: 400;
+    font-size: 0.82rem;
+    margin-left: 10px;
+}
+.prices-block h3 strong {
+    color: #242424;
+}
+#page-content .prices-block .inner ul li {
+    background-position: 0.375rem 0.5875rem;
+    display: none;
+}
+#page-content .prices-block .inner ul li:before {
+    top: 10px;
+}
+#page-content .prices-block .inner ul li:first-child {
+    display: table;
+}
+#page-content .prices-block .inner ul li.inner-li-all {
+    display: table;
+    height: 40px;
+}
+.prices-block .price-left {
+    display: table-cell;
+    vertical-align: top;
+    white-space: nowrap;
+    /* это в зависимости от ширины экрана */
+    max-width: 500px;
+}
+.prices-block .price-name {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.prices-block .price-fabric {
+    display: block;
+    font-style: italic;
+    color: #747474;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.prices-block .price-center {
+    display: table-cell;
+    width: 100%;
+}
+.prices-block .price-right {
+    display: table-cell;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.prices-block .price-currency span:first-child {
+    font-size: 1.2rem;
+}
+.prices-block .price-link {
+    display: inline-block;
+    margin: 0 0 0 10px;
+    padding: 4px 16px;
+    color: #859c1b;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    font-weight: 400;
+}
+.prices-block .price-link:hover {
+    border: 1px solid #cecece;
+    color: #242424;
+    text-decoration: none;
+}
+.prices-block .other-link {
+    width: 100%;
+    text-align: center;
+    display: none;
+    margin: 15px 0 0 0;
+}
+.prices-block .other-link span {
+    display: inline-block;
+    color: #484848;
+    font-weight: 400;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.prices-block .other-link span:before {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+}
+.prices-block .other-link span:hover:before {
+    color: #859c1b;
+}
+.prices-block .other-link span:hover {
+    color: #242424;
+}
+.prices-block .link-up span:before {
+    content: '\edb5';
+}
+.prices-block .link-visible {
+    display: block;
+}
+/* блок с ценами для диагностик и услуг */
+.prices-block.service-prices .inner {
+    padding: 0;
+    border: none;
+    clear: none;
+    display: block;
+}
+#page-content .prices-block.service-prices .inner ul {
+    margin: 0.525rem 0 0.9rem;
+}
+#page-content .prices-block.service-prices .inner ul li {
+    display: table;
+}
+#page-content .prices-block.service-prices .inner ul li:not(:first-child) {
+    margin-top: -5px;
+}
+.prices-block.service-prices .price-left {
+    vertical-align: middle;
+}
+#page-content .prices-block.service-prices .inner ul li:before {
+    top: 15px;
+}
+@media (max-width: 650px) {
+    .prices-block {
+        margin: 30px 0 20px 0;
+    }
+    #page-content .price-country {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+    }
+    #page-content .price-country li {
+        flex: 1 0 auto;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        align-self: center;
+        padding: 8px;
+        text-align: center;
+        margin: 0;
+        border-bottom: 1px solid #e7e7e7;
+        border-right: none;
+        letter-spacing: normal;
+    }
+    #page-content .price-country li:first-child {
+        margin: 0;
+    }
+    #page-content .price-country li:last-child {
+        border-right: 1px solid #e7e7e7;
+    }
+    #page-content .price-country li.country_current:last-child {
+        border-right: 1px solid #747474;
+    }
+    #page-content .price-country li.country_current + li {
+        border-left: 0;
+    }
+    #page-content .price-country .country_current span:nth-child(1) {
+        display: none;
+    }
+    #page-content .price-country .country_current span:nth-child(2) {
+        display: inline;
+    }
+    .prices-block .inner {
+        border: 0;
+    }
+    .prices-block h3 span {
+        display: block;
+        margin: 8px 0 13px 0;
+    }
+    #page-content .prices-block .inner ul li {
+        display: block;
+    }
+    #page-content .prices-block .inner ul li:first-child {
+        display: block;
+    }
+    #page-content .prices-block .inner ul li.inner-li-all {
+        display: block;
+        height: auto;
+    }
+    .prices-block .price-left {
+        display: block;
+        white-space: normal;
+    }
+    .prices-block .price-center {
+        display: none;
+    }
+    .prices-block .link-visible {
+        display: none;
+    }
+    .prices-block .price-right {
+        display: flex;
+        display: -webkit-flex;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        margin: 10px 0 0 0;
+    }
+    .prices-block.service-prices .price-right {
+        margin: 5px 0 0 0;
+        display: block;
+    }
+    #page-content .prices-block.service-prices .inner ul li:before {
+        top: 10px;
+    }
+    .prices-block .price-currency {
+        align-self: center;
+    }
+    .prices-block.service-prices .price-currency {
+        margin-right: 20px;
+    }
+    .prices-block .price-link {
+        margin: 0 7px 0 0;
+        align-self: center;
+        padding: 4px 40px;
+        text-align: center;
+    }
+}
+@media (min-width: 651px) and (max-width: 1023px) {
+    .prices-block .price-left {
+        max-width: calc(100vw - 310px);
+    }
+    .prices-block .other-link span:before {
+        color: #7a7a7a;
+    }
+    .prices-block .other-link span:hover:before {
+        color: #424242;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .prices-block .price-left {
+        max-width: calc(100vw - 680px);
+    }
+}
+
+/* кнопка 'Записаться' для врачей (временная) */
+.doctor-button {
+    margin: 15px 0 30px 35px;
+}
+.dd-widget,
+.dd-widget * {
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
+        sans-serif !important;
+    font-size: 0.94rem !important;
+}
+.dd-widget .dd-sign-up-popup {
+    width: auto;
+    height: auto;
+    margin-left: -300px;
+    padding-bottom: 30px;
+}
+.dd-widget .dd-sign-up-popup-close {
+    padding: 25px;
+}
+.dd-widget .dd-sign-up-popup-form-input {
+    border: 1px solid #d5d5d5;
+    background-color: #f8f8f8;
+    border-radius: 0px;
+    font-weight: 400;
+    padding-left: 11px !important;
+}
+.dd-widget .dd-sign-up-popup-form-input:focus,
+.dd-widget .dd-button:focus {
+    outline-width: 0;
+}
+.dd-widget .dd-sign-up-popup-title {
+    font-weight: 600;
+    color: #242424;
+}
+.dd-widget .dd-sign-up-popup-form-label {
+    width: 120px;
+    color: #242424;
+}
+.dd-widget .dd-sign-up-popup-form-container {
+    padding-left: 120px;
+}
+.dd-widget .dd-sign-up-popup-form-error {
+    font-size: 0.84rem !important;
+    color: #c00;
+}
+.dd-sign-up-popup-form-label span {
+    color: #c00 !important;
+}
+.dd-widget .dd-sign-up-popup-under-form-description {
+    font-size: 0.84rem !important;
+    padding-right: 39px;
+    padding-left: 160px;
+}
+.dd-widget .dd-button {
+    width: auto;
+    height: 34px;
+    padding: 5px 70px 6px 70px;
+    border-radius: 4px;
+    color: #ffffff;
+    outline: 0;
+    background: #2d768b;
+    border: none;
+    text-shadow: none;
+    box-shadow: none;
+    font-size: inherit;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+}
+.dd-widget .dd-button:hover {
+    background-color: #215a67;
+}
+.dd-widget .dd-button span {
+    display: inline;
+    height: auto;
+    line-height: normal;
+    box-shadow: none;
+    border: 0px;
+}
+
+@media (max-width: 400px) {
+    .dd-widget .dd-sign-up-popup {
+        width: calc(100vw - 20px);
+        left: 10px;
+        top: 10px;
+    }
+}
+@media (min-width: 401px) and (max-width: 500px) {
+    .dd-widget .dd-sign-up-popup {
+        width: calc(100vw - 40px);
+        left: 20px;
+        top: 20px;
+    }
+}
+@media (min-width: 501px) and (max-width: 600px) {
+    .dd-widget .dd-sign-up-popup {
+        width: calc(100vw - 80px);
+        left: 40px;
+        top: 40px;
+    }
+}
+@media (min-width: 601px) and (max-width: 700px) {
+    .dd-widget .dd-sign-up-popup {
+        width: calc(100vw - 160px);
+        left: 80px;
+        top: 40px;
+    }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+    .dd-widget .dd-sign-up-popup {
+        margin-left: -285px;
+    }
+}
+@media (max-width: 700px) {
+    .dd-widget .dd-sign-up-popup-form-label {
+        position: static;
+    }
+    .dd-widget .dd-sign-up-popup-form-container {
+        padding-left: 0px;
+    }
+    .dd-widget .dd-sign-up-popup-under-form-description {
+        padding-left: 39px;
+    }
+    .dd-widget .dd-sign-up-popup {
+        min-width: 300px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    .dd-widget .dd-sign-up-popup-form-success {
+        top: 49px;
+    }
+    .dd-widget .dd-sign-up-popup-title {
+        padding-bottom: 5px;
+    }
+}
+
+/* рекламные блоки внизу страницы */
+.banner-block-bottom {
+    margin: 35px 0 20px 0px;
+}
+
+/* блок share внизу страницы */
+.share-block-bottom {
+    margin: 25px 0 20px 0;
+    text-align: right;
+}
+
+/* блок с описанием автора поста */
+.author-block {
+    position: relative;
+    margin: 25px 0 20px 0;
+    font-size: 0.94rem;
+}
+.author-block .author-img {
+    display: inline-block;
+    vertical-align: top;
+}
+.author-block .author-img .author-empty {
+    width: 66px;
+    height: 66px;
+    border: 1px solid #e3e3e3;
+}
+.author-block .author-img .author-empty:before {
+    content: '\e906';
+    font-size: 44px;
+    color: #bfbfbf;
+    position: relative;
+    top: 10px;
+    left: 14px;
+}
+.author-block .author-img img {
+    padding: 4px;
+    border: 1px solid #e3e3e3;
+}
+.author-block .author-right {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 66px);
+    padding: 4px 0 0 15px;
+}
+.author-block .author-name {
+    display: block;
+    max-width: calc(100% - 130px);
+}
+.author-block .author-name a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.author-block .author-name a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+.author-block .author-special {
+    margin: 3px 0 0 0;
+    display: block;
+    max-width: calc(100% - 130px);
+}
+.author-block .author-description {
+    display: none;
+}
+.author-block .author-description p:last-child {
+    margin-bottom: 5px;
+}
+.author-block .author-more {
+    position: absolute;
+    color: #484848;
+    font-weight: 400;
+    display: block;
+    cursor: pointer;
+    right: 0px;
+    top: 20px;
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+.author-block .author-more:after {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-left: 10px;
+    position: relative;
+    top: 2px;
+}
+.author-block .author-more:hover {
+    text-decoration: none;
+    color: #242424;
+}
+.author-block .author-more:hover:after {
+    color: #859c1b;
+}
+.author-block .author-more.close:after {
+    content: '\edb5';
+}
+@media (max-width: 699px) {
+    .author-block .author-img {
+        margin-top: 10px;
+    }
+    .author-block .author-right {
+        text-align: center;
+    }
+    .author-block.about-page .author-right {
+        text-align: left;
+    }
+    .author-block.about-page .author-img {
+        margin-top: 8px;
+    }
+    .author-block.about-page span {
+        margin: 0 0 5px 0;
+    }
+    .author-block .author-name,
+    .author-block .author-special {
+        max-width: none;
+        text-align: left;
+    }
+    .author-block .author-more {
+        position: static;
+        display: inline-block;
+        margin: 15px 81px 0 0;
+        padding: 0;
+        -webkit-tap-highlight-color: #0000;
+    }
+    .author-block .author-more:after {
+        color: #7a7a7a;
+    }
+    .author-block .author-more:hover {
+        color: #484848;
+    }
+    .author-block .author-more:hover:after {
+        color: #424242;
+    }
+}
+
+/* --- блок Alert ------------- */
+.alert-block {
+    border: 1px solid #e7e7e7;
+    font-size: 0.93rem;
+    margin: 25px 0 20px 0px;
+    padding: 18px 20px 20px 20px;
+}
+.alert-block.green {
+    color: #859c1b;
+}
+.alert-block h3 {
+    color: #2d768b;
+    font-size: 1.06rem;
+    font-weight: 400;
+    margin: 0 0 14px 0;
+}
+.alert-block span {
+    display: block;
+    margin: 5px 0 0 0;
+}
+.alert-block.drug-sources {
+    font-size: 0.85rem;
+    color: #484848;
+}
+.alert-block.drug-sources a {
+    font-weight: 400;
+}
+
+/* блок с комментариями */
+#page-comments {
+    margin: 15px 0 25px 0;
+    width: 100%;
+    overflow: hidden;
+}
+#page-comments h2 {
+    margin: 10px 0 30px 0;
+}
+#page-comments .comments-box {
+    margin: 0 0 25px 0;
+    font-size: 0.941rem;
+}
+#page-comments .comment {
+    color: #484848;
+    margin: 0 0 25px 0;
+}
+#page-comments .comment:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+}
+#page-comments .hidden-review {
+    display: none;
+}
+.comment-avatar {
+    float: left;
+    margin-top: 2px;
+    color: #a9a9a9;
+}
+.comment-avatar.patient {
+    padding: 3px 2px 1px 2px;
+}
+.comment-avatar.doctor {
+    padding: 1px 2px 0px 3px;
+}
+.comment-avatar.patient:before {
+    font-size: 50px;
+    content: '\e900';
+}
+.comment-avatar.doctor:before {
+    font-size: 53px;
+    content: '\e901';
+}
+#page-comments .comment-right {
+    float: right;
+    width: calc(100% - 54px);
+    padding: 0 0 0 15px;
+}
+#page-comments .comment p {
+    margin: 10px 0 5px 0;
+}
+#page-comments .comment-autor {
+    color: #859c1b;
+}
+#page-comments .comment-admin-block {
+    font-size: 0.82rem;
+}
+#page-comments .comment.spam-com .comm-ip,
+#page-comments .comment.spam-com p {
+    color: #ce0000;
+}
+#page-comments .comment-right-up {
+    float: right;
+    color: #747474;
+    font-size: 0.85rem;
+}
+#page-comments .comment .comment-rating-word {
+    margin: 0 5px 0 0;
+    font-weight: 600;
+    color: #859c1b;
+}
+#page-comments .comment .comment-rating .rateit {
+    top: 3px;
+}
+#page-comments .comment .comment-date {
+    margin: 0 0 0 15px;
+}
+#page-comments .comment .comment-doc {
+    display: block;
+    font-size: 0.85rem;
+    color: #747474;
+    border-bottom: 1px dashed #e7e7e7;
+    border-top: 1px dashed #e7e7e7;
+    padding: 5px 0 7px 0;
+    margin-top: 7px;
+}
+#page-comments .reviews-more {
+    width: 100%;
+    text-align: center;
+}
+#page-comments .reviews-more span {
+    display: inline-block;
+    color: #484848;
+    font-weight: 400;
+    margin: 0 auto;
+    cursor: pointer;
+}
+#page-comments .reviews-more span:before {
+    content: '\edbd';
+    font-size: 14px;
+    color: #cecece;
+    margin-right: 9px;
+    position: relative;
+    top: 2px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+#page-comments .reviews-more span:hover:before {
+    color: #859c1b;
+}
+#page-comments .reviews-more span:hover {
+    color: #242424;
+}
+#page-comments .more-up span:before {
+    content: '\edb5';
+}
+
+#comments-form {
+    margin: 20px 0 0 0;
+    font-size: 0.941rem;
+}
+#comments-form .rating-comments {
+    text-align: right;
+    margin: 0 0 10px 0;
+    color: #484848;
+}
+#comments-form .comment-star-column {
+    margin: 0 0 10px 0;
+    color: #484848;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+#comments-form .comment-star-column > div {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+}
+#comments-form .comment-star-column .rateit {
+    margin: 0 0 0 7px;
+    position: relative;
+    top: 2px;
+}
+#comments-form #author {
+    float: left;
+}
+#comments-form #email {
+    float: right;
+}
+#comments-form #comment {
+    clear: both;
+    margin: 15px 0 10px 0;
+    width: 100%;
+    height: 120px;
+    resize: none;
+}
+#comments-form #author,
+#comments-form #email {
+    width: 49%;
+    height: 36px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+#comments-form #author,
+#comments-form #email,
+#comments-form #comment {
+    padding: 0.3em 0.75em;
+    color: #484848;
+    line-height: 1.55;
+    background-color: #f8f8f8;
+    border: 1px solid #d5d5d5;
+    outline: 0;
+}
+#comments-form #submit {
+    width: auto;
+    margin: 0px auto;
+    padding: 5px 40px 6px 40px;
+    display: block;
+    border-radius: 4px;
+    color: #ffffff;
+    outline: 0;
+    text-align: center;
+    background-color: #2d768b;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+}
+#comments-form #submit:hover {
+    background-color: #215a67;
+}
+@media (max-width: 700px) {
+    #comments-form .comment-star-column {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+    #comments-form .comment-star-column > div {
+        margin-bottom: 7px;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1080px) {
+    #comments-form .comment-star-column {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+    #comments-form .comment-star-column > div {
+        margin-bottom: 7px;
+    }
+}
+@media (max-width: 600px) {
+    #page-comments .comment-right-up {
+        float: none;
+        display: block;
+        position: relative;
+    }
+    #page-comments .comment .comment-rating-word {
+        position: absolute;
+        left: 100px;
+        padding-top: 1px;
+    }
+    #page-comments .comment-rating {
+        position: relative;
+        left: -2px;
+    }
+    #page-comments .comment .comment-date {
+        margin: 0;
+        display: block;
+    }
+}
+@media (max-width: 450px) {
+    #comments-form #author,
+    #comments-form #email {
+        width: 100%;
+    }
+    #comments-form #author {
+        margin-bottom: 10px;
+    }
+    #page-comments .comment .comment-doc a {
+        display: block;
+    }
+}
+
+/* нижний блок с похожими постами */
+.similar-bottom-block {
+    margin: 35px 0 0 0;
+    position: relative;
+}
+.similar-bottom-block .single-block {
+    display: inline-block;
+    vertical-align: top;
+    width: 25%;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+.similar-bottom-block .single-block a {
+    display: block;
+}
+.similar-bottom-block img {
+    border: 1px #d5d5d5 solid;
+    box-sizing: content-box;
+}
+.similar-bottom-block h3 {
+    margin: 10px auto 0 auto;
+    font-size: 0.94rem;
+    word-break: break-word;
+    width: 180px;
+}
+.similar-bottom-block a:hover img {
+    border: 1px #b7b7b7 solid;
+}
+
+.block-spacer + .similar-bottom-block {
+    margin: 15px 0 0 0;
+}
+
+@media (min-width: 600px) and (max-width: 760px) {
+    .similar-bottom-block .single-block {
+        width: 33%;
+    }
+}
+@media (min-width: 380px) and (max-width: 599px) {
+    .similar-bottom-block .single-block {
+        width: 50%;
+    }
+    .similar-bottom-block h3 {
+        width: 160px;
+    }
+}
+@media (max-width: 379px) {
+    .similar-bottom-block .single-block {
+        width: 50%;
+    }
+    .similar-bottom-block .single-block img {
+        width: 130px;
+    }
+    .similar-bottom-block h3 {
+        width: 136px;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1170px) {
+    .similar-bottom-block .single-block img {
+        width: 130px;
+    }
+    .similar-bottom-block h3 {
+        width: 136px;
+    }
+}
+
+/* ------- корректировка рекламных блоков corton --------- */
+#content #corton-nativepreview-widget .corton-link {
+    -webkit-transition: background-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+    border: none;
+}
+
+#content #corton-nativepreview-widget {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+#content #corton-nativepreview-widget .corton-right {
+    padding-left: 25px;
+}
+
+#content #corton-nativepreview-widget .corton-title {
+    font-size: 1.25em;
+    color: #2d768b;
+}
+
+#content #corton-nativepreview-widget .corton-content {
+    color: #242424;
+}
+
+#content #corton-nativepreview-widget .corton-link:hover {
+    background-color: #215a67;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    #content #corton-nativepreview-widget .corton-left {
+        width: 100%;
+        float: left;
+    }
+    #content #corton-nativepreview-widget .corton-right {
+        padding-left: 0px;
+        padding-top: 10px;
+    }
+}
+.corton-recomendation-wrapper {
+    width: 100%;
+}
+.similar-bottom-block .corton-recomendation-section {
+    margin: 0 0 20px 0;
+}
+.similar-bottom-block .corton-recomendation-section img {
+    margin: 0 !important;
+}
+.similar-bottom-block .corton-recomendation-section a:hover p {
+    color: #242424;
+    text-decoration: underline;
+}
+.similar-bottom-block .corton-recomendation-section a p {
+    margin: 10px auto 0 auto;
+    line-height: 1.25;
+    word-break: break-word;
+    width: 180px;
+}
+.similar-bottom-block .corton-recomendation-section a {
+    margin-bottom: 0;
+}
+@media (min-width: 600px) and (max-width: 760px) {
+    .similar-bottom-block .corton-recomendation-section:nth-child(4) {
+        display: none;
+    }
+    .similar-bottom-block .corton-recomendation-section img {
+        float: none;
+    }
+}
+@media (min-width: 380px) and (max-width: 599px) {
+    .similar-bottom-block .corton-recomendation-section a p {
+        width: 160px;
+    }
+}
+@media (max-width: 379px) {
+    .similar-bottom-block .corton-recomendation-section {
+        width: 50%;
+    }
+    .similar-bottom-block .corton-recomendation-section img {
+        max-width: 130px;
+        height: 95px;
+    }
+    .similar-bottom-block .corton-recomendation-section a p {
+        width: 136px;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1170px) {
+    .similar-bottom-block .corton-recomendation-section img {
+        max-width: 132px;
+        height: 96px;
+    }
+    .similar-bottom-block .corton-recomendation-section a p {
+        width: 146px;
+    }
+}
+
+/* ------ страница категорий основная category-main ------- */
+.cat-list-main {
+    margin: 30px 0 0 0;
+    font-size: 0.94rem;
+}
+.cat-list-main.columns02 {
+    columns: 2 auto;
+    -webkit-columns: 2 auto;
+    -moz-columns: 2 auto;
+    column-gap: 25px;
+}
+.cat-list-main.columns05 {
+    columns: 5 auto;
+    -webkit-columns: 5 auto;
+    -moz-columns: 5 auto;
+    column-gap: 25px;
+}
+.cat-list-main li {
+    margin: 0 0 15px 0;
+}
+.cat-list-main a {
+    display: block;
+    font-weight: 400;
+}
+.cat-list-main li.child {
+    padding: 0 0 0 20px;
+    margin-left: 20px;
+    position: relative;
+}
+.cat-list-main li.child:before {
+    font-size: 5px;
+    content: '\e903';
+    color: #797979;
+    position: absolute;
+    top: 10px;
+    left: 1px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.cat-list-main li.child a:after {
+    display: none;
+    content: '';
+    margin: 0;
+    padding: 0;
+}
+.cat-list-main a:hover {
+    text-decoration: none;
+}
+.cat-list-main a:after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    line-height: 24px;
+    margin-left: 7px;
+    padding-right: 6px;
+    padding-top: 1px;
+}
+.cat-list-main a:hover:after {
+    color: #424242;
+}
+@media (max-width: 660px) {
+    .cat-list-main.columns02 {
+        columns: 1 auto;
+        -webkit-columns: 1 auto;
+        -moz-columns: 1 auto;
+        margin: 20px 0 0 0;
+    }
+}
+@media (max-width: 450px) {
+    .cat-list-main.columns05 {
+        columns: 3 auto;
+        -webkit-columns: 3 auto;
+        -moz-columns: 3 auto;
+        margin: 20px 0 0 0;
+    }
+}
+
+/* ------ страница категорий второстепенная category-list ------- */
+.cat-list-one {
+    margin: 25px 0 0 0;
+    width: 100%;
+    display: table;
+    font-size: 0.94rem;
+}
+.cat-list-one .cat-list-img {
+    display: table-cell;
+    vertical-align: top;
+    padding: 4px 0 0 0;
+}
+.cat-list-one.post .cat-list-img {
+    width: 152px;
+}
+.cat-list-one.doctor .cat-list-img {
+    width: 92px;
+}
+.cat-list-one.clinic .cat-list-img {
+    width: 110px;
+}
+.cat-list-one img {
+    border: 1px solid #d5d5d5;
+    box-sizing: content-box;
+}
+.cat-list-one.post img {
+    width: 150px;
+}
+.cat-list-one.doctor img {
+    width: 90px;
+}
+.cat-list-one.clinic img {
+    width: 98px;
+    padding: 5px;
+}
+.cat-list-one .cat-list-right {
+    display: table-cell;
+    position: relative;
+    vertical-align: top;
+    padding: 0 0 0 20px;
+    color: #484848;
+}
+.cat-list-one.empty .cat-list-img {
+    display: none;
+}
+.cat-list-one.empty .cat-list-right {
+    padding: 0;
+}
+.cat-list-one .date {
+    position: absolute;
+    right: 0px;
+    color: #484848;
+}
+.cat-list-one h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.06rem;
+    max-width: calc(100% - 150px);
+}
+.cat-list-one p {
+    margin: 0;
+    word-break: break-word;
+}
+@media (max-width: 450px) {
+    .cat-list-one {
+        margin: 20px 0 30px 0;
+    }
+    .cat-list-one .cat-list-img {
+        display: block;
+    }
+    .cat-list-one.post .cat-list-img {
+        width: 130px;
+    }
+    .cat-list-one.post img {
+        width: 128px;
+    }
+    .cat-list-one.clinic .cat-list-img {
+        width: 90px;
+    }
+    .cat-list-one.clinic img {
+        width: 78px;
+    }
+    .cat-list-one .cat-list-right {
+        padding: 0 0 0 15px;
+    }
+    .cat-list-one .date {
+        position: relative;
+        top: -2px;
+        color: #747474;
+    }
+    .cat-list-one.post h2 {
+        min-height: 66px;
+    }
+    .cat-list-one h2 {
+        max-width: none;
+        margin: 7px 0 12px 0;
+    }
+    .cat-list-one.post p {
+        position: relative;
+        left: -145px;
+        width: calc(100% + 137px);
+    }
+    .cat-list-one.post.empty .cat-list-img {
+        display: none;
+    }
+    .cat-list-one.post.empty .date {
+        position: absolute;
+    }
+    .cat-list-one.post.empty h2 {
+        min-height: auto;
+        max-width: calc(100% - 130px);
+        margin: 0 0 12px 0;
+    }
+    .cat-list-one.post.empty p {
+        left: 0px;
+        width: auto;
+    }
+}
+@media (min-width: 451px) and (max-width: 600px) {
+    .cat-list-one {
+        margin: 20px 0 35px 0;
+    }
+    .cat-list-one.post h2 {
+        max-width: none;
+        margin: 7px 0 12px 0;
+    }
+    .cat-list-one.empty h2 {
+        max-width: calc(100% - 150px);
+        margin: 0 0 12px 0;
+    }
+    .cat-list-one.post .date {
+        position: relative;
+        top: -2px;
+    }
+    .cat-list-one .date {
+        color: #747474;
+    }
+    .cat-list-one.empty .date {
+        color: #747474;
+        position: absolute;
+    }
+}
+
+/* ------ стили для навигации pagenavi ------- */
+.wp-pagenavi {
+    margin: 35px 0 0 0;
+    text-align: right;
+    font-size: 0.94rem;
+}
+.wp-pagenavi > * {
+    border: 1px solid #e7e7e7;
+    color: #626262;
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 0 0 5px;
+}
+.wp-pagenavi a,
+.wp-pagenavi a:hover {
+    text-decoration: none;
+}
+.wp-pagenavi a {
+    color: #626262;
+    font-weight: 400;
+}
+.wp-pagenavi a:hover {
+    border: 1px solid #cecece;
+    background: #f8f8f8;
+    color: #484848;
+}
+.wp-pagenavi .pages,
+.wp-pagenavi .extend {
+    border: none;
+}
+.wp-pagenavi .current {
+    background: #747474;
+    color: #fff;
+    border-color: #747474;
+    cursor: default;
+}
+.wp-pagenavi .extend {
+    color: #747474;
+    cursor: default;
+}
+.wp-pagenavi .prev span:before {
+    content: '\eddf';
+    right: 1px;
+}
+.wp-pagenavi .next span:before {
+    content: '\edb9';
+    left: 1px;
+}
+.wp-pagenavi .prev span,
+.wp-pagenavi .next span {
+    width: 10px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.wp-pagenavi .prev span:before,
+.wp-pagenavi .next span:before {
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    bottom: 1px;
+}
+.wp-pagenavi .prev:hover span:before,
+.wp-pagenavi .next:hover span:before {
+    color: #424242;
+}
+
+@media (max-width: 650px) {
+    .wp-pagenavi {
+        text-align: center;
+        position: relative;
+        margin: 35px 0 50px 0;
+    }
+    .wp-pagenavi .pages {
+        position: absolute;
+        left: 0;
+        top: 45px;
+        width: 100%;
+    }
+    .wp-pagenavi .extend {
+        padding: 5px 7px;
+    }
+    .wp-pagenavi .prev {
+        border: none;
+        padding: 5px 12px 5px 0;
+    }
+    .wp-pagenavi .next {
+        border: none;
+        padding: 5px 0 5px 12px;
+    }
+    .wp-pagenavi .prev:hover,
+    .wp-pagenavi .next:hover {
+        background-color: #ffffff;
+        border: none;
+        -webkit-tap-highlight-color: #0000;
+    }
+    .wp-pagenavi .current + a {
+        border-left: 1px solid #ffffff;
+    }
+    .wp-pagenavi > * {
+        margin: 0 0 0 -5px;
+        padding: 5px 11px;
+    }
+}
+@media (min-width: 651px) and (max-width: 1199px) {
+    .wp-pagenavi {
+        margin: 35px 0 30px 0;
+    }
+}
+
+/* ---- временная метка вспомогательная ------- */
+#temp_metka {
+    position: fixed;
+    top: 4px;
+    right: 10px;
+    font-size: 0.47rem;
+    color: #ffffff;
+    z-index: 999999;
+}
+
+/* --- placeholder в firefox -------------------------------------------------------- */
+textarea:focus:-moz-placeholder {
+    color: transparent;
+}
+textarea:focus::-moz-placeholder {
+    color: transparent;
+}
+textarea:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+textarea:-moz-placeholder {
+    color: #5a5a5a;
+}
+textarea::-moz-placeholder {
+    color: #5a5a5a;
+}
+textarea::-webkit-input-placeholder {
+    color: #5a5a5a;
+}
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+input:-moz-placeholder {
+    color: #5a5a5a;
+}
+input::-moz-placeholder {
+    color: #5a5a5a;
+}
+input::-webkit-input-placeholder {
+    color: #5a5a5a;
+}
+
+/* --- невидимый фрагмент при копировании со ссылкой addtocopy --- */
+#ctrlcopy {
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    margin: 5px 0 0 -1px;
+    line-height: 0;
+    opacity: 0;
+}
+
+/* --- очистка --- */
+.clear {
+    clear: both;
+    background: none;
+    padding: 0;
+}
+
+/* --- Index Page  ------------------------ */
+.index-block {
+    margin: 0 0 35px 0;
+    font-size: 0.94rem;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.index-block h2 {
+    color: #333333;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin: 0 0 15px 0;
+    width: 100%;
+}
+.index-block h2 a {
+    color: #333333;
+    font-weight: 400;
+}
+.index-block h2 a:hover {
+    color: #686868;
+}
+.index-block .arrow {
+    margin: 0 2px;
+}
+.index-block .arrow:before {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    bottom: 2px;
+}
+.index-block h3 {
+    font-size: 0.94rem;
+    font-weight: 400;
+    margin: 0;
+    word-wrap: break-word;
+}
+.index-block .one-post a {
+    display: block;
+}
+.index-block a:hover {
+    text-decoration: none;
+}
+.index-block img {
+    border: 1px solid #d5d5d5;
+}
+.index-block a:hover img {
+    border: 1px solid #b7b7b7;
+}
+.index-block .link {
+    display: block;
+    margin: 0 20px 0 0;
+    font-weight: 400;
+    text-align: right;
+    color: #859c1b;
+}
+.index-block .link:hover {
+    color: #242424;
+}
+.index-block .link::after {
+    content: '\edb9';
+    font-size: 10px;
+    color: #7a7a7a;
+    position: relative;
+    left: 8px;
+}
+.index-block .link:hover::after {
+    color: #424242;
+}
+.index-block.left {
+    float: left;
+    width: 49%;
+    clear: both;
+}
+.index-block.right {
+    float: right;
+    width: 49%;
+    clear: none;
+}
+.index-block p {
+    color: #484848;
+    line-height: 1.25;
+    word-break: break-word;
+}
+.index-block li {
+    position: relative;
+    padding: 0 0 0 1.525rem;
+}
+.index-block li:before {
+    font-size: 5px;
+    content: '\e903';
+    color: #797979;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- верхний блок 3-4  ------------------------ */
+.index-block.block-3-4 .one-post {
+    flex: 0 1 25%;
+}
+.index-block.block-3-4 .one-post img {
+    width: 280px;
+    box-sizing: content-box;
+    margin: 0 0 10px 0;
+}
+.index-block .list-post {
+    flex: 0 1 249px;
+}
+.index-block .list-post li {
+    margin: 0 0 12px 0;
+}
+.index-block .list-post li:before {
+    top: 8px;
+}
+.index-block .list-post a {
+    display: block;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+/* --- блок 4  ------------------------ */
+.index-block.block-4 .one-post {
+    flex: 0 1 170px;
+    margin: 0 15px 0 0;
+}
+.index-block.block-4 .one-post img {
+    margin: 0 0 10px 0;
+}
+
+/* --- блок с топом статей списком  -------------------- */
+.block-toplist {
+    width: 100%;
+}
+.block-toplist ul {
+    -webkit-columns: 150px 3;
+    columns: 150px 3;
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    column-gap: 5px;
+    width: 100%;
+}
+.block-toplist li {
+    margin: 0 0 0.325rem 0;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    -webkit-column-break-after: always;
+    page-break-after: always;
+    break-after: always;
+    width: 135px;
+}
+.block-toplist li a {
+    font-weight: 400;
+}
+.index-block.right .block-toplist li {
+    width: auto;
+}
+.index-block.right .block-toplist .link {
+    margin: 10px 20px 0 0;
+}
+
+/* --- блок с кнопками табами  ------------------------ */
+.block-tabs {
+    margin: 30px 0 0 0;
+    width: 100%;
+}
+.block-tabs h2 {
+    margin: 0 0 20px 0;
+}
+.block-tabs ul {
+    display: grid;
+    grid-gap: 0.35rem;
+    grid-template-columns: repeat(auto-fill, minmax(6%, 1fr));
+}
+.block-tabs li {
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: 600;
+    color: #cccccc;
+    cursor: default;
+    line-height: 34px;
+    padding: 0;
+    background-image: none;
+}
+.block-tabs li:before {
+    display: none;
+    content: '';
+}
+.block-tabs li a {
+    display: inline-block;
+    border-radius: 4px;
+    color: #484848;
+    min-width: 100%;
+    min-height: 34px;
+}
+.block-tabs li a:hover {
+    background-color: #484848;
+    color: #ffffff;
+}
+
+/* --- блок с врачами и клиниками  ------------------------ */
+.index-block.block-clindoc .img-block {
+    flex: 0 1 130px;
+    -webkit-flex: 0 1 130px;
+    -ms-flex: 0 1 130px;
+}
+.index-block.block-clindoc .img-block img {
+    border: none;
+}
+.index-block.block-clindoc .right-block {
+    flex: 0 0 calc(100% - 130px);
+    -webkit-flex: 0 0 calc(100% - 130px);
+    -ms-flex: 0 0 calc(100% - 130px);
+    padding: 0 20px 0 25px;
+}
+.index-block.block-clindoc h2 {
+    margin: 0 0 10px 0;
+}
+.index-block.block-clindoc p {
+    margin: 0 0 10px 0;
+}
+
+@media (max-width: 500px) {
+    .index-block {
+        margin-bottom: 10px;
+    }
+    .index-block h2 {
+        margin: 3px 0 12px 0;
+    }
+    .index-block div.one-post:nth-of-type(3) {
+        display: none;
+    }
+    /* верхний блок с новостями */
+    .index-block.block-3-4 h2 {
+        margin-top: -5px;
+    }
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 48%;
+        -webkit-flex: 0 1 48%;
+        -ms-flex: 0 1 48%;
+    }
+    /* стандартный блок с постами */
+    .index-block.block-4 .one-post {
+        flex: 0 1 48%;
+        -webkit-flex: 0 1 48%;
+        -ms-flex: 0 1 48%;
+        margin: 0 0 10px 0;
+    }
+    /* нижний блок с врачами и клиниками */
+    .index-block.block-clindoc .img-block {
+        flex: 0 1 88px;
+        -webkit-flex: 0 1 88px;
+        -ms-flex: 0 1 88px;
+        padding-top: 4px;
+    }
+    .index-block.block-clindoc .right-block {
+        flex: 0 1 calc(100% - 88px);
+        -webkit-flex: 0 1 calc(100% - 88px);
+        -ms-flex: 0 1 calc(100% - 88px);
+        padding: 0 0 0 14px;
+    }
+}
+
+@media (max-width: 750px) {
+    /* отмена 2 столбцов */
+    .index-block.left,
+    .index-block.right {
+        float: none;
+        width: 100%;
+    }
+    /* нижний блок с врачами и клиниками */
+    .index-block.block-clindoc {
+        margin: 10px 0 17px 0;
+    }
+}
+
+@media (max-width: 650px) {
+    /* список из верхнего блока с новостями */
+    .index-block .list-post {
+        flex: 0 1 100%;
+        -webkit-flex: 0 1 100%;
+        -ms-flex: 0 1 100%;
+        margin: 22px 15px 0 5px;
+    }
+    .index-block .list-post li {
+        margin: 0 0 10px 0;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 650px) {
+    /* верхний блок с новостями */
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 31%;
+        -webkit-flex: 0 1 31%;
+        -ms-flex: 0 1 31%;
+    }
+}
+
+@media (min-width: 651px) and (max-width: 750px) {
+    /* верхний блок с новостями */
+    .index-block.block-3-4 div.one-post:nth-of-type(3) {
+        display: none;
+    }
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 27%;
+        -webkit-flex: 0 1 27%;
+        -ms-flex: 0 1 27%;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 750px) {
+    /* нижний блок с врачами и клиниками */
+    .index-block.block-clindoc .right-block {
+        padding: 0 0 0 20px;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 850px) {
+    .index-block {
+        margin-bottom: 15px;
+    }
+    /* стандартный блок с постами */
+    .index-block.block-4.left,
+    .index-block.block-4.right {
+        float: none;
+        width: 100%;
+    }
+    .index-block.block-4 .one-post {
+        flex: 0 1 31%;
+        -webkit-flex: 0 1 31%;
+        -ms-flex: 0 1 31%;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media (min-width: 751px) and (max-width: 900px) {
+    /* верхний блок с новостями */
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 20%;
+        -webkit-flex: 0 1 20%;
+        -ms-flex: 0 1 20%;
+    }
+    /* нижний блок с врачами и клиниками */
+    .index-block.block-clindoc .img-block {
+        flex: 0 1 88px;
+        -webkit-flex: 0 1 88px;
+        -ms-flex: 0 1 88px;
+        padding-top: 4px;
+    }
+    .index-block.block-clindoc .right-block {
+        flex: 0 1 calc(100% - 88px);
+        -webkit-flex: 0 1 calc(100% - 88px);
+        -ms-flex: 0 1 calc(100% - 88px);
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1023px) {
+    /* верхний блок с новостями */
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 22%;
+        -webkit-flex: 0 1 22%;
+        -ms-flex: 0 1 22%;
+    }
+}
+
+@media (min-width: 851px) and (max-width: 1023px) {
+    .index-block {
+        margin-bottom: 17px;
+    }
+    /* стандартный блок с постами */
+    .index-block.block-4 div.one-post:nth-of-type(3) {
+        display: none;
+    }
+    .index-block.block-4 .one-post {
+        flex: 0 1 48%;
+        -webkit-flex: 0 1 48%;
+        -ms-flex: 0 1 48%;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1240px) {
+    /* верхний блок с новостями */
+    .index-block.block-3-4 .one-post {
+        flex: 0 1 23%;
+        -webkit-flex: 0 1 23%;
+        -ms-flex: 0 1 23%;
+    }
+    /* стандартный блок с постами */
+    .index-block.block-4 .one-post {
+        flex: 0 1 30%;
+        -webkit-flex: 0 1 30%;
+        -ms-flex: 0 1 30%;
+        margin: 0px 10px 0 0;
+    }
+}
+
+/* списки лекарств и дв, словарь терминов */
+@media (max-width: 750px) {
+    .block-toplist {
+        margin: 0 0 20px 0;
+    }
+    .block-toplist ul {
+        margin-left: 5px;
+    }
+    .block-tabs {
+        margin: 0 0 10px 0;
+    }
+}
+@media (max-width: 600px) {
+    .block-tabs ul {
+        grid-template-columns: repeat(auto-fill, minmax(12%, 1fr));
+        padding-top: 3px;
+    }
+}
+@media (max-width: 450px) {
+    .block-toplist ul {
+        -webkit-columns: auto 2;
+        columns: auto 2;
+    }
+}
+@media (min-width: 621px) and (max-width: 750px) {
+    .block-toplist ul {
+        -webkit-columns: auto 4;
+        columns: auto 4;
+    }
+}
+@media (min-width: 751px) and (max-width: 1023px) {
+    .block-toplist {
+        margin-bottom: 25px;
+    }
+    .block-toplist ul {
+        -webkit-columns: auto 2;
+        columns: auto 2;
+    }
+    .block-tabs {
+        margin: 0;
+    }
+    .block-tabs ul {
+        grid-template-columns: repeat(auto-fill, minmax(12%, 1fr));
+    }
+}
+
+/* --- Author Page  ------------------------ */
+.right-inner-block.author {
+    margin: 15px 0 0 0;
+}
+.right-inner-block.author li:nth-child(1) {
+    background: none;
+    margin: 0 0 15px 0;
+}
+.right-inner-block.author li:nth-child(1):first-letter {
+    text-transform: uppercase;
+}
+.similar-bottom-block.author {
+    margin: 25px 0 0 0;
+}
+
+/* -- страница с информацией о сайте и списком авторов ------ */
+.author-block.about-page {
+    margin: 10px 0 20px 0;
+}
+.author-block.about-page span {
+    display: block;
+    margin: 0 0 3px 0;
+}
+.author-block.about-page span a {
+    color: #859c1b;
+    font-weight: 400;
+}
+.author-block.about-page span a:hover {
+    color: #242424;
+    text-decoration: none;
+}
+
+/* --- Contact Form ----------------------------- */
+#contact-form {
+    margin: 20px 0 0 0;
+    font-size: 0.941rem;
+}
+#contact-form span {
+    color: #c00;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+    font-size: 0.82rem;
+}
+#contact-form #contact_message {
+    clear: both;
+    margin: 0 0 10px 0;
+    width: 60%;
+    height: 140px;
+    resize: none;
+}
+#contact-form #contact_name,
+#contact-form #contact_email {
+    width: 50%;
+    height: 36px;
+    margin: 0 0 15px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+#contact-form #contact_name,
+#contact-form #contact_email,
+#contact-form #contact_message {
+    padding: 0.3em 0.75em;
+    color: #484848;
+    line-height: 1.55;
+    background-color: #f8f8f8;
+    border: 1px solid #d5d5d5;
+    outline: 0;
+}
+#contact-form #contact_submit {
+    width: auto;
+    padding: 5px 40px 6px 40px;
+    border-radius: 4px;
+    color: #ffffff;
+    outline: 0;
+    display: block;
+    background-color: #2d768b;
+    border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+}
+#contact-form #contact_submit:hover {
+    background-color: #215a67;
+}
+@media (max-width: 400px) {
+    #contact-form {
+        margin-top: 10px;
+    }
+    #contact-form #contact_name,
+    #contact-form #contact_email,
+    #contact-form #contact_message {
+        width: 100%;
+        margin: 10px 0 5px 0;
+    }
+    #contact-form #contact_submit {
+        margin-top: 10px;
+    }
+}
+@media (min-width: 401px) and (max-width: 600px) {
+    #contact-form #contact_name,
+    #contact-form #contact_email {
+        width: 70%;
+        margin: 10px 0 5px 0;
+    }
+    #contact-form #contact_message {
+        width: 80%;
+        margin: 10px 0 0 0;
+    }
+    #contact-form #contact_message + span {
+        margin-bottom: 15px;
+    }
+    #contact-form #contact_submit {
+        margin-top: 10px;
+    }
+
+    #contact-form span {
+        display: block;
+    }
+}
+@media (max-width: 1024px) {
+    #contact-form {
+        margin-bottom: 30px;
+    }
+}
