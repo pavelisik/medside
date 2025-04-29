@@ -56,9 +56,8 @@ function App() {
 
             </Container> */}
 
-            {/* 
-            {posts.map((item, key) => (
-                <Post post={item} key={item.id} />
+            {/* {posts.map((item, key) => (
+                <Post post={item} key={item['id']} />
             ))} */}
         </div>
     );

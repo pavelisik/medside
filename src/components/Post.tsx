@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function Post({ post }) {
+function Post({ post }: { post: any }) {
     const [featuredImage, setFeaturedImage] = useState();
-    const [postDate, setPostDate] = useState(null);
+    const [postDate, setPostDate] = useState<string | null>(null);
 
     const getImage = async () => {
         try {

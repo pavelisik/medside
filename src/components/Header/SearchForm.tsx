@@ -8,13 +8,13 @@ const SearchForm = () => {
                     name="s"
                     placeholder="Поиск"
                     value=""
-                    maxlength="70"
-                    accesskey="s"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    onfocus="this.placeholder=''"
-                    onblur="this.placeholder='Поиск'"
+                    maxLength={70}
+                    accessKey="s"
+                    autoCapitalize="off"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    // onFocus="this.placeholder=''"
+                    // onBlur="this.placeholder='Поиск'"
                 />
 
                 <span className="icon-image search-close"></span>
@@ -25,7 +25,7 @@ const SearchForm = () => {
                         type="submit"
                         name=""
                         value="&#xeb33"
-                        disabled="disabled"
+                        disabled={true}
                     />
                     <div className="inner"></div>
                 </div>

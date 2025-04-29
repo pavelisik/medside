@@ -8,7 +8,7 @@ const MainLogo = () => {
                 <img
                     className="logo"
                     src={logo}
-                    srcset={logoBig}
+                    srcSet={logoBig}
                     alt="MEDSIDE"
                 />
             </a>
