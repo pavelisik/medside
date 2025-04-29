@@ -1,3 +1,5 @@
+import { FaSearch } from 'react-icons/fa';
+
 const SearchForm = () => {
     return (
         <form id="search" name="search" method="get" action="/">
@@ -19,15 +21,19 @@ const SearchForm = () => {
 
                 <span className="icon-image search-close"></span>
                 <div className="search-button">
-                    <input
+                    <button type="submit">
+                        <FaSearch />
+                    </button>
+
+                    {/* <input
                         className="icon-image"
                         id="button"
                         type="submit"
                         name=""
                         value="&#xeb33"
                         disabled={true}
-                    />
-                    <div className="inner"></div>
+                    /> */}
+                    {/* <div className="inner"></div> */}
                 </div>
             </div>
         </form>
