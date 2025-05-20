@@ -13,14 +13,14 @@ function App() {
     //     );
     // };
 
-    const fetchPosts = () => {
-        axios.get('https://medside.ru/wp-json/wp/v2/posts').then((res) => {
-            setPosts(res.data);
-        });
-    };
+    // const fetchPosts = () => {
+    //     axios.get('https://medside.ru/wp-json/wp/v2/posts').then((res) => {
+    //         setPosts(res.data);
+    //     });
+    // };
 
     useEffect(() => {
-        fetchPosts();
+        // fetchPosts();
     }, []);
 
     return (

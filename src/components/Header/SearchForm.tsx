@@ -9,7 +9,7 @@ const SearchForm = () => {
                     type="text"
                     name="s"
                     placeholder="Поиск"
-                    value=""
+                    defaultValue=""
                     maxLength={70}
                     accessKey="s"
                     autoCapitalize="off"

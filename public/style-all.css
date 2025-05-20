@@ -249,7 +249,6 @@ sup {
 .icon-text:before,
 .icon-text:after {
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -625,7 +624,6 @@ sup {
     color: #7a7a7a;
     margin-left: 5px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -970,7 +968,6 @@ sup {
     top: 10px;
     left: 7px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -1930,7 +1927,6 @@ sup {
     top: 10px;
     left: 7px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -2215,7 +2211,6 @@ sup {
     top: 12px;
     left: 7px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -2358,12 +2353,6 @@ sup {
 }
 #page-content .advertising-block > * {
     margin: 0 auto;
-}
-#page-content .adsense-block {
-    /* конкретно для рекламы adsense	*/
-}
-#page-content .direct-block {
-    /* конкретно для рекламы direct */
 }
 
 /* блок с врачами внутри статьи и в сайдбаре */
@@ -2947,7 +2936,6 @@ sup {
     position: relative;
     top: 2px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -3936,7 +3924,6 @@ sup {
     position: relative;
     top: 2px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -4289,7 +4276,6 @@ sup {
     top: 10px;
     left: 1px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -4530,7 +4516,6 @@ sup {
 .wp-pagenavi .next span {
     width: 10px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -4760,7 +4745,6 @@ input::-webkit-input-placeholder {
     top: 10px;
     left: 7px;
     font-family: 'icomoon' !important;
-    speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
