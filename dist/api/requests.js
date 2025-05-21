@@ -1,32 +1,29 @@
 import axios from 'axios';
-import type { WP_REST_API_Post as WPPost } from 'wp-types';
-
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
 });
-
-const handleAxiosError = (error: unknown) => {
+const handleAxiosError = (error) => {
     if (axios.isAxiosError(error)) {
         if (error.response) {
             console.error('Ошибка API:', error.response.data.message);
-        } else {
+        }
+        else {
             console.error('Ошибка API:', error.message);
         }
-    } else if (error instanceof Error) {
+    }
+    else if (error instanceof Error) {
         console.error('Неожиданная ошибка:', error.message);
-    } else {
+    }
+    else {
         console.error('Произошла неизвестная ошибка.');
     }
 };
-
-export const getPosts = async <T = WPPost>(
-    url: string,
-    params: Record<string, any>
-): Promise<T[] | undefined> => {
+export const getPosts = async (url, params) => {
     try {
-        const res = await api.get<T[]>(url, { params });
+        const res = await api.get(url, { params });
         return res.data;
-    } catch (error) {
+    }
+    catch (error) {
         handleAxiosError(error);
     }
 };

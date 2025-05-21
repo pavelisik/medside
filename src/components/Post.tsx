@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import type { WP_REST_API_Post, WP_REST_API_Object_Links } from 'wp-types';
 
-function Post({ post }: { post: any }) {
+function Post({ post }: { post: WP_REST_API_Post }) {
     const [featuredImage, setFeaturedImage] = useState();
     // const [postDate, setPostDate] = useState<string | null>(null);
 
     useEffect(() => {
         const getImage = async () => {
             try {
-                const response = await axios.get(
-                    post?._links['wp:attachment'][0]?.href
-                );
+                let postLink: string | undefined;
+                const postLinks: WP_REST_API_Object_Links = post?._links;
+                postLinks['wp:attachment'] &&
+                    (postLink = postLinks['wp:attachment'][0]?.href);
+
+                const response = await axios.get(postLink as string);
 
                 if (response.data && response.data[0].source_url) {
                     setFeaturedImage(response.data.pop().source_url);

@@ -1,5 +1,5 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 const FooterMenu = () => {
-    return _jsx("div", { children: "FooterMenu" });
+    return (_jsxs("ul", { className: "footer-menu", children: [_jsx("li", { children: _jsx("a", { href: "/politika-personal-data", children: "\u041F\u043E\u043B\u0438\u0442\u0438\u043A\u0430 \u0432 \u043E\u0442\u043D\u043E\u0448\u0435\u043D\u0438\u0438 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u043A\u0438 \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0445 \u0434\u0430\u043D\u043D\u044B\u0445" }) }), _jsx("li", { children: _jsx("a", { href: "/polzovatelskoe-soglashenie", children: "\u041F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u0435\u043B\u044C\u0441\u043A\u043E\u0435 \u0441\u043E\u0433\u043B\u0430\u0448\u0435\u043D\u0438\u0435" }) }), _jsx("li", { children: _jsx("a", { href: "/about", children: "\u041E \u0441\u0430\u0439\u0442\u0435" }) }), _jsx("li", { children: _jsx("a", { href: "/contact", children: "\u0421\u0432\u044F\u0437\u0430\u0442\u044C\u0441\u044F \u0441 \u043D\u0430\u043C\u0438" }) })] }));
 };
 export default FooterMenu;

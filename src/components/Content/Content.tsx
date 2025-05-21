@@ -1,29 +1,32 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
-import type { WP_REST_API_Posts } from 'wp-types';
+import { Link } from 'react-router';
+import type { WP_REST_API_Post as WPPost } from 'wp-types';
 import { getPosts } from '../../api/requests';
-import Post from '../Post';
+
+interface WPPostImg extends WPPost {
+    featured_image: string;
+}
 
 const Content = () => {
-    const [posts, setPosts] = useState<WP_REST_API_Posts>([]);
+    const [posts, setPosts] = useState<WPPostImg[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        getPosts('/posts', {
+        setLoading(true);
+        getPosts<WPPostImg>('/posts', {
+            _fields: 'id,title,slug,featured_image',
             categories: 36,
             per_page: 7,
-            _field: 'id,title,date,link,_links',
         })
-            .then((res) => setPosts(res.data))
-            .catch((err) => {
-                if (axios.isAxiosError(err)) {
-                    if (err.response) {
-                        console.log('Error:', err.response?.data.message);
-                    } else {
-                        console.log('Error:', err.message);
-                    }
-                } else if (err instanceof Error) {
-                    console.log('Error:', err.message);
-                }
+            .then((posts) => {
+                if (posts) setPosts(posts);
+            })
+            .catch(() => {
+                setError('Не удалось загрузить.');
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, []);
 
@@ -32,76 +35,43 @@ const Content = () => {
             <div id="center">
                 <div className="index-block block-3-4">
                     <h2>
-                        <a href="/novosti-meditsinyi">Новости медицины</a>
+                        <Link to="/novosti-meditsinyi">Новости медицины</Link>
                     </h2>
 
-                    <div className="one-post">
-                        <a href="/">
-                            <img
-                                src="https://medside.ru/wp-content/uploads/2022/02/uchenye-rasskazali-o-negativnom-vliyanii-odinochestva-na-podrostkov.jpg"
-                                alt="text"
-                            />
-                            <h3>
-                                Ученые рассказали о негативном влиянии
-                                одиночества на подростков
-                            </h3>
-                        </a>
-                    </div>
-                    <div className="one-post">
-                        <a href="/">
-                            <img
-                                src="https://medside.ru/wp-content/uploads/2022/02/eksperty-rasskazali-kak-izbezhat-zabolevanij-serdcza.jpg"
-                                alt="text"
-                            />
-                            <h3>
-                                Эксперты рассказали, как избежать заболеваний
-                                сердца
-                            </h3>
-                        </a>
-                    </div>
-                    <div className="one-post">
-                        <a href="/">
-                            <img
-                                src="https://medside.ru/wp-content/uploads/2022/02/lyudi-kotorye-ne-boyatsya-staret-yavlyayutsya-bolee-zdorovymi.jpg"
-                                alt="text"
-                            />
-                            <h3>
-                                Люди, которые не боятся стареть, являются более
-                                здоровыми
-                            </h3>
-                        </a>
-                    </div>
+                    {loading || error ? (
+                        <>
+                            {loading && <p className="loading">Загрузка...</p>}
+                            {error && <p className="error">{error}</p>}
+                        </>
+                    ) : (
+                        <>
+                            {posts.slice(0, 3).map((item) => (
+                                <div className="one-post" key={item.id}>
+                                    <Link to={`/${item.slug}`}>
+                                        {item.featured_image && (
+                                            <img
+                                                src={item.featured_image}
+                                                alt={item.title.rendered}
+                                                loading="lazy"
+                                            />
+                                        )}
+                                        <h3>{item.title.rendered}</h3>
+                                    </Link>
+                                </div>
+                            ))}
 
-                    <ul className="list-post">
-                        <li>
-                            <a href="/">
-                                Штамм «омикрон» вызывает круп у детей
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                Пластырь с инсулином сможет заменить помпу и
-                                инъекции
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                Эксперты рассказали, какие группы крови
-                                эффективно противостоят патогенам
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/">
-                                Алкоголь более пагубно действует на людей с
-                                низким весом
-                            </a>
-                        </li>
-                    </ul>
+                            <ul className="list-post">
+                                {posts.slice(3, 7).map((item) => (
+                                    <li key={item.id}>
+                                        <Link to={`/${item.slug}`}>
+                                            {item.title.rendered}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </>
+                    )}
                 </div>
-
-                {posts.map((item, key) => (
-                    <Post post={item} key={item['id']} />
-                ))}
             </div>
 
             <div className="clear"></div>
