@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function Post({ post }: { post: any }) {
     const [featuredImage, setFeaturedImage] = useState();
-    const [postDate, setPostDate] = useState<string | null>(null);
+    // const [postDate, setPostDate] = useState<string | null>(null);
 
     useEffect(() => {
         const getImage = async () => {

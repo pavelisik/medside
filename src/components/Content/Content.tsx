@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { useState, useEffect, ReactElement } from 'react';
+import { useState, useEffect } from 'react';
 import type { WP_REST_API_Posts } from 'wp-types';
-import Post from '../Post';
 import { getPosts } from '../../api/requests';
+import Post from '../Post';
 
 const Content = () => {
     const [posts, setPosts] = useState<WP_REST_API_Posts>([]);

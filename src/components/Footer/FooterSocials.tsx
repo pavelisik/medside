@@ -7,7 +7,7 @@ const FooterSocials = () => {
                     className="icon-image vk-icon"
                     title="VK"
                     target="_blank"
-                    rel="noopener"
+                    rel="noreferrer noopener"
                 ></a>
             </li>
         </ul>

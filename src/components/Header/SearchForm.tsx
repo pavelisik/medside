@@ -11,7 +11,6 @@ const SearchForm = () => {
                     placeholder="Поиск"
                     defaultValue=""
                     maxLength={70}
-                    accessKey="s"
                     autoCapitalize="off"
                     autoComplete="off"
                     autoCorrect="off"
