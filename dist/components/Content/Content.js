@@ -1,29 +1,12 @@
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import { getPosts } from '../../api/requests';
+import { MdArrowForwardIos as Arrow } from 'react-icons/md';
+import styles from './BlockPosts.module.css';
+import BlockNews from './BlockNews';
+import BlockPosts from './BlockPosts';
 const Content = () => {
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    useEffect(() => {
-        setLoading(true);
-        getPosts('/posts', {
-            _fields: 'id,title,slug,featured_image',
-            categories: 36,
-            per_page: 7,
-        })
-            .then((posts) => {
-            if (posts)
-                setPosts(posts);
-        })
-            .catch(() => {
-            setError('Не удалось загрузить.');
-        })
-            .finally(() => {
-            setLoading(false);
-        });
-    }, []);
-    return (_jsxs("section", { id: "content", className: "nosb", children: [_jsx("div", { id: "center", children: _jsxs("div", { className: "index-block block-3-4", children: [_jsx("h2", { children: _jsx(Link, { to: "/novosti-meditsinyi", children: "\u041D\u043E\u0432\u043E\u0441\u0442\u0438 \u043C\u0435\u0434\u0438\u0446\u0438\u043D\u044B" }) }), loading || error ? (_jsxs(_Fragment, { children: [loading && _jsx("p", { className: "loading", children: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..." }), error && _jsx("p", { className: "error", children: error })] })) : (_jsxs(_Fragment, { children: [posts.slice(0, 3).map((item) => (_jsx("div", { className: "one-post", children: _jsxs(Link, { to: `/${item.slug}`, children: [item.featured_image && (_jsx("img", { src: item.featured_image, alt: item.title.rendered, loading: "lazy" })), _jsx("h3", { children: item.title.rendered })] }) }, item.id))), _jsx("ul", { className: "list-post", children: posts.slice(3, 7).map((item) => (_jsx("li", { children: _jsx(Link, { to: `/${item.slug}`, children: item.title.rendered }) }, item.id))) })] }))] }) }), _jsx("div", { className: "clear" })] }));
+    const params01 = { include: '121618,116766,127274', orderby: 'include' };
+    const params02 = { include: '141393,64417,67179', orderby: 'include' };
+    return (_jsxs("section", { id: "content", className: "nosb", children: [_jsxs("div", { id: "center", children: [_jsx(BlockNews, {}), _jsx(BlockPosts, { params: params01, position: "left", children: _jsxs(_Fragment, { children: [_jsx(Link, { to: "/bolezni", children: "\u0411\u043E\u043B\u0435\u0437\u043D\u0438" }), _jsx(Arrow, { className: styles.arrow }), "\u041F\u043E\u043F\u0443\u043B\u044F\u0440\u043D\u044B\u0435 \u0441\u0442\u0430\u0442\u044C\u0438"] }) }), _jsx(BlockPosts, { params: params02, position: "right", children: _jsxs(_Fragment, { children: [_jsx(Link, { to: "/symptoms", children: "\u0421\u0438\u043C\u043F\u0442\u043E\u043C\u044B" }), _jsx(Arrow, { className: styles.arrow }), "\u041D\u0430\u0438\u0431\u043E\u043B\u0435\u0435 \u0447\u0430\u0441\u0442\u044B\u0435 \u0436\u0430\u043B\u043E\u0431\u044B"] }) })] }), _jsx("div", { className: "clear" })] }));
 };
 export default Content;

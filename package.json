@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@types/react-window": "^1.8.8",
+    "typescript-plugin-css-modules": "^5.1.0",
     "wp-types": "^4.68.0"
   }
 }

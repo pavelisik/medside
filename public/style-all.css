@@ -95,8 +95,7 @@ input[type='radio'] {
     box-sizing: inherit;
 }
 html {
-    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
-        sans-serif;
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial, sans-serif;
     color: #242424;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -239,8 +238,7 @@ sup {
     font-family: 'icomoon';
     src: url('./fonts/icomoon.eot?pv2itd');
     src: url('./fonts/icomoon.eot?pv2itd#iefix') format('embedded-opentype'),
-        url('./fonts/icomoon.ttf?pv2itd') format('truetype'),
-        url('./fonts/icomoon.woff?pv2itd') format('woff'),
+        url('./fonts/icomoon.ttf?pv2itd') format('truetype'), url('./fonts/icomoon.woff?pv2itd') format('woff'),
         url('./fonts/icomoon.svg?pv2itd#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
@@ -440,10 +438,8 @@ sup {
     background-color: #9ab51f;
     border: 1px solid #9ab51f;
     border-radius: 0 4px 4px 0;
-    -webkit-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out;
-    -o-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out;
+    -webkit-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
     transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
     outline: none;
     -webkit-tap-highlight-color: transparent;
@@ -452,27 +448,6 @@ sup {
     background-color: #859c1b;
     border: 1px solid #859c1b;
 }
-#header #search .search-button button {
-    color: #ffffff;
-    padding-top: 3px;
-    width: 50px;
-    height: 36px;
-    background-color: #9ab51f;
-    border: 1px solid #9ab51f;
-    border-radius: 0 4px 4px 0;
-    -webkit-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out;
-    -o-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out;
-    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
-    outline: none;
-    -webkit-tap-highlight-color: transparent;
-}
-#header #search .search-button button:hover {
-    background-color: #859c1b;
-    border: 1px solid #859c1b;
-}
-
 #header #search .search-button .inner {
     display: none;
 }
@@ -819,12 +794,9 @@ sup {
         -moz-border-radius-bottomleft: 8px;
         border-bottom-right-radius: 8px;
         border-bottom-left-radius: 8px;
-        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
-            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
-            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
-        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1),
-            inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1), inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1), inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.1), inset 0 3px 3px -1px rgba(0, 0, 0, 0.1);
         z-index: 10000;
         opacity: 1;
         visibility: visible;
@@ -1078,8 +1050,7 @@ sup {
     color: #484848;
     border: 1px solid #e7e7e7;
     border-bottom: none;
-    transition: background-color 0.05s ease-in-out,
-        border-color 0.05s ease-in-out, color 0.05s ease-in-out;
+    transition: background-color 0.05s ease-in-out, border-color 0.05s ease-in-out, color 0.05s ease-in-out;
     cursor: default;
 }
 .socialgroup-block .fb-block {
@@ -1311,12 +1282,9 @@ sup {
     border-radius: 50%;
     text-align: center;
     vertical-align: top;
-    -webkit-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    -o-transition: background-color 0.1s ease-in-out,
-        border-color 0.1s ease-in-out, color 0.1s ease-in-out;
-    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out,
-        color 0.1s ease-in-out;
+    -webkit-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 .footer-social a:hover {
     background-color: #747474;
@@ -2826,8 +2794,7 @@ sup {
     color: #242424;
 }
 #map-block ymaps[class*='-balloon__content'] {
-    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
-        sans-serif;
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial, sans-serif;
 }
 #map-block ymaps[class*='-map-copyrights-promo'] {
     left: 45px;
@@ -3515,8 +3482,7 @@ sup {
 }
 .dd-widget,
 .dd-widget * {
-    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial,
-        sans-serif !important;
+    font-family: 'Segoe UI', 'Segoe UI Symbol', 'Helvetica Neue', Arial, sans-serif !important;
     font-size: 0.94rem !important;
 }
 .dd-widget .dd-sign-up-popup {

@@ -1,4 +1,5 @@
 import { FaSearch } from 'react-icons/fa';
+import styles from './SearchForm.module.css';
 
 const SearchForm = () => {
     return (
@@ -20,7 +21,7 @@ const SearchForm = () => {
 
                 <span className="icon-image search-close"></span>
                 <div className="search-button">
-                    <button type="submit">
+                    <button type="submit" className={styles.searchButton}>
                         <FaSearch />
                     </button>
 

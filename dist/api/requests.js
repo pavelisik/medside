@@ -2,6 +2,7 @@ import axios from 'axios';
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
 });
+const defaultFields = { _fields: 'id,title,slug,featured_image' };
 const handleAxiosError = (error) => {
     if (axios.isAxiosError(error)) {
         if (error.response) {
@@ -20,7 +21,8 @@ const handleAxiosError = (error) => {
 };
 export const getPosts = async (url, params) => {
     try {
-        const res = await api.get(url, { params });
+        const mergedParams = { ...defaultFields, ...params };
+        const res = await api.get(url, { params: mergedParams });
         return res.data;
     }
     catch (error) {

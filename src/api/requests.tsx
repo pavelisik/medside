@@ -4,6 +4,7 @@ import type { WP_REST_API_Post as WPPost } from 'wp-types';
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
 });
+const defaultFields = { _fields: 'id,title,slug,featured_image' };
 
 const handleAxiosError = (error: unknown) => {
     if (axios.isAxiosError(error)) {
@@ -19,12 +20,10 @@ const handleAxiosError = (error: unknown) => {
     }
 };
 
-export const getPosts = async <T = WPPost>(
-    url: string,
-    params: Record<string, any>
-): Promise<T[] | undefined> => {
+export const getPosts = async <T = WPPost,>(url: string, params: Record<string, any>): Promise<T[] | undefined> => {
     try {
-        const res = await api.get<T[]>(url, { params });
+        const mergedParams = { ...defaultFields, ...params };
+        const res = await api.get<T[]>(url, { params: mergedParams });
         return res.data;
     } catch (error) {
         handleAxiosError(error);

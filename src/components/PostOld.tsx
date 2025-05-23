@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import type { WP_REST_API_Post, WP_REST_API_Object_Links } from 'wp-types';
 
-function Post({ post }: { post: WP_REST_API_Post }) {
+function PostOld({ post }: { post: WP_REST_API_Post }) {
     const [featuredImage, setFeaturedImage] = useState();
     // const [postDate, setPostDate] = useState<string | null>(null);
 
@@ -11,8 +11,7 @@ function Post({ post }: { post: WP_REST_API_Post }) {
             try {
                 let postLink: string | undefined;
                 const postLinks: WP_REST_API_Object_Links = post?._links;
-                postLinks['wp:attachment'] &&
-                    (postLink = postLinks['wp:attachment'][0]?.href);
+                postLinks['wp:attachment'] && (postLink = postLinks['wp:attachment'][0]?.href);
 
                 const response = await axios.get(postLink as string);
 
@@ -38,9 +37,7 @@ function Post({ post }: { post: WP_REST_API_Post }) {
 
     return (
         <div>
-            {featuredImage && (
-                <img src={featuredImage} alt={post.title.rendered} />
-            )}
+            {featuredImage && <img src={featuredImage} alt={post.title.rendered} />}
             <h2>{post.title.rendered}</h2>
             {/* <div>{postDate}</div> */}
             {/* <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} /> */}
@@ -48,4 +45,4 @@ function Post({ post }: { post: WP_REST_API_Post }) {
     );
 }
 
-export default Post;
+export default PostOld;

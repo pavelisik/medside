@@ -1,79 +1,36 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import type { WP_REST_API_Post as WPPost } from 'wp-types';
-import { getPosts } from '../../api/requests';
-
-interface WPPostImg extends WPPost {
-    featured_image: string;
-}
+import { MdArrowForwardIos as Arrow } from 'react-icons/md';
+import styles from './Content.module.css';
+import BlockNews from './BlockNews';
+import BlockPosts from './BlockPosts';
 
 const Content = () => {
-    const [posts, setPosts] = useState<WPPostImg[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        setLoading(true);
-        getPosts<WPPostImg>('/posts', {
-            _fields: 'id,title,slug,featured_image',
-            categories: 36,
-            per_page: 7,
-        })
-            .then((posts) => {
-                if (posts) setPosts(posts);
-            })
-            .catch(() => {
-                setError('Не удалось загрузить.');
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+    const paramsBlock01 = { include: '121618,116766,127274', orderby: 'include' };
+    const paramsBlock02 = { include: '141393,64417,67179', orderby: 'include' };
+    const paramsBlock03 = { include: '7989,117862,7756', orderby: 'include' };
+    const paramsBlock04 = { include: '68761,66768,22261', orderby: 'include' };
 
     return (
         <section id="content" className="nosb">
             <div id="center">
-                <div className="index-block block-3-4">
-                    <h2>
-                        <Link to="/novosti-meditsinyi">Новости медицины</Link>
-                    </h2>
-
-                    {loading || error ? (
-                        <>
-                            {loading && <p className="loading">Загрузка...</p>}
-                            {error && <p className="error">{error}</p>}
-                        </>
-                    ) : (
-                        <>
-                            {posts.slice(0, 3).map((item) => (
-                                <div className="one-post" key={item.id}>
-                                    <Link to={`/${item.slug}`}>
-                                        {item.featured_image && (
-                                            <img
-                                                src={item.featured_image}
-                                                alt={item.title.rendered}
-                                                loading="lazy"
-                                            />
-                                        )}
-                                        <h3>{item.title.rendered}</h3>
-                                    </Link>
-                                </div>
-                            ))}
-
-                            <ul className="list-post">
-                                {posts.slice(3, 7).map((item) => (
-                                    <li key={item.id}>
-                                        <Link to={`/${item.slug}`}>
-                                            {item.title.rendered}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </>
-                    )}
-                </div>
+                <BlockNews />
+                <BlockPosts params={paramsBlock01} position="left">
+                    <Link to="/bolezni">Болезни</Link>
+                    <Arrow className={styles.arrow} />
+                    Популярные статьи
+                </BlockPosts>
+                <BlockPosts params={paramsBlock02} position="right">
+                    <Link to="/symptoms">Симптомы</Link>
+                    <Arrow className={styles.arrow} />
+                    Наиболее частые жалобы
+                </BlockPosts>
+                <BlockPosts params={paramsBlock03} position="left">
+                    <Link to="/diagnostics">Диагностика</Link>
+                </BlockPosts>
+                <BlockPosts params={paramsBlock04} position="right">
+                    <Link to="/services">Медицинские услуги</Link>
+                </BlockPosts>
             </div>
-
             <div className="clear"></div>
         </section>
     );
