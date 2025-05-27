@@ -279,7 +279,7 @@ sup {
     padding: 14px 16px;
 }
 #content {
-    position: relative;
+    /* position: relative; */
     background: #ffffff;
     margin: 0 auto;
     flex-grow: 1;

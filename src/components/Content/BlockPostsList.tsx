@@ -8,7 +8,7 @@ interface BlockPostsProps {
     children?: ReactNode;
 }
 
-const BlockPosts = ({ params, blockStyle = '', children = null }: BlockPostsProps) => {
+const BlockPostsList = ({ params, blockStyle = '', children = null }: BlockPostsProps) => {
     const { posts, loading, error } = usePosts(params);
 
     return (
@@ -19,10 +19,14 @@ const BlockPosts = ({ params, blockStyle = '', children = null }: BlockPostsProp
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (
-                posts.map((post) => <Post key={post.id} post={post} displayType="gallery" />)
+                <ul>
+                    {posts.map((post) => (
+                        <Post key={post.id} post={post} displayType="list-item" />
+                    ))}
+                </ul>
             )}
         </div>
     );
 };
 
-export default BlockPosts;
+export default BlockPostsList;
