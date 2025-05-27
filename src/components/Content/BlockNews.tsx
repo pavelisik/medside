@@ -1,6 +1,9 @@
 import { Link } from 'react-router';
 import Post from './Post';
 import usePosts from '../../hooks/usePosts';
+import styles from './BlockPosts.module.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const BlockNews = () => {
     const { posts, loading, error } = usePosts({ categories: 36, per_page: 7 });
@@ -12,7 +15,9 @@ const BlockNews = () => {
             </h2>
 
             {loading ? (
-                <p className="loading">Загрузка...</p>
+                <div className={styles.loadingNews}>
+                    <Skeleton height={'100%'} />
+                </div>
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (

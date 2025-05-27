@@ -1,5 +1,8 @@
 import { Link } from 'react-router';
 import useCategories from '../../hooks/useCategories';
+import styles from './BlockPosts.module.css';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const BlockTabs = () => {
     const { categories, loading, error } = useCategories({ parent: 38, per_page: 28 });
@@ -11,7 +14,9 @@ const BlockTabs = () => {
             </h2>
 
             {loading ? (
-                <p className="loading">Загрузка...</p>
+                <div className={styles.loadingTabs}>
+                    <Skeleton height={'100%'} />
+                </div>
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (
