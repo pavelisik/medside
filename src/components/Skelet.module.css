@@ -1,0 +1,65 @@
+.loadingContainer {
+    width: 100%;
+    line-height: 1;
+}
+
+.newsContainer {
+    height: 267px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.newsContainer div {
+    width: 282px;
+    height: 100%;
+    /* background-color: brown; */
+}
+
+.newsContainer div:last-child {
+    width: 249px;
+}
+
+.newsContainer .title {
+    display: block;
+    margin-top: 11px;
+    line-height: 1.3;
+}
+
+.newsContainer li {
+    padding-bottom: 10px;
+    height: 72px;
+    line-height: 1.3;
+}
+
+.newsContainer li:first-child {
+    height: 52px;
+}
+
+.newsContainer li:before {
+    top: 8px;
+}
+
+/* .newsContainer ul h3 {
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+} */
+
+/* 
+.loading {
+    width: 100%;
+    height: 191px;
+    line-height: 1;
+}
+
+.loadingList {
+    width: 100%;
+    height: 151px;
+    line-height: 1;
+}
+
+.loadingTabs {
+    width: 100%;
+    height: 74px;
+    line-height: 1;
+} */

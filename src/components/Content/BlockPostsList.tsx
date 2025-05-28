@@ -1,9 +1,7 @@
 import { ReactNode } from 'react';
 import Post from './Post';
 import usePosts from '../../hooks/usePosts';
-import styles from './BlockPosts.module.css';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import Skelet from '../Skelet';
 
 interface BlockPostsProps {
     params: Record<string, any>;
@@ -18,9 +16,7 @@ const BlockPostsList = ({ params, blockStyle = '', children = null }: BlockPosts
         <div className={blockStyle}>
             {children && <h2>{children}</h2>}
             {loading ? (
-                <div className={styles.loadingList}>
-                    <Skeleton height={'100%'} />
-                </div>
+                <Skelet />
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (

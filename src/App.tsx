@@ -10,3 +10,18 @@ function App() {
 }
 
 export default App;
+
+// КОД ДЛЯ ТЕСТОВ:
+
+// import './App.css';
+// import TestContainer from './test/components/TestContainer';
+
+// function App() {
+//     return (
+//         <div className="App">
+//             <TestContainer />
+//         </div>
+//     );
+// }
+
+// export default App;
