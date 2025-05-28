@@ -13,7 +13,7 @@ const BlockNews = () => {
             </h2>
 
             {loading ? (
-                <Skelet />
+                <Skelet skeletClass="news" />
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (

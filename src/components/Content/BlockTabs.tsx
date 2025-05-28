@@ -12,7 +12,7 @@ const BlockTabs = () => {
             </h2>
 
             {loading ? (
-                <Skelet />
+                <Skelet skeletClass="tabs" />
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (

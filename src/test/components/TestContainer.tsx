@@ -13,7 +13,11 @@ const TestContainer = () => {
         }, 1000);
     }, []);
 
-    return <div className="flex justify-center items-center h-screen">{loading ? <Skeleton /> : <TestCard />}</div>;
+    return (
+        <div className="flex justify-center items-center h-screen">
+            {loading ? <Skeleton skeletClass="" /> : <TestCard />}
+        </div>
+    );
 };
 
 export default TestContainer;

@@ -45,19 +45,19 @@ const Content = () => {
                     <Arrow className={styles.arrow} />
                     Наиболее частые жалобы
                 </BlockPosts>
-                <BlockPosts params={diagnosticsBlockParams} blockStyle="index-block block-4 left">
+                <BlockPosts params={diagnosticsBlockParams} titleLinesCount={2} blockStyle="index-block block-4 left">
                     <Link to="/diagnostics">Диагностика</Link>
                 </BlockPosts>
-                <BlockPosts params={servicesBlockParams} blockStyle="index-block block-4 right">
+                <BlockPosts params={servicesBlockParams} titleLinesCount={2} blockStyle="index-block block-4 right">
                     <Link to="/services">Медицинские услуги</Link>
                 </BlockPosts>
-                <BlockPostsList params={drugsBlockParams} blockStyle="index-block block-toplist left">
+                <BlockPostsList params={drugsBlockParams} itemsCount={30} blockStyle="index-block block-toplist left">
                     <Link to="/lekarstva">Лекарства</Link>
                     <Arrow className={styles.arrow} />
                     Топ 30
                 </BlockPostsList>
                 <div className="index-block right">
-                    <BlockPostsList params={activeSubstanceBlockParams} blockStyle="block-toplist">
+                    <BlockPostsList params={activeSubstanceBlockParams} itemsCount={15} blockStyle="block-toplist">
                         <Link to="/active-substances">Действующие вещества</Link>
                     </BlockPostsList>
                     <BlockTabs />

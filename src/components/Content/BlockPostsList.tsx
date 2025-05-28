@@ -5,18 +5,19 @@ import Skelet from '../Skelet';
 
 interface BlockPostsProps {
     params: Record<string, any>;
+    itemsCount?: number;
     blockStyle?: string;
     children?: ReactNode;
 }
 
-const BlockPostsList = ({ params, blockStyle = '', children = null }: BlockPostsProps) => {
+const BlockPostsList = ({ params, itemsCount = 15, blockStyle = '', children = null }: BlockPostsProps) => {
     const { posts, loading, error } = usePosts(params);
 
     return (
         <div className={blockStyle}>
             {children && <h2>{children}</h2>}
             {loading ? (
-                <Skelet />
+                <Skelet skeletClass="postsList" itemsCount={itemsCount} />
             ) : error ? (
                 <p className="error">{error}</p>
             ) : (
