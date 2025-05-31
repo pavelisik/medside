@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import useCategories from '../../hooks/useCategories';
-import Skelet from '../Skelet';
+import Skelet from '../../components/ui/Skelet';
 
 const BlockTabs = () => {
     const { categories, loading, error } = useCategories({ parent: 38, per_page: 28 });

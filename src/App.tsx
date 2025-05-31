@@ -1,11 +1,11 @@
-import Container from './components/Container';
-import './App.css';
+import MainLayout from './layouts/MainLayout';
+import MainPage from './pages/Home/MainPage';
 
 function App() {
     return (
-        <div className="App">
-            <Container />
-        </div>
+        <MainLayout>
+            <MainPage />
+        </MainLayout>
     );
 }
 

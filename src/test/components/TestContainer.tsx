@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Skeleton from '../../components/Skelet';
+import Skeleton from '../../components/ui/Skelet';
 // import Skeleton from 'react-loading-skeleton';
 // import 'react-loading-skeleton/dist/skeleton.css';
 import TestCard from './TestCard';

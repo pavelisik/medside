@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { WP_REST_API_Category as WPCategory } from 'wp-types';
-import { getCategories } from '../api/requests';
+import { getCategories } from '../services/api/requests';
 
 const useCategories = (params: Record<string, any>) => {
     const [categories, setCategories] = useState<WPCategory[]>([]);

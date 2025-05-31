@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import Post from './Post';
 import usePosts from '../../hooks/usePosts';
-import Skelet from '../Skelet';
+import Skelet from '../../components/ui/Skelet';
 
 const BlockNews = () => {
     const { posts, loading, error } = usePosts({ categories: 36, per_page: 7 });

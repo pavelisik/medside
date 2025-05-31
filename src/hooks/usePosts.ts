@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { WP_REST_API_Post as WPPost } from 'wp-types';
-import { getPosts } from '../api/requests';
+import { getPosts } from '../services/api/requests';
 
 interface WPPostImg extends WPPost {
     featured_image: string;
