@@ -1,0 +1,68 @@
+.loadingContainer {
+    width: 100%;
+    line-height: 1;
+}
+
+/* News Block */
+.newsContainer {
+    height: 267px;
+    display: flex;
+    justify-content: space-between;
+}
+.newsContainer div {
+    width: 282px;
+    height: 100%;
+}
+.newsContainer div:last-child {
+    width: 249px;
+}
+.newsContainer .title {
+    display: block;
+    margin-top: 11px;
+    line-height: 1.3;
+}
+.newsContainer li {
+    padding-bottom: 10px;
+    height: 72px;
+    line-height: 1.3;
+}
+.newsContainer li:first-child {
+    height: 52px;
+}
+.newsContainer li:before {
+    top: 8px;
+}
+
+/* Posts Gallery Block */
+.postsContainer {
+    height: 192px;
+    display: flex;
+    justify-content: left;
+    gap: 17px;
+}
+
+.postsContainer div {
+    width: 170px;
+    height: 100%;
+}
+.postsContainer .title {
+    display: block;
+    margin-top: 11px;
+    line-height: 1.3;
+}
+
+/* Posts List Block */
+.postsListContainer {
+    line-height: 1.55;
+}
+.postsListContainer li {
+    width: 100%;
+}
+.postsListContainer li:before {
+    top: 10px;
+}
+
+/* Tabs Block */
+.tabsContainer .item {
+    line-height: 34px;
+}

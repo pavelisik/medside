@@ -1,0 +1,18 @@
+.searchButton {
+    color: #ffffff;
+    padding-top: 4px;
+    width: 50px;
+    height: 36px;
+    background-color: #9ab51f;
+    border: 1px solid #9ab51f;
+    border-radius: 0 4px 4px 0;
+    -webkit-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+    -o-transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out, border-color 0.1s ease-in-out;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.searchButton:hover {
+    background-color: #859c1b;
+    border: 1px solid #859c1b;
+}
