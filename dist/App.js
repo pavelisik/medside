@@ -1,7 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import Container from './components/Container';
-import './App.css';
+import MainLayout from './layouts/MainLayout';
+import MainPage from './pages/Home/MainPage';
 function App() {
-    return (_jsx("div", { className: "App", children: _jsx(Container, {}) }));
+    return (_jsx(MainLayout, { children: _jsx(MainPage, {}) }));
 }
 export default App;

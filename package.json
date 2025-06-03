@@ -1,55 +1,58 @@
 {
-  "name": "medside",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.3",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@typescript-eslint/eslint-plugin": "^8.32.1",
-    "@typescript-eslint/parser": "^8.32.1",
-    "axios": "^1.9.0",
-    "cors": "^2.8.5",
-    "cra-template": "1.2.0",
-    "eslint": "^9.27.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "react-loading-skeleton": "^3.5.0",
-    "react-router": "^7.6.1",
-    "react-scripts": "5.0.1",
-    "typescript": "^5.8.3",
-    "web-vitals": "^4.2.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/react-window": "^1.8.8",
-    "tailwindcss": "^3.4.17",
-    "typescript-plugin-css-modules": "^5.1.0",
-    "wp-types": "^4.68.0"
-  }
+    "name": "medside",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@babel/eslint-parser": "^7.27.1",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.15.3",
+        "@types/react": "^19.1.2",
+        "@types/react-dom": "^19.1.2",
+        "@typescript-eslint/eslint-plugin": "^8.33.1",
+        "@typescript-eslint/parser": "^8.33.1",
+        "ajv": "^8.17.1",
+        "ajv-keywords": "^5.1.0",
+        "axios": "^1.9.0",
+        "cors": "^2.8.5",
+        "cra-template": "1.2.0",
+        "eslint": "^8.57.1",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-icons": "^5.5.0",
+        "react-loading-skeleton": "^3.5.0",
+        "react-router": "^7.6.1",
+        "react-scripts": "^5.0.1",
+        "web-vitals": "^4.2.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/react-window": "^1.8.8",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^5.8.3",
+        "typescript-plugin-css-modules": "^5.1.0",
+        "wp-types": "^4.68.0"
+    }
 }
