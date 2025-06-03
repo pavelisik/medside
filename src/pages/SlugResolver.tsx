@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
-import { getSlug } from '../services/api/requests';
+import useSlug from '../hooks/useSlug';
+import PostPage from './Post/PostPage';
 
 interface WPSlug {
     type: string;
@@ -14,8 +14,8 @@ interface WPSlug {
         post_author: {};
         categories: any[];
         parents_count: number;
-        parent_cat_first: {};
-        parent_cat_second: {};
+        parent_cat_first?: {};
+        parent_cat_second?: {};
         content: string;
         metadata: {};
     };
@@ -23,22 +23,9 @@ interface WPSlug {
 
 const SlugResolver = () => {
     const { slug } = useParams<{ slug: string }>();
-    const [post, setPost] = useState<WPSlug>();
+    const { post, loading, error } = useSlug<WPSlug>(slug as string);
 
-    useEffect(() => {
-        // if (!slug) return;
-        getSlug<WPSlug>(slug as string).then((data) => {
-            if (data) {
-                setPost(data);
-                // console.log(data);
-            }
-        });
-        // eslint-disable-next-line
-    }, []);
-
-    // console.log(post);
-
-    return <div>{post?.data.title}</div>;
+    return <>{loading ? <p>Загрузка...</p> : error ? <p className="error">{error}</p> : <PostPage data={post} />}</>;
 };
 
 export default SlugResolver;

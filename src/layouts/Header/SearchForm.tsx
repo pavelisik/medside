@@ -1,7 +1,10 @@
 import { FaSearch } from 'react-icons/fa';
 import styles from './SearchForm.module.css';
+import { useNavigate } from 'react-router';
 
 const SearchForm = () => {
+    const navigate = useNavigate();
+
     return (
         <form id="search" name="search" method="get" action="/">
             <div className="search-group">
@@ -21,7 +24,7 @@ const SearchForm = () => {
 
                 <span className="icon-image search-close"></span>
                 <div className="search-button">
-                    <button type="submit" className={styles.searchButton}>
+                    <button type="submit" className={styles.searchButton} onClick={() => navigate('?s=поиск')}>
                         <FaSearch />
                     </button>
 

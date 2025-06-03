@@ -11,6 +11,7 @@ const AppRoutes = () => {
     const navigationRoutes = [
         { path: '/', element: <MainPage /> },
         { path: '/:slug', element: <SlugResolver /> },
+        { path: '/bolezni/:slug', element: <SlugResolver /> },
         { path: '/bolezni', element: <Bolezni /> },
         { path: '/symptoms', element: <Symptoms /> },
         { path: '/diets', element: <Diets /> },

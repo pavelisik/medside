@@ -5,9 +5,9 @@ import './assets/styles/global-all.css';
 import App from './App.tsx';
 
 createRoot(document.getElementById('root')!).render(
-    // <StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-    // </StrictMode>
+    <StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </StrictMode>
 );
