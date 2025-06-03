@@ -1,41 +1,43 @@
+import { Link } from 'react-router';
+
 const MainMenu = () => {
     return (
         <nav className="main-top-menu">
             <ul>
                 <li className="drop-item menu-item item01">
-                    <a href="/bolezni">Болезни</a>
+                    <Link to="/bolezni">Болезни</Link>
                     <div className="top_menu_body body01 body_disable"></div>
                 </li>
                 <li className="drop-item menu-item item02">
-                    <a href="/symptoms">Симптомы</a>
+                    <Link to="/symptoms">Симптомы</Link>
                     <div className="top_menu_body body02 body_disable"></div>
                 </li>
 
                 <li className="drop-item menu-item item03">
-                    <a href="/diets">Диеты</a>
+                    <Link to="/diets">Диеты</Link>
                     <div className="top_menu_body body03 body_disable"></div>
                 </li>
 
                 <li className="drop-item menu-item item04">
-                    <a href="/lekarstva">Лекарства</a>
+                    <Link to="/lekarstva">Лекарства</Link>
                     <div className="top_menu_body body04 body_disable"></div>
                 </li>
 
                 <li className="menu-item item05">
-                    <a href="/doctors">Врачи</a>
+                    <Link to="/doctors">Врачи</Link>
                 </li>
 
                 <li className="menu-item item06">
-                    <a href="/clinics">Клиники</a>
+                    <Link to="/clinics">Клиники</Link>
                 </li>
 
                 <li className="drop-item menu-item item07">
-                    <a href="/stati">Справочник</a>
+                    <Link to="/stati">Справочник</Link>
                     <div className="top_menu_body body07 body_disable"></div>
                 </li>
 
                 <li className="drop-item menu-item item08">
-                    <a href="/meditsinskiy-slovar">Словарь терминов</a>
+                    <Link to="/meditsinskiy-slovar">Словарь терминов</Link>
                     <div className="top_menu_body body08 body_disable"></div>
                 </li>
             </ul>

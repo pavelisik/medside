@@ -1,8 +1,8 @@
 import FooterMenu from './FooterMenu';
 import FooterSocials from './FooterSocials';
 import FooterInfo from './FooterInfo';
-import footerLogo from '../../assets/images/footer-logo-hd.png';
-import footerLogoBig from '../../assets/images/footer-logo-big.png';
+import footerLogo from '@/assets/images/footer-logo-hd.png';
+import footerLogoBig from '@/assets/images/footer-logo-big.png';
 
 const Footer = () => {
     return (

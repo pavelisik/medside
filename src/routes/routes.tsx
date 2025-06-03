@@ -5,10 +5,12 @@ import Symptoms from '../pages/Symptoms';
 import Diets from '../pages/Diets';
 import Lekarstva from '../pages/Lekarstva';
 import NoMatch from '../pages/NoMatch';
+import SlugResolver from '../pages/SlugResolver';
 
 const AppRoutes = () => {
     const navigationRoutes = [
         { path: '/', element: <MainPage /> },
+        { path: '/:slug', element: <SlugResolver /> },
         { path: '/bolezni', element: <Bolezni /> },
         { path: '/symptoms', element: <Symptoms /> },
         { path: '/diets', element: <Diets /> },
