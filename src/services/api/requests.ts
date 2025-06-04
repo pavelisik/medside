@@ -1,20 +1,6 @@
 import axios from 'axios';
 import type { WP_REST_API_Post as WPPost, WP_REST_API_Category as WPCategory } from 'wp-types';
-
-interface WPSlug {
-    id: number;
-    slug: string;
-    title: string;
-    date: string;
-    featured_image: string;
-    post_author: {};
-    categories: any[];
-    parents_count: number;
-    parent_cat_first: {};
-    parent_cat_second: {};
-    content: string;
-    metadata: {};
-}
+import type { WPDataBySlug } from '../../types/wpTypes';
 
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
@@ -62,11 +48,9 @@ export const getCategories = async <T = WPCategory>(
     }
 };
 
-export const getSlug = async <T = WPSlug>(slug: string): Promise<T | undefined> => {
-    const url = slug;
-
+export const getDataBySlug = async (slug: string): Promise<WPDataBySlug | undefined> => {
     try {
-        const res = await custom_api.get<T>(url);
+        const res = await custom_api.get<WPDataBySlug>(slug);
         return res.data;
     } catch (error) {
         handleAxiosError(error);

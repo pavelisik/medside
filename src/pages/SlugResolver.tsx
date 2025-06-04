@@ -1,31 +1,29 @@
-import { useParams } from 'react-router';
-import useSlug from '../hooks/useSlug';
+import { useParams, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import useDataBySlug from '../hooks/useDataBySlug';
 import PostPage from './Post/PostPage';
-
-interface WPSlug {
-    type: string;
-    subtype: string;
-    data: {
-        id: number;
-        slug: string;
-        title: string;
-        date: string;
-        featured_image: string;
-        post_author: {};
-        categories: any[];
-        parents_count: number;
-        parent_cat_first?: {};
-        parent_cat_second?: {};
-        content: string;
-        metadata: {};
-    };
-}
+import CategoryPage from './CategoryPage';
+import { isWPPostData, isWPCategoryData } from '../types/wpTypeGuards';
 
 const SlugResolver = () => {
     const { slug } = useParams<{ slug: string }>();
-    const { post, loading, error } = useSlug<WPSlug>(slug as string);
+    const { data, loading, error } = useDataBySlug(slug!);
+    const navigate = useNavigate();
 
-    return <>{loading ? <p>Загрузка...</p> : error ? <p className="error">{error}</p> : <PostPage data={post} />}</>;
+    useEffect(() => {
+        if (!loading && !data) {
+            navigate('/not-found', { replace: true });
+        }
+    }, [data, loading, navigate]);
+
+    if (loading) return <p>Загрузка...</p>;
+    if (error) return <p className="error">{error}</p>;
+    if (!data) return null;
+
+    if (isWPPostData(data)) return <PostPage data={data} />;
+    if (isWPCategoryData(data)) return <CategoryPage data={data} />;
+
+    return <p>Неизвестный тип данных</p>;
 };
 
 export default SlugResolver;

@@ -1,24 +1,8 @@
-interface WPSlug {
-    type: string;
-    subtype: string;
-    data: {
-        id: number;
-        slug: string;
-        title: string;
-        date: string;
-        featured_image: string;
-        post_author: {};
-        categories: any[];
-        parents_count: number;
-        parent_cat_first?: {};
-        parent_cat_second?: {};
-        content: string;
-        metadata: {};
-    };
-}
+import type { WPPostData } from '../../types/wpTypes';
 
-const PostPage = ({ data }: { data?: WPSlug }) => {
-    const { title, content } = data!.data;
+const PostPage = ({ data }: { data?: WPPostData }) => {
+    if (!data || !data.data) return <p>Данные не загружены</p>;
+    const { title, content } = data.data;
 
     return (
         <>
