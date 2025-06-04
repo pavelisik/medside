@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react';
-import type { WP_REST_API_Post as WPPost } from 'wp-types';
+import type { WPPostImg } from '../types/wpTypes';
 import { getPosts } from '../services/api/requests';
-
-interface WPPostImg extends WPPost {
-    featured_image: string;
-}
 
 const usePosts = (params: Record<string, any>) => {
     const [posts, setPosts] = useState<WPPostImg[]>([]);
@@ -21,7 +17,6 @@ const usePosts = (params: Record<string, any>) => {
             })
             .catch(() => setError('Не удалось загрузить.'))
             .finally(() => setLoading(false));
-        // eslint-disable-next-line
     }, []);
 
     return { posts, loading, error };

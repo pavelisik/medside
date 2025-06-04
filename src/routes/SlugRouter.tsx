@@ -1,11 +1,11 @@
 import { useParams, useNavigate } from 'react-router';
 import { useEffect } from 'react';
 import useDataBySlug from '../hooks/useDataBySlug';
-import PostPage from './Post/PostPage';
-import CategoryPage from './CategoryPage';
+import PostPage from '../pages/Post/PostPage';
+import CategoryPage from '../pages/CategoryPage';
 import { isWPPostData, isWPCategoryData } from '../types/wpTypeGuards';
 
-const SlugResolver = () => {
+const SlugRouter = () => {
     const { slug } = useParams<{ slug: string }>();
     const { data, loading, error } = useDataBySlug(slug!);
     const navigate = useNavigate();
@@ -26,4 +26,4 @@ const SlugResolver = () => {
     return <p>Неизвестный тип данных</p>;
 };
 
-export default SlugResolver;
+export default SlugRouter;

@@ -1,9 +1,5 @@
 import { Link } from 'react-router';
-import type { WP_REST_API_Post as WPPost } from 'wp-types';
-
-interface WPPostImg extends WPPost {
-    featured_image: string;
-}
+import type { WPPostImg } from '../../types/wpTypes';
 
 interface PostProps {
     post: WPPostImg;

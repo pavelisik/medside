@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { WP_REST_API_Category as WPCategory } from 'wp-types';
+import type { WPCategory } from '../types/wpTypes';
 import { getCategories } from '../services/api/requests';
 
 const useCategories = (params: Record<string, any>) => {
@@ -17,7 +17,6 @@ const useCategories = (params: Record<string, any>) => {
             })
             .catch(() => setError('Не удалось загрузить.'))
             .finally(() => setLoading(false));
-        // eslint-disable-next-line
     }, []);
 
     return { categories, loading, error };

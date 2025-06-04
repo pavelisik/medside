@@ -1,3 +1,13 @@
+// типы данных из библиотеки wp-types
+import type { WP_REST_API_Post, WP_REST_API_Category } from 'wp-types';
+
+export interface WPPostImg extends WP_REST_API_Post {
+    featured_image: string;
+}
+
+export interface WPCategory extends WP_REST_API_Category {}
+
+// типы данных из кастомного эндпоинта на сервере
 export interface WPPostData {
     type: string;
     subtype: string;

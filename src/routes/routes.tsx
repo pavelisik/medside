@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router';
 import MainPage from '../pages/Home/MainPage';
 import NoMatch from '../pages/NoMatch';
-import SlugResolver from '../pages/SlugResolver';
+import SlugRouter from './SlugRouter';
 
 const AppRoutes = () => {
     const navigationRoutes = [
         { path: '/', element: <MainPage /> },
-        { path: '/:slug', element: <SlugResolver /> },
+        { path: '/:slug', element: <SlugRouter /> },
         // { path: '/bolezni/:slug', element: <SlugResolver /> },
         { path: '/not-found', element: <NoMatch /> },
     ];

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getDataBySlug } from '../services/api/requests';
 import type { WPDataBySlug } from '../types/wpTypes';
+import { getDataBySlug } from '../services/api/requests';
 
 const useDataBySlug = (slug: string) => {
     const [data, setData] = useState<WPDataBySlug | undefined>();
@@ -12,7 +12,9 @@ const useDataBySlug = (slug: string) => {
         setError(null);
 
         getDataBySlug(slug)
-            .then(setData)
+            .then((data) => {
+                if (data) setData(data);
+            })
             .catch(() => setError('Не удалось загрузить.'))
             .finally(() => setLoading(false));
     }, [slug]);
