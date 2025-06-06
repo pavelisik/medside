@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import Header from './Header/Header';
-import MainMenu from './MainMenu';
+import MainMenu from './MainMenu/MainMenu';
 import Footer from './Footer/Footer';
 import styles from './MainLayout.module.css';
 
