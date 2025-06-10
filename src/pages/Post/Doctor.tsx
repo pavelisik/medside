@@ -1,6 +1,6 @@
-import type { WPDoctorData } from '../types/wpTypes';
+import type { WPDoctorData } from '../../types/wpTypes';
 
-const DoctorPage = ({ data }: { data?: WPDoctorData }) => {
+const Doctor = ({ data }: { data?: WPDoctorData }) => {
     if (!data || !data.data) return <p>Данные не загружены</p>;
 
     return (
@@ -11,4 +11,4 @@ const DoctorPage = ({ data }: { data?: WPDoctorData }) => {
     );
 };
 
-export default DoctorPage;
+export default Doctor;

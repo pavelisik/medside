@@ -1,20 +1,9 @@
 import { Link } from 'react-router';
+import Content from '../layouts/Content';
 
 const NoMatch = () => {
     return (
-        <>
-            <div className="breadcrumbs">
-                <div>
-                    <span>
-                        <Link to="https://medside.ru">
-                            <span>MEDSIDE</span>
-                        </Link>
-                        <span className="icon-image sep"></span>
-                    </span>
-                    Страница не найдена
-                </div>
-            </div>
-
+        <Content showSidebar={false}>
             <h1>Страница не найдена (#404)</h1>
             <div id="page-content">
                 <p>Cтраница, которую вы ищете, не была найдена или в данный момент недоступна.</p>
@@ -36,7 +25,7 @@ const NoMatch = () => {
                     Если проблема не решена, <Link to="/contact">свяжитесь с нами</Link>.
                 </p>
             </div>
-        </>
+        </Content>
     );
 };
 

@@ -19,7 +19,11 @@ const BlockTabs = () => {
                 <ul>
                     {categories.map((category) => (
                         <li key={category.id}>
-                            {category.count ? <Link to={`/${category.slug}`}>{category.name}</Link> : category.name}
+                            {category.count ? (
+                                <Link to={`/meditsinskiy-slovar/${category.slug}`}>{category.name}</Link>
+                            ) : (
+                                category.name
+                            )}
                         </li>
                     ))}
                 </ul>

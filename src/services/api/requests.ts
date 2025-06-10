@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
 });
 const custom_api = axios.create({
-    baseURL: 'https://medside.ru/wp-json/custom/v1/slug/',
+    baseURL: 'https://medside.ru/wp-json/custom/v1',
 });
 const defaultFieldsPosts = { _fields: 'id,title,slug,featured_image' };
 const defaultFieldsCategories = { _fields: 'id,count,name,slug' };
@@ -47,9 +47,10 @@ export const getCategories = async <T = WPCategory>(
     }
 };
 
-export const getDataBySlug = async (slug: string): Promise<WPDataBySlug | undefined> => {
+export const getDataBySlug = async (slug: string, type: 'post' | 'cat'): Promise<WPDataBySlug | undefined> => {
     try {
-        const res = await custom_api.get<WPDataBySlug>(slug);
+        const url = `/${type}/${slug}?cashed=1`;
+        const res = await custom_api.get<WPDataBySlug>(url);
         return res.data;
     } catch (error) {
         handleAxiosError(error);

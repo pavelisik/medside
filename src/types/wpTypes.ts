@@ -233,6 +233,10 @@ export interface WPCategoryData {
         slug: string;
         name: string;
         description: string;
+        parent: number;
+        count: number;
+        parent_slug?: string;
+        parent_name?: string;
     };
 }
 

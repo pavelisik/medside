@@ -1,4 +1,4 @@
-import type { WPPageData } from '../types/wpTypes';
+import type { WPPageData } from '../../types/wpTypes';
 
 const Page = ({ data }: { data?: WPPageData }) => {
     if (!data || !data.data) return <p>Данные не загружены</p>;

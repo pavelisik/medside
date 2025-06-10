@@ -1,6 +1,6 @@
-import type { WPClinicData } from '../types/wpTypes';
+import type { WPClinicData } from '../../types/wpTypes';
 
-const ClinicPage = ({ data }: { data?: WPClinicData }) => {
+const Clinic = ({ data }: { data?: WPClinicData }) => {
     if (!data || !data.data) return <p>Данные не загружены</p>;
 
     return (
@@ -11,4 +11,4 @@ const ClinicPage = ({ data }: { data?: WPClinicData }) => {
     );
 };
 
-export default ClinicPage;
+export default Clinic;
