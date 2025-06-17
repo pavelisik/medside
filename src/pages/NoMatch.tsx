@@ -3,7 +3,7 @@ import Content from '../layouts/Content';
 
 const NoMatch = () => {
     return (
-        <Content showSidebar={false}>
+        <Content showSidebar={false} isNoMatch>
             <h1>Страница не найдена (#404)</h1>
             <div id="page-content">
                 <p>Cтраница, которую вы ищете, не была найдена или в данный момент недоступна.</p>

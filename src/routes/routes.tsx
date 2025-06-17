@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router';
 import MainPage from '../pages/Home/MainPage';
-import NoMatch from '../pages/NoMatch';
 import PostPage from '../pages/Post/PostPage';
 import CatPage from '../pages/Category/CatPage';
 
@@ -25,7 +24,7 @@ const AppRoutes = () => {
         // { path: '/author/*', element: <PostRouter /> },
 
         { path: '/:slug', element: <PostPage /> },
-        { path: '/not-found', element: <NoMatch /> },
+        // { path: '/not-found', element: <NoMatch /> },
     ];
 
     return (

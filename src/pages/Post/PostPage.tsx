@@ -1,6 +1,6 @@
-import { useParams, useNavigate } from 'react-router';
-import { useEffect } from 'react';
+import { useParams } from 'react-router';
 import useDataBySlug from '../../hooks/useDataBySlug';
+import NoMatch from '../NoMatch';
 import Content from '../../layouts/Content';
 import Post from './Post';
 import Page from './Page';
@@ -10,17 +10,14 @@ import { isPostData, isPageData, isDoctorData, isClinicData } from '../../types/
 import type { WPDataBySlug } from '../../types/wpTypes';
 
 const PostPage = () => {
-    const navigate = useNavigate();
     const { slug } = useParams();
     const { data, loading, error } = useDataBySlug<WPDataBySlug>(slug!, 'post');
 
-    useEffect(() => {
-        if (!loading && !data && !error) {
-            navigate('/not-found', { replace: true });
-        }
-    }, [data, loading, error, navigate]);
+    const isNoMatch = !loading && !error && !data;
 
-    return (
+    return isNoMatch ? (
+        <NoMatch />
+    ) : (
         <Content data={data}>
             {loading ? (
                 <p>Загрузка...</p>

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useLocation } from 'react-router';
 import useDataBySlug from '../../hooks/useDataBySlug';
+import NoMatch from '../NoMatch';
 import Content from '../../layouts/Content';
 import CatWithPosts from './CatWithPosts';
 import CatList from './CatList';
@@ -8,7 +8,6 @@ import type { WPCategoryData } from '../../types/wpTypes';
 
 const CatPage = () => {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const fullPath = location.pathname;
     const slugParts = fullPath.split('/').filter(Boolean);
@@ -16,13 +15,11 @@ const CatPage = () => {
 
     const { data, loading, error } = useDataBySlug<WPCategoryData>(slug, 'cat');
 
-    useEffect(() => {
-        if (!loading && !data) {
-            navigate('/not-found', { replace: true });
-        }
-    }, [data, loading, navigate]);
+    const isNoMatch = !loading && !error && !data;
 
-    return (
+    return isNoMatch ? (
+        <NoMatch />
+    ) : (
         <Content data={data}>
             {loading ? (
                 <p>Загрузка...</p>

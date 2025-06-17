@@ -49,7 +49,7 @@ export const getCategories = async <T = WPCategory>(
 
 export const getDataBySlug = async (slug: string, type: 'post' | 'cat'): Promise<WPDataBySlug | undefined> => {
     try {
-        const url = `/${type}/${slug}?cashed=1`;
+        const url = `/${type}/${slug}?cashed=2`;
         const res = await custom_api.get<WPDataBySlug>(url);
         return res.data;
     } catch (error) {
