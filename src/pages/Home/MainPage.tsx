@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { MdArrowForwardIos as Arrow } from 'react-icons/md';
+import Content from '../../layouts/Content';
 import styles from './MainPage.module.css';
 import BlockNews from './BlockNews';
 import BlockPosts from './BlockPosts';
@@ -32,7 +33,7 @@ const MainPage = () => {
     const therapeuticDietsBlockParams = { include: '79589,82401,81260', orderby: 'include' };
 
     return (
-        <>
+        <Content showBreadcrumbs={false} showSidebar={false}>
             <BlockNews />
             <BlockPosts params={diseasesBlockParams} blockStyle="index-block block-4 left">
                 <Link to="/bolezni">Болезни</Link>
@@ -116,7 +117,7 @@ const MainPage = () => {
                 </div>
             </div>
             <div className="clear"></div>
-        </>
+        </Content>
     );
 };
 

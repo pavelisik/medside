@@ -6,8 +6,8 @@ const Post = ({ data }: { data?: WPPostData }) => {
 
     return (
         <>
-            <div>{title}</div>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <h1>{title}</h1>
+            <div id="page-content" dangerouslySetInnerHTML={{ __html: content }} />
         </>
     );
 };

@@ -13,11 +13,14 @@ interface ContentProps {
 
 const Content = ({ children = null, data, showBreadcrumbs = true, showSidebar = true, isNoMatch }: ContentProps) => {
     return (
-        <>
-            {showBreadcrumbs && <Breadcrumbs data={data} isNoMatch={isNoMatch} />}
-            {children}
+        <div id="content" className={showSidebar ? undefined : 'nosb'}>
+            <div id="center">
+                {/* тут еще будет заворачиваться еще в такого плана <div itemscope itemtype="https://schema.org/Product"> если там лекарства или другие */}
+                {showBreadcrumbs && <Breadcrumbs data={data} isNoMatch={isNoMatch} />}
+                {children}
+            </div>
             {showSidebar && <Sidebar />}
-        </>
+        </div>
     );
 };
 

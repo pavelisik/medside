@@ -9,9 +9,7 @@ const MainLayout = ({ children }: { children?: ReactElement }) => {
         <div className={styles.container} id="container">
             <Header />
             <MainMenu />
-            <div id="content" className="nosb">
-                <div id="center">{children}</div>
-            </div>
+            {children}
             <Footer />
         </div>
     );

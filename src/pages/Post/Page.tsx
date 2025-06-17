@@ -6,7 +6,7 @@ const Page = ({ data }: { data?: WPPageData }) => {
     return (
         <>
             <h1>{data.data.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: data.data.content }} />
+            <div id="page-content" dangerouslySetInnerHTML={{ __html: data.data.content }} />
         </>
     );
 };
