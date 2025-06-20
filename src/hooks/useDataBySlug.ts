@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { WPDataBySlug } from '../types/wpTypes';
 import { getDataBySlug } from '../services/api/requests';
 
-const useDataBySlug = <T extends WPDataBySlug>(slug: string, type: 'post' | 'cat') => {
+const useDataBySlug = <T extends WPDataBySlug>(slug: string, type: 'post' | 'cat', page?: number) => {
     const [data, setData] = useState<T | undefined>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -11,13 +11,13 @@ const useDataBySlug = <T extends WPDataBySlug>(slug: string, type: 'post' | 'cat
         setLoading(true);
         setError(null);
 
-        getDataBySlug(slug, type)
+        getDataBySlug(slug, type, page)
             .then((data) => {
                 if (data) setData(data as T);
             })
             .catch(() => setError('Не удалось загрузить.'))
             .finally(() => setLoading(false));
-    }, [slug]);
+    }, [slug, page]);
 
     return { data, loading, error };
 };

@@ -47,9 +47,13 @@ export const getCategories = async <T = WPCategory>(
     }
 };
 
-export const getDataBySlug = async (slug: string, type: 'post' | 'cat'): Promise<WPDataBySlug | undefined> => {
+export const getDataBySlug = async (
+    slug: string,
+    type: 'post' | 'cat',
+    page?: number
+): Promise<WPDataBySlug | undefined> => {
     try {
-        const url = `/${type}/${slug}?cashed=2`;
+        const url = `/${type}/${slug}${page !== undefined ? `?page=${page}` : ''}`;
         const res = await custom_api.get<WPDataBySlug>(url);
         return res.data;
     } catch (error) {

@@ -16,6 +16,7 @@ export interface WPPostData {
         slug: string;
         title: string;
         date: string;
+        date_m: string;
         featured_image: string | null;
         categories: {
             term_id: number;
@@ -232,11 +233,20 @@ export interface WPCategoryData {
         id: number;
         slug: string;
         name: string;
-        description: string;
         parent: number;
         count: number;
+        page: number;
+        pages: number;
         parent_slug?: string;
         parent_name?: string;
+        posts_array?: {
+            post_ID: number;
+            post_slug: string;
+            post_title: string;
+            post_image: string;
+            post_date: string;
+            post_excerpt: string;
+        }[];
     };
 }
 
