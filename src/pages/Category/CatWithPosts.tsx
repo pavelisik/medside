@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Link } from 'react-router';
-import Pagination from '../../components/Pagination/Pagination';
+import Pagination from '../../components/Pagination';
 import type { WPCategoryData } from '../../types/wpTypes';
 
 const CatWithPosts = ({ data }: { data: WPCategoryData }) => {

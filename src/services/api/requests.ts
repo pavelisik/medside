@@ -53,7 +53,12 @@ export const getDataBySlug = async (
     page?: number
 ): Promise<WPDataBySlug | undefined> => {
     try {
-        const url = `/${type}/${slug}${page !== undefined ? `?page=${page}` : ''}`;
+        const queryParams = new URLSearchParams();
+        queryParams.set('cashed', '38');
+        if (page !== undefined) {
+            queryParams.set('page', page.toString());
+        }
+        const url = `/${type}/${slug}?${queryParams.toString()}`;
         const res = await custom_api.get<WPDataBySlug>(url);
         return res.data;
     } catch (error) {
