@@ -1,6 +1,5 @@
 interface ParseFullPathParams {
     slug: string;
-    pathParts: string[];
     page: number;
     cleanPath?: string;
 }
@@ -25,7 +24,6 @@ export const parseFullPath = (fullPath: string): ParseFullPathParams => {
 
     return {
         slug,
-        pathParts,
         page: page ?? 1,
         cleanPath,
     };

@@ -9,8 +9,7 @@ import type { WPCategoryData } from '../../types/wpTypes';
 
 const CatPage = () => {
     const location = useLocation();
-    const catsWithoutList = [36, 6345, 6318, 4070];
-    const { slug, pathParts, page } = parseFullPath(location.pathname);
+    const { slug, page } = parseFullPath(location.pathname);
     const { data, loading, error } = useDataBySlug<WPCategoryData>(slug, 'cat', page === 1 ? undefined : page);
 
     if (/\/page\/1\/?$/.test(location.pathname)) {
@@ -23,18 +22,16 @@ const CatPage = () => {
     return isNoMatch ? (
         <NoMatch />
     ) : (
-        <Content data={data}>
-            {loading ? (
-                <p>Загрузка...</p>
+        <Content data={loading ? undefined : data}>
+            {loading || !data ? (
+                <p>Загрузка ...</p>
             ) : error ? (
                 <p className="error">{error}</p>
-            ) : data ? (
-                pathParts.length > 1 || catsWithoutList.includes(data.data.id) ? (
-                    <CatWithPosts data={data} />
-                ) : (
-                    <CatList data={data} />
-                )
-            ) : null}
+            ) : data.data.is_with_posts ? (
+                <CatWithPosts data={data} />
+            ) : (
+                <CatList data={data} />
+            )}
         </Content>
     );
 };

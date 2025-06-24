@@ -8,6 +8,7 @@ const useDataBySlug = <T extends WPDataBySlug>(slug: string, type: 'post' | 'cat
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        setData(undefined);
         setLoading(true);
         setError(null);
 

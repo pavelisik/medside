@@ -239,6 +239,13 @@ export interface WPCategoryData {
         pages: number;
         parent_slug?: string;
         parent_name?: string;
+        is_with_posts: boolean;
+        cats_array?: {
+            cat_ID: number;
+            cat_slug: string;
+            cat_title: string;
+            cat_is_child: boolean;
+        }[];
         posts_array?: {
             post_ID: number;
             post_slug: string;

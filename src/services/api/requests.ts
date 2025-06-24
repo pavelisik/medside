@@ -54,7 +54,7 @@ export const getDataBySlug = async (
 ): Promise<WPDataBySlug | undefined> => {
     try {
         const queryParams = new URLSearchParams();
-        queryParams.set('cashed', '38');
+        queryParams.set('cashed', '75');
         if (page !== undefined) {
             queryParams.set('page', page.toString());
         }
