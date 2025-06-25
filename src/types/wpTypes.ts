@@ -45,6 +45,13 @@ export interface WPPostData {
             | 'diagnostics'
             | 'services'
             | 'meditsinskiy-slovar';
+        sim_block_title?: string;
+        sim_block_array?: {
+            post_ID: number;
+            post_slug: string;
+            post_title: string;
+            post_image: string;
+        }[];
         post_author: {
             author_ID: number;
             author_slug: string;
@@ -140,6 +147,7 @@ export interface WPDoctorData {
         };
         parents_count: 1;
         cat_type: 'doctors';
+        sim_block_title: string;
         content: string;
         metadata: {
             name: string;
@@ -191,6 +199,7 @@ export interface WPClinicData {
         };
         parents_count: 1;
         cat_type: 'clinics';
+        sim_block_title: string;
         content: string;
         metadata: {
             name: string;

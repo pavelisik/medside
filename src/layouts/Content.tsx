@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
-import Sidebar from '../layouts/Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 import type { WPDataBySlug } from '../types/wpTypes';
 
 interface ContentProps {
@@ -19,7 +19,7 @@ const Content = ({ children = null, data, showBreadcrumbs = true, showSidebar = 
                 {showBreadcrumbs && <Breadcrumbs data={data} isNoMatch={isNoMatch} />}
                 {children}
             </div>
-            {showSidebar && <Sidebar />}
+            {showSidebar && <Sidebar data={data} />}
         </div>
     );
 };
