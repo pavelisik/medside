@@ -1155,14 +1155,14 @@ sup {
     display: block;
     margin: 0 0 5px 0;
 }
-.rusfond-block #letter0 {
+/* .rusfond-block #letter0 {
     display: block;
-}
-.rusfond-block #letter1,
+} */
+/* .rusfond-block #letter1,
 .rusfond-block #letter2,
 .rusfond-block #letter3 {
     display: none;
-}
+} */
 .rusfond-block .bottom {
     color: #cc0000;
     text-transform: uppercase;

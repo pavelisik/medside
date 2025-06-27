@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { WPPostImg, WPCategory, WPDataBySlug } from '../../types/wpTypes';
+import type { WPPostImg, WPCategory, WPComment, WPRusfondData, WPDataBySlug } from '../../types/wpTypes';
 
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
@@ -9,6 +9,7 @@ const custom_api = axios.create({
 });
 const defaultFieldsPosts = { _fields: 'id,title,slug,featured_image' };
 const defaultFieldsCategories = { _fields: 'id,count,name,slug' };
+const defaultFieldsComments = { _fields: 'id,author_name,comment_excerpt,date,post,post_slug,post_title' };
 
 const handleAxiosError = (error: unknown) => {
     if (axios.isAxiosError(error)) {
@@ -47,6 +48,16 @@ export const getCategories = async <T = WPCategory>(
     }
 };
 
+export const getComments = async (url: string, params: Record<string, any>): Promise<WPComment[] | undefined> => {
+    try {
+        const mergedParams = { ...defaultFieldsComments, ...params };
+        const res = await api.get<WPComment[]>(url, { params: mergedParams });
+        return res.data;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+};
+
 export const getDataBySlug = async (
     slug: string,
     type: 'post' | 'cat',
@@ -54,12 +65,21 @@ export const getDataBySlug = async (
 ): Promise<WPDataBySlug | undefined> => {
     try {
         const queryParams = new URLSearchParams();
-        queryParams.set('cashed', '4');
+        queryParams.set('cashed', '9');
         if (page !== undefined) {
             queryParams.set('page', page.toString());
         }
         const url = `/${type}/${slug}?${queryParams.toString()}`;
         const res = await custom_api.get<WPDataBySlug>(url);
+        return res.data;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+};
+
+export const getRusfondData = async (url: string): Promise<WPRusfondData[] | undefined> => {
+    try {
+        const res = await custom_api.get<WPRusfondData[]>(url);
         return res.data;
     } catch (error) {
         handleAxiosError(error);

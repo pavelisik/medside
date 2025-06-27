@@ -1,11 +1,24 @@
 // типы данных из библиотеки wp-types
-import type { WP_REST_API_Post, WP_REST_API_Category } from 'wp-types';
+import type { WP_REST_API_Post, WP_REST_API_Category, WP_REST_API_Comment } from 'wp-types';
 
 export interface WPPostImg extends WP_REST_API_Post {
     featured_image: string;
 }
 
 export interface WPCategory extends WP_REST_API_Category {}
+
+export interface WPComment extends WP_REST_API_Comment {
+    comment_excerpt: string;
+    post_slug: string;
+    post_title: string;
+}
+
+export interface WPRusfondData {
+    child_name: string;
+    description: string;
+    url: string;
+    image: string;
+}
 
 // типы данных из кастомного эндпоинта на сервере
 export interface WPPostData {
@@ -52,6 +65,12 @@ export interface WPPostData {
             post_title: string;
             post_image: string;
         }[];
+        tags_block_array?: {
+            post_ID: number;
+            post_slug: string;
+            post_title: string;
+            post_image: string;
+        }[];
         post_author: {
             author_ID: number;
             author_slug: string;
@@ -64,13 +83,7 @@ export interface WPPostData {
         rating_count: number;
         keys: string;
         content: string;
-        metadata?:
-            | WPBolezniMetadata
-            | WPDietsMetadata
-            | WPLekarstvaMetadata
-            | WPActiveSubstancesMetadata
-            | WPStatiMetadata
-            | WPServicesMetadata;
+        metadata?: WPBolezniMetadata | WPDietsMetadata | WPLekarstvaMetadata | WPActiveSubstancesMetadata | WPStatiMetadata | WPServicesMetadata;
     };
 }
 

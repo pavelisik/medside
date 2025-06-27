@@ -38,7 +38,7 @@ const MainPage = () => {
             <BlockPosts params={diseasesBlockParams} blockStyle="index-block block-4 left">
                 <Link to="/bolezni">Болезни</Link>
                 <Arrow className={styles.arrow} />
-                Популярные статьи
+                Последние статьи
             </BlockPosts>
             <BlockPosts params={symptomsBlockParams} blockStyle="index-block block-4 right">
                 <Link to="/symptoms">Симптомы</Link>
