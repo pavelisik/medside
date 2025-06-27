@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import styles from './SidebarSocialBlock.module.css';
 
 declare global {
     interface Window {
@@ -23,9 +25,8 @@ const SidebarSocialBlock = () => {
                 window.VK.Widgets.Group(
                     'vk_groups',
                     {
-                        mode: 0,
+                        mode: 3,
                         width: 341,
-                        height: 240,
                         color1: 'FFFFFF',
                         color2: '242424',
                         color3: '71939d',
@@ -46,7 +47,7 @@ const SidebarSocialBlock = () => {
     return (
         <div className="sidebar-block socialgroup-block">
             <h2>ВКонтакте</h2>
-            <div className="sidebar-block-body">
+            <div className={clsx('sidebar-block-body', styles.socialBlock)}>
                 <div className="vk-block">
                     <div id="vk_groups" ref={vkRef}></div>
                 </div>
