@@ -6,17 +6,17 @@ import type { WPDataBySlug } from '../types/wpTypes';
 interface ContentProps {
     children?: ReactNode;
     data?: WPDataBySlug;
+    loading: boolean;
     showBreadcrumbs?: boolean;
     showSidebar?: boolean;
     isNoMatch?: boolean;
 }
 
-const Content = ({ children = null, data, showBreadcrumbs = true, showSidebar = true, isNoMatch }: ContentProps) => {
+const Content = ({ children = null, data, loading, showBreadcrumbs = true, showSidebar = true, isNoMatch }: ContentProps) => {
     return (
         <div id="content" className={showSidebar ? undefined : 'nosb'}>
             <div id="center">
-                {/* тут еще будет заворачиваться еще в такого плана <div itemscope itemtype="https://schema.org/Product"> если там лекарства или другие */}
-                {showBreadcrumbs && <Breadcrumbs data={data} isNoMatch={isNoMatch} />}
+                {showBreadcrumbs && loading ? <p>Загрузка ...</p> : <Breadcrumbs data={data} isNoMatch={isNoMatch} />}
                 {children}
             </div>
             {showSidebar && <Sidebar data={data} />}

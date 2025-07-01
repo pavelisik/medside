@@ -1,18 +1,22 @@
-// типы данных из библиотеки wp-types
+// готовые типы данных из библиотеки wp-types
 import type { WP_REST_API_Post, WP_REST_API_Category, WP_REST_API_Comment } from 'wp-types';
 
+// тип данных для постов (с кастомным полем изображения)
 export interface WPPostImg extends WP_REST_API_Post {
     featured_image: string;
 }
 
+// тип данных для категорий
 export interface WPCategory extends WP_REST_API_Category {}
 
+// тип данных для комментариев
 export interface WPComment extends WP_REST_API_Comment {
     comment_excerpt: string;
     post_slug: string;
     post_title: string;
 }
 
+// тип данных для блока Rusfond
 export interface WPRusfondData {
     child_name: string;
     description: string;
@@ -21,6 +25,7 @@ export interface WPRusfondData {
 }
 
 // типы данных из кастомного эндпоинта на сервере
+// основной тип данных для постов
 export interface WPPostData {
     type: 'post_type';
     subtype: 'post';
@@ -83,10 +88,11 @@ export interface WPPostData {
         rating_count: number;
         keys: string;
         content: string;
-        metadata?: WPBolezniMetadata | WPDietsMetadata | WPLekarstvaMetadata | WPActiveSubstancesMetadata | WPStatiMetadata | WPServicesMetadata;
+        metadata?: WPBolezniMetadata | WPDietsMetadata | WPDrugsMetadata | WPSubstancesMetadata | WPStatiMetadata | WPServicesMetadata;
     };
 }
 
+// тип метаданных в постах категории Болезни (Симптомы)
 interface WPBolezniMetadata {
     sources?: string;
     doctors?: string;
@@ -94,6 +100,8 @@ interface WPBolezniMetadata {
     diets?: string;
     mkb10?: string;
 }
+
+// тип метаданных в постах категории Диеты
 interface WPDietsMetadata {
     diet_result?: string;
     diet_time?: string;
@@ -103,31 +111,114 @@ interface WPDietsMetadata {
     diet_label?: string;
 }
 
-interface WPLekarstvaMetadata {
-    drug_lat: string;
-    drug_fabric: string;
-    drug_code: string;
-    drug_subst: string;
-    drug_farm_group: string;
-    drug_lek_form: string;
+// тип метаданных в постах категории Лекарства
+interface WPDrugsMetadata {
+    drug_lat?: string;
+    drug_fabric?: string;
+    drug_code?: string;
+    drug_subst?: string;
+    drug_farm_group?: string;
+    drug_lek_form?: string;
 }
 
-interface WPActiveSubstancesMetadata {
-    drug_cas: string;
-    drug_formula: string;
-    drug_lat: string;
-    drug_code: string;
+// тип метаданных в постах категории Действующие вещества
+interface WPSubstancesMetadata {
+    drug_cas?: string;
+    drug_formula?: string;
+    drug_lat?: string;
+    drug_code?: string;
 }
 
+// тип метаданных в постах категории Справочник
 interface WPStatiMetadata {
-    sources: string;
+    sources?: string;
 }
 
+// тип метаданных в постах категории Услуги (Диагностики)
 interface WPServicesMetadata {
-    sources: string;
-    service_id: string;
+    sources?: string;
+    service_id?: string;
 }
 
+// тип данных для постов в категории Болезни
+export interface WPBolezniData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'bolezni';
+        metadata: WPBolezniMetadata;
+    };
+}
+
+// тип данных для постов в категории Симптомы
+export interface WPSymptomsData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'symptoms';
+        metadata: WPBolezniMetadata;
+    };
+}
+
+// тип данных для постов в категории Диеты
+export interface WPDietsData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'diets';
+        metadata: WPDietsMetadata;
+    };
+}
+
+// тип данных для постов в категории Лекарства
+export interface WPDrugsData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'lekarstva';
+        metadata: WPDrugsMetadata;
+    };
+}
+
+// тип данных для постов в категории Действующие вещества
+export interface WPSubstancesData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'active-substances';
+        metadata: WPSubstancesMetadata;
+    };
+}
+
+// тип данных для постов в категории Справочник
+export interface WPStatiData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'stati';
+        metadata: WPStatiMetadata;
+    };
+}
+
+// тип данных для постов в категории Новости
+export interface WPNewsData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type'> & {
+        cat_type: 'novosti-meditsinyi';
+    };
+}
+
+// тип данных для постов в категории Словарь терминов
+export interface WPSlovarData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type'> & {
+        cat_type: 'meditsinskiy-slovar';
+    };
+}
+
+// тип данных для постов в категории Диагностики
+export interface WPDiagnosticsData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'diagnostics';
+        metadata: WPServicesMetadata;
+    };
+}
+
+// тип данных для постов в категории Услуги
+export interface WPServicesData extends Omit<WPPostData, 'data'> {
+    data: Omit<WPPostData['data'], 'cat_type' | 'metadata'> & {
+        cat_type: 'services';
+        metadata: WPServicesMetadata;
+    };
+}
+
+// основной тип данных для страниц
 export interface WPPageData {
     type: 'post_type';
     subtype: 'page';
@@ -140,6 +231,7 @@ export interface WPPageData {
     };
 }
 
+// основной тип данных для докторов
 export interface WPDoctorData {
     type: 'post_type';
     subtype: 'doctor';
@@ -192,6 +284,7 @@ export interface WPDoctorData {
     };
 }
 
+// основной тип данных для клиник
 export interface WPClinicData {
     type: 'post_type';
     subtype: 'clinic';
@@ -248,6 +341,7 @@ export interface WPClinicData {
     };
 }
 
+// основной тип данных для категорий
 export interface WPCategoryData {
     type: string;
     subtype: string;
@@ -279,4 +373,5 @@ export interface WPCategoryData {
     };
 }
 
+// объединенный тип данных для полученной по slug информации
 export type WPDataBySlug = WPPostData | WPPageData | WPDoctorData | WPClinicData | WPCategoryData;

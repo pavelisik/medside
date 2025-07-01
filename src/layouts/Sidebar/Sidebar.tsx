@@ -12,9 +12,7 @@ const Sidebar = ({ data }: { data?: WPDataBySlug }) => {
                 <SidebarPostsBlock title={data.data.sim_block_title} posts={data.data.sim_block_array} />
             )}
             <SidebarSocialBlock />
-            {data && isPostData(data) && data.data.tags_block_array && (
-                <SidebarPostsBlock title="Статьи по теме" posts={data.data.tags_block_array} />
-            )}
+            {data && isPostData(data) && data.data.tags_block_array && <SidebarPostsBlock title="Статьи по теме" posts={data.data.tags_block_array} />}
             <SidebarCommentsBlock />
             <SidebarRusfondBanner />
         </div>

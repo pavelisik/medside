@@ -13,9 +13,7 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
         const { name, parent_name, parent_slug } = data.data;
         return (
             <BreadcrumbsList>
-                {parent_name && parent_slug && (
-                    <BreadcrumbsItem title={parent_name} slug={`/${parent_slug}`} position={2} />
-                )}
+                {parent_name && parent_slug && <BreadcrumbsItem title={parent_name} slug={`/${parent_slug}`} position={2} />}
                 <BreadcrumbsItem title={name} position={parent_slug ? 3 : 2} showSeparator={false} />
             </BreadcrumbsList>
         );
@@ -31,21 +29,10 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
         if (!categories?.[0]) return null;
         return (
             <BreadcrumbsList>
-                {parents_count === 0 && (
-                    <BreadcrumbsItem
-                        title={categories[0].name}
-                        slug={`/${categories[0].slug}`}
-                        position={2}
-                        showSeparator={false}
-                    />
-                )}
+                {parents_count === 0 && <BreadcrumbsItem title={categories[0].name} slug={`/${categories[0].slug}`} position={2} showSeparator={false} />}
                 {parents_count === 1 && parent_cat_first && (
                     <>
-                        <BreadcrumbsItem
-                            title={parent_cat_first.name}
-                            slug={`/${parent_cat_first.slug}`}
-                            position={2}
-                        />
+                        <BreadcrumbsItem title={parent_cat_first.name} slug={`/${parent_cat_first.slug}`} position={2} />
                         <BreadcrumbsItem
                             title={categories[0].name}
                             slug={`/${parent_cat_first.slug}/${categories[0].slug}`}
@@ -56,11 +43,7 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
                 )}
                 {parents_count === 2 && parent_cat_first && parent_cat_second && (
                     <>
-                        <BreadcrumbsItem
-                            title={parent_cat_second.name}
-                            slug={`/${parent_cat_second.slug}`}
-                            position={2}
-                        />
+                        <BreadcrumbsItem title={parent_cat_second.name} slug={`/${parent_cat_second.slug}`} position={2} />
                         <BreadcrumbsItem
                             title={categories[0].name}
                             slug={`/${parent_cat_second.slug}/${parent_cat_first.slug}/${categories[0].slug}`}
@@ -78,11 +61,7 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
             <BreadcrumbsList>
                 {parent_cat_first && (
                     <>
-                        <BreadcrumbsItem
-                            title={parent_cat_first.name}
-                            slug={`/${parent_cat_first.slug}`}
-                            position={2}
-                        />
+                        <BreadcrumbsItem title={parent_cat_first.name} slug={`/${parent_cat_first.slug}`} position={2} />
                         <BreadcrumbsItem
                             title={categories[0].name}
                             slug={`/${parent_cat_first.slug}/${categories[0].slug}`}
@@ -97,14 +76,7 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
         const { parent_cat_first } = data.data;
         return (
             <BreadcrumbsList>
-                {parent_cat_first && (
-                    <BreadcrumbsItem
-                        title={parent_cat_first.name}
-                        slug={`/${parent_cat_first.slug}`}
-                        position={2}
-                        showSeparator={false}
-                    />
-                )}
+                {parent_cat_first && <BreadcrumbsItem title={parent_cat_first.name} slug={`/${parent_cat_first.slug}`} position={2} showSeparator={false} />}
             </BreadcrumbsList>
         );
     } else if (isNoMatch) {

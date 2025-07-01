@@ -35,10 +35,7 @@ export const getPosts = async <T = WPPostImg>(url: string, params: Record<string
     }
 };
 
-export const getCategories = async <T = WPCategory>(
-    url: string,
-    params: Record<string, any>
-): Promise<T[] | undefined> => {
+export const getCategories = async <T = WPCategory>(url: string, params: Record<string, any>): Promise<T[] | undefined> => {
     try {
         const mergedParams = { ...defaultFieldsCategories, ...params };
         const res = await api.get<T[]>(url, { params: mergedParams });
@@ -58,14 +55,10 @@ export const getComments = async (url: string, params: Record<string, any>): Pro
     }
 };
 
-export const getDataBySlug = async (
-    slug: string,
-    type: 'post' | 'cat',
-    page?: number
-): Promise<WPDataBySlug | undefined> => {
+export const getDataBySlug = async (slug: string, type: 'post' | 'cat', page?: number): Promise<WPDataBySlug | undefined> => {
     try {
         const queryParams = new URLSearchParams();
-        queryParams.set('cashed', '9');
+        queryParams.set('cashed', '11');
         if (page !== undefined) {
             queryParams.set('page', page.toString());
         }

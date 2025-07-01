@@ -1,15 +1,15 @@
+import PostBolezni from './PostBolezni';
+import PostSymptoms from './PostSymptoms';
+import PostDiets from './PostDiets';
 import type { WPPostData } from '../../types/wpTypes';
+import { isBolezniData, isSymptomsData, isDietsData } from '../../types/wpTypeGuards';
 
-const Post = ({ data }: { data?: WPPostData }) => {
-    if (!data || !data.data) return <p>Данные не загружены</p>;
-    const { title, content } = data.data;
+const Post = ({ data }: { data: WPPostData }) => {
+    if (isBolezniData(data)) return <PostBolezni data={data} />;
+    if (isSymptomsData(data)) return <PostSymptoms data={data} />;
+    if (isDietsData(data)) return <PostDiets data={data} />;
 
-    return (
-        <>
-            <h1>{title}</h1>
-            <div id="page-content" dangerouslySetInnerHTML={{ __html: content }} />
-        </>
-    );
+    return null;
 };
 
 export default Post;
