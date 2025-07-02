@@ -95,9 +95,15 @@ export interface WPPostData {
 // тип метаданных в постах категории Болезни (Симптомы)
 interface WPBolezniMetadata {
     sources?: string;
-    doctors?: string;
+    doctors?: {
+        name: string;
+        slug: string;
+    }[];
     drugs?: string;
-    diets?: string;
+    diets?: {
+        name: string;
+        slug: string;
+    }[];
     mkb10?: string;
 }
 
