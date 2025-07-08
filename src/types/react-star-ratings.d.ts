@@ -11,6 +11,8 @@ declare module 'react-star-ratings' {
         starDimension?: string;
         starSpacing?: string;
         changeRating?: (newRating: number, name?: string) => void;
+        svgIconPath?: string;
+        svgIconViewBox?: string;
     }
 
     const StarRatings: React.FC<StarRatingsProps>;

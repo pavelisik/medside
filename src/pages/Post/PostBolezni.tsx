@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { bolLabelIcons } from '../../assets/images/bol-label';
-import Raiting from '../../components/Raiting';
+import RaitingComponent from '../../components/RaitingComponent';
 import type { WPBolezniData } from '../../types/wpTypes';
 
 const PostBolezni = ({ data }: { data: WPBolezniData }) => {
@@ -52,7 +52,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
 
                 <div className="right-block">
                     <div className="wp-stars-outer">
-                        <Raiting postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
+                        <RaitingComponent postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     </div>
 
                     <span className="date">{date}</span>
