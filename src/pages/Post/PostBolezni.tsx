@@ -1,6 +1,8 @@
+import parse from 'html-react-parser';
 import Rating from '../../components/Rating';
 import CategoryLabel from '../../components/CategoryLabel';
 import ShareBlock from '../../components/ShareBlock';
+import PageMenu from '../../components/PageMenu';
 import type { WPBolezniData } from '../../types/wpTypes';
 
 const PostBolezni = ({ data }: { data: WPBolezniData }) => {
@@ -16,6 +18,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
         parent_cat_second,
         parents_count,
         categories,
+        menu_data,
         content,
         metadata,
     } = data.data;
@@ -76,10 +79,11 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                     </div>
                 </div>
             </div>
-            <div id="page-content" dangerouslySetInnerHTML={{ __html: content }} />
-            {/* <h1>{title}</h1>
-                    <p>{cat_type}</p>
-                    <div id="page-content" dangerouslySetInnerHTML={{ __html: content }} /> */}
+            {/* <div id="page-content" dangerouslySetInnerHTML={{ __html: content }} /> */}
+            <div id="page-content">
+                {menu_data.length > 1 && <PageMenu data={menu_data} />}
+                {parse(content)}
+            </div>
         </div>
     );
 };

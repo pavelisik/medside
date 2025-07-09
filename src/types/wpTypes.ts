@@ -87,6 +87,10 @@ export interface WPPostData {
         rating: number;
         rating_count: number;
         keys: string;
+        menu_data: {
+            item: string;
+            slug: string;
+        }[];
         content: string;
         metadata?: WPBolezniMetadata | WPDietsMetadata | WPDrugsMetadata | WPSubstancesMetadata | WPStatiMetadata | WPServicesMetadata;
     };

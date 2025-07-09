@@ -1,6 +1,7 @@
 import FooterMenu from './FooterMenu';
 import FooterSocials from './FooterSocials';
 import FooterInfo from './FooterInfo';
+import ScrollToTopButton from '../../components/ScrollToTopButton';
 import footerLogo from '@/assets/images/footer-logo-hd.png';
 import footerLogoBig from '@/assets/images/footer-logo-big.png';
 
@@ -18,16 +19,16 @@ const Footer = () => {
                     </div>
                     <div className="footer-description">
                         <p>
-                            Все представленные на сайте материалы предназначены исключительно для образовательных целей
-                            и не предназначены для медицинских консультаций, диагностики или лечения. Администрация
-                            сайта, редакторы и авторы статей не несут ответственности за любые последствия и убытки,
-                            которые могут возникнуть при использовании материалов сайта.
+                            Все представленные на сайте материалы предназначены исключительно для образовательных целей и не предназначены для медицинских
+                            консультаций, диагностики или лечения. Администрация сайта, редакторы и авторы статей не несут ответственности за любые последствия
+                            и убытки, которые могут возникнуть при использовании материалов сайта.
                         </p>
                     </div>
                     <FooterInfo />
                 </div>
                 <div className="clear"></div>
             </div>
+            <ScrollToTopButton />
         </footer>
     );
 };
