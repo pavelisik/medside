@@ -1,21 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { bolLabelIcons } from '../../assets/images/bol-label';
 import Rating from '../../components/Rating';
+import CategoryLabel from '../../components/CategoryLabel';
+import ShareBlock from '../../components/ShareBlock';
 import type { WPBolezniData } from '../../types/wpTypes';
 
 const PostBolezni = ({ data }: { data: WPBolezniData }) => {
-    const scriptLoaded = useRef(false);
-
-    useEffect(() => {
-        if (!scriptLoaded.current) {
-            const script = document.createElement('script');
-            script.src = 'https://yastatic.net/share2/share.js';
-            script.async = true;
-            document.body.appendChild(script);
-            scriptLoaded.current = true;
-        }
-    }, []);
-
     const {
         id,
         title,
@@ -31,17 +19,6 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
         content,
         metadata,
     } = data.data;
-    const catTitle = categories[0].name;
-    let catHref;
-
-    if (parents_count === 1 && parent_cat_first) {
-        catHref = `/${parent_cat_first.slug}/${categories[0].slug}`;
-    } else if (parents_count === 2 && parent_cat_first && parent_cat_second) {
-        catHref = `/${parent_cat_second.slug}/${parent_cat_first.slug}/${categories[0].slug}`;
-    }
-
-    const iconKey = `bolLabel${categories[0].term_id}` as keyof typeof bolLabelIcons;
-    const iconScr = bolLabelIcons[iconKey];
 
     return (
         <div itemScope itemType="https://schema.org/WebPage">
@@ -51,16 +28,13 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                 <div className="main-image-block">{featured_image && <img src={featured_image} alt={title} itemProp="image" />}</div>
 
                 <div className="right-block">
-                    <div className="wp-stars-outer">
-                        <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
-                    </div>
+                    <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
 
                     <span className="date">{date}</span>
 
                     <div className="right-inner-block">
-                        <a className="up-label" href={catHref} title={catTitle} target="_blank" rel="noopener noreferrer">
-                            <img src={iconScr} alt={catTitle} />
-                        </a>
+                        <CategoryLabel categories={categories} count={parents_count} first={parent_cat_first} second={parent_cat_second} />
+
                         {(metadata.doctors || metadata.diets) && (
                             <ul>
                                 {metadata.doctors && (
@@ -97,17 +71,8 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                                 )}
                             </ul>
                         )}
-                        <div className="share-block-top">
-                            <div
-                                className="ya-share2"
-                                data-curtain
-                                data-services="vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp"
-                                data-title={title}
-                                data-description={head_description}
-                                data-image={featured_image}
-                                data-hashtags:twitter="медицина,здоровье"
-                            ></div>
-                        </div>
+
+                        <ShareBlock title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>
             </div>
