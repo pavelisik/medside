@@ -1461,7 +1461,7 @@ sup {
 .wp-stars-wrapper[data-tooltip]:before {
     content: attr(data-tooltip);
     position: absolute;
-    top: -20px;
+    top: -16px;
     left: 112px;
     text-align: center;
     width: 110px !important;

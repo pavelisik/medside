@@ -58,7 +58,7 @@ export const getComments = async (url: string, params: Record<string, any>): Pro
 export const getDataBySlug = async (slug: string, type: 'post' | 'cat', page?: number): Promise<WPDataBySlug | undefined> => {
     try {
         const queryParams = new URLSearchParams();
-        queryParams.set('cashed', '35');
+        queryParams.set('cache_bust', Date.now().toString());
         if (page !== undefined) {
             queryParams.set('page', page.toString());
         }

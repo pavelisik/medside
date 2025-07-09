@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ interface RatingProps {
     initialVoteCount: number;
 }
 
-const RaitingComponent = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => {
+const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => {
     // проверка на голосование
     const [voted, setVoted] = useState(false);
     // общая сумма голосов у поста
@@ -17,36 +18,56 @@ const RaitingComponent = ({ postId, initialRatingSum, initialVoteCount }: Rating
     const [voteCount, setVoteCount] = useState(initialVoteCount);
     // отображение всплывающего окна
     const [tooltipVisible, setTooltipVisible] = useState(false);
+    // текст всплывающего окна
+    const [tooltipText, setTooltipText] = useState('');
     // отображение нового рейтинга
     const [showNewRating, setShowNewRating] = useState(false);
 
-    const rating = voteCount === 0 ? 0 : ratingSum / voteCount;
+    const averageRating = voteCount ? ratingSum / voteCount : 0;
+    const cookieName = `voted_post_${postId}`;
 
     useEffect(() => {
-        const votedBefore = localStorage.getItem(`voted_post_${postId}`);
-        if (votedBefore) {
-            setVoted(true);
-        }
+        setVoted(Boolean(Cookies.get(cookieName)));
     }, [postId]);
+
+    const showTooltip = (text: string) => {
+        setTooltipText(text);
+        setTooltipVisible(true);
+        setTimeout(() => setTooltipVisible(false), 3000);
+    };
+
+    const markAsVoted = () => {
+        setVoted(true);
+        Cookies.set(cookieName, 'true', { expires: 365 });
+    };
 
     const handleChangeRating = async (newRating: number) => {
         if (voted) return;
 
         try {
-            const response = await axios.post(`https://medside.ru/wp-json/custom/v1/rate/?post_id=${postId}&rating=${newRating}`);
+            const url = new URL('https://medside.ru/wp-json/custom/v1/rate');
+            url.searchParams.set('cache_bust', Date.now().toString());
+            const response = await axios.post(url.toString(), {
+                post_id: postId,
+                rating: newRating,
+            });
 
-            if (response.data.success) {
-                setRatingSum((prev) => prev + newRating);
-                setVoteCount((prev) => prev + 1);
-                setVoted(true);
-                localStorage.setItem(`voted_post_${postId}`, 'true');
+            const data = response.data;
 
-                // показать всплывающее сообщение на 3 секунды
-                setTooltipVisible(true);
-                setTimeout(() => setTooltipVisible(false), 3000);
+            if (!data.success) {
+                showTooltip(data.message || 'Ошибка');
+                markAsVoted();
+                return;
             }
+
+            // успешный голос
+            setRatingSum((prev) => prev + newRating);
+            setVoteCount((prev) => prev + 1);
+            markAsVoted();
+            showTooltip('Ваш голос учтен');
         } catch (error) {
             console.error('Ошибка при голосовании:', error);
+            showTooltip('Ошибка при отправке');
         }
     };
 
@@ -57,13 +78,13 @@ const RaitingComponent = ({ postId, initialRatingSum, initialVoteCount }: Rating
             itemScope
             itemType="https://schema.org/AggregateRating"
             data-post-id={postId}
-            {...(tooltipVisible ? { 'data-tooltip': 'Ваш голос учтен' } : {})}
+            {...(tooltipVisible ? { 'data-tooltip': tooltipText } : {})}
             onMouseLeave={() => {
                 if (voted) setShowNewRating(true);
             }}
         >
             <StarRatings
-                rating={rating}
+                rating={averageRating}
                 key={showNewRating && !tooltipVisible ? 'readonly' : 'interactive'}
                 changeRating={!voted ? handleChangeRating : undefined}
                 starEmptyColor="rgb(210, 210, 210)"
@@ -78,10 +99,11 @@ const RaitingComponent = ({ postId, initialRatingSum, initialVoteCount }: Rating
             />
             <meta itemProp="reviewCount" content={`${voteCount}`} />
             <meta itemProp="ratingCount" content={`${voteCount}`} />
-            <meta itemProp="ratingValue" content={`${rating}`} />
-            <meta itemProp="bestRating" content="5"></meta>
+            <meta itemProp="ratingValue" content={`${averageRating}`} />
+            <meta itemProp="bestRating" content="5" />
+            <meta itemProp="worstRating" content="1" />
         </div>
     );
 };
 
-export default RaitingComponent;
+export default Rating;
