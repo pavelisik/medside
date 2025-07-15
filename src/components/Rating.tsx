@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import StarRatings from 'react-star-ratings';
+import StarRating from 'react-star-ratings';
 import axios from 'axios';
 
 interface RatingProps {
@@ -84,7 +84,7 @@ const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => 
                     if (voted) setShowNewRating(true);
                 }}
             >
-                <StarRatings
+                <StarRating
                     rating={averageRating}
                     key={showNewRating && !tooltipVisible ? 'readonly' : 'interactive'}
                     changeRating={!voted ? handleChangeRating : undefined}
