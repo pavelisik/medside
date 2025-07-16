@@ -77,10 +77,15 @@ export interface WPPostData {
             post_image: string;
         }[];
         post_author: {
-            author_ID: number;
-            author_slug: string;
-            author_name: string;
-            author_info: string;
+            id: number;
+            slug: string;
+            name: string;
+            image?: string;
+            info_about: string;
+            info_special?: string;
+            info_education?: string;
+            info_experience?: string;
+            info_other?: string;
         };
         head_title: string;
         head_description: string;

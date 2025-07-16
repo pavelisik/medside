@@ -4,6 +4,7 @@ import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
 import SourcesBlock from '../../components/SourcesBlock';
+import AuthorBlock from '../../components/AuthorBlock';
 import { parseContent } from '../../utils/parseContent';
 import type { WPBolezniData } from '../../types/wpTypes';
 
@@ -23,6 +24,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
         menu_data,
         content,
         metadata,
+        post_author,
     } = data.data;
 
     return (
@@ -47,6 +49,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
             </div>
 
             <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
+            <AuthorBlock author={post_author} />
         </div>
     );
 };

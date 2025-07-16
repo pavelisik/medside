@@ -3675,7 +3675,8 @@ sup {
     max-width: calc(100% - 130px);
 }
 .author-block .author-description {
-    display: none;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
 }
 .author-block .author-description p:last-child {
     margin-bottom: 5px;
