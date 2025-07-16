@@ -2,36 +2,15 @@
     position: relative;
     padding: 0 30px;
     margin: 25px 0 20px;
+    user-select: none;
 }
 
 .swiper-slide {
+    display: flex;
     text-align: center;
     font-size: 16px;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    -webkit-transition-property: -webkit-transform;
-    transition-property: -webkit-transform;
-    -o-transition-property: transform;
-    transition-property: transform;
-    transition-property: transform, -webkit-transform;
 }
+
 .swiper-slide a {
     padding: 0 10px;
     box-sizing: border-box;
@@ -43,7 +22,8 @@
 .swiper-slide img {
     width: auto;
 }
-.sw .swiper-slide img {
+
+.swiper-drugs .swiper-slide img {
     height: 110px;
     margin: 0 auto 10px auto;
 }
@@ -56,59 +36,52 @@
     margin: 0 auto;
 }
 
-.sw-but-prev,
-.sw-but-next {
+.swiper-prev,
+.swiper-next {
     position: absolute;
     top: 47px;
     color: #cbcbcb;
     transition: color 0.5s;
     width: 12px;
     height: 20px;
+    z-index: 10;
+    cursor: pointer;
+    -webkit-tap-highlight-color: #0000;
 }
-
-.sw-but-prev:hover,
-.sw-but-next:hover {
+.swiper-prev {
+    left: 10px;
+}
+.swiper-next {
+    right: 10px;
+}
+.swiper-prev:hover,
+.swiper-next:hover {
     color: #565656;
 }
-
-.sw-but-prev {
-    left: 10px;
-    right: auto;
+.swiper-button-disabled,
+.swiper-button-disabled {
+    color: #e1e1e1;
+    cursor: auto;
+    pointer-events: none;
 }
 
-.sw-but-prev:before {
+.swiper-prev:before,
+.swiper-next:before {
+    font-family: 'icomoon';
+    font-size: 20px;
+    position: relative;
+    bottom: 1px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.swiper-prev:before {
     content: '\eddf';
-    font-size: 20px;
-    position: relative;
-    bottom: 1px;
     right: 3px;
-    font-family: 'icomoon' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-.sw-but-next {
-    right: 10px;
-    left: auto;
-}
-
-.sw-but-next:before {
+.swiper-next:before {
     content: '\edb9';
-    font-size: 20px;
-    position: relative;
-    bottom: 1px;
     right: 4px;
-    font-family: 'icomoon' !important;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }

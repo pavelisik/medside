@@ -1,6 +1,7 @@
 import parse, { domToReact } from 'html-react-parser';
 import type { HTMLReactParserOptions, DOMNode, Element } from 'html-react-parser';
 import type { WPBolezniMetadata } from '../types/wpTypes';
+import PostsSwiper from '../components/PostsSwiper';
 
 interface ParseContentArgs {
     content: string;
@@ -10,39 +11,19 @@ interface ParseContentArgs {
 
 export const parseContent = ({ content, drugs, diets }: ParseContentArgs) => {
     const siteUrl = 'https://medside.ru';
-    const localUrl = window.location.origin;
+    const localUrl = typeof window !== 'undefined' ? window.location.origin : siteUrl;
 
     let replacedContent = content;
 
-    // заменяем [drugs], если передано значение
-    if (drugs && Array.isArray(drugs)) {
-        // <div className="swiper-block">
-        //     <div className="swiper-container sw">
-        //         <div className="swiper-wrapper">
-        //         drugs.map(() => (
-        //             <div className="swiper-slide">
-        //                 <a href="" title="">
-        //                     <img src="" />
-        //                 </a>
-        //             </div>
-        //         ))
-        //         </div>
-        //     </div>
-        //     <div className="swiper-button-prev sw-but-prev"></div>
-        //     <div className="swiper-button-next sw-but-next"></div>
-        // </div>
-        // replacedContent = replacedContent.replace(/\[drugs\]/gi, drugs);
-    }
-
-    // заменяем [diets], если передано значение
+    // заменяем [diets] на простой текст
     if (diets && Array.isArray(diets)) {
-        // Преобразуем в строку, например: "диета1, диета2"
         const dietsText = diets.map((d) => d.name).join(', ');
         replacedContent = replacedContent.replace(/\[diets\]/gi, dietsText);
     }
 
     const options: HTMLReactParserOptions = {
         replace: (domNode: DOMNode) => {
+            // заменяем ссылки на локальные
             if (domNode.type === 'tag' && domNode.name === 'a' && 'attribs' in domNode && domNode.attribs?.href?.startsWith(siteUrl)) {
                 const el = domNode as Element;
                 const newHref = el.attribs.href.replace(siteUrl, localUrl);
@@ -52,6 +33,11 @@ export const parseContent = ({ content, drugs, diets }: ParseContentArgs) => {
                         {domToReact(el.children as DOMNode[], options)}
                     </a>
                 );
+            }
+
+            // вставляем компонент PostsSwiper на месте [drugs]
+            if (domNode.type === 'tag' && domNode.name === 'div' && 'attribs' in domNode && domNode.attribs['data-component'] === 'drugs-swiper') {
+                return <PostsSwiper drugs={drugs} />;
             }
 
             return undefined;

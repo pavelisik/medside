@@ -3,7 +3,6 @@ import CategoryLabel from '../../components/CategoryLabel';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
-import PostsSwiper from '../../components/PostsSwiper';
 import { parseContent } from '../../utils/parseContent';
 import type { WPBolezniData } from '../../types/wpTypes';
 
@@ -41,7 +40,6 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                 </div>
             </div>
             <div id="page-content">
-                <PostsSwiper drugs={metadata.drugs} />
                 {menu_data.length > 1 && <PageMenu data={menu_data} />}
                 {parseContent({ content, drugs: metadata.drugs, diets: metadata.diets })}
             </div>

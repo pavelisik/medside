@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import type { WPBolezniMetadata } from '../types/wpTypes';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import type { WPBolezniMetadata } from '../types/wpTypes';
 import '../assets/styles/swiper.css';
 
 interface PostsSwiperProps {
@@ -16,10 +16,10 @@ const PostsSwiper = ({ drugs }: PostsSwiperProps) => {
 
     return (
         <div className="swiper-block">
-            <div ref={prevRef} className="sw-but-prev"></div>
-            <div ref={nextRef} className="sw-but-next"></div>
+            <div ref={prevRef} className="swiper-prev" role="button" aria-label="Назад"></div>
+            <div ref={nextRef} className="swiper-next" role="button" aria-label="Вперед"></div>
             <Swiper
-                className="sw"
+                className="swiper-drugs"
                 modules={[Navigation]}
                 navigation={{
                     prevEl: prevRef.current,
@@ -27,7 +27,7 @@ const PostsSwiper = ({ drugs }: PostsSwiperProps) => {
                 }}
                 spaceBetween={0}
                 slidesPerView={4}
-                watchOverflow={true}
+                watchOverflow
                 onBeforeInit={(swiper) => {
                     if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
                         swiper.params.navigation.prevEl = prevRef.current;
@@ -37,8 +37,8 @@ const PostsSwiper = ({ drugs }: PostsSwiperProps) => {
             >
                 {drugs?.map((post) => (
                     <SwiperSlide key={post.id}>
-                        <a href={`/${post.slug}`} title={post.name}>
-                            <img src={post.image} alt={post.name} />
+                        <a href={`/${post.slug}`} title={post.name} target="_blank" rel="noopener noreferrer">
+                            <img src={post.image} alt={post.name} loading="lazy" />
                             {post.name}
                         </a>
                     </SwiperSlide>
