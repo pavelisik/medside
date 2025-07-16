@@ -1,3 +1,4 @@
+import RatingStatic from './RatingStatic';
 import type { WPBolezniMetadata } from '../types/wpTypes';
 
 interface DietsBlockProps {
@@ -13,9 +14,8 @@ const DietsBlock = ({ data }: DietsBlockProps) => {
                         <img src={post.image} alt={post.name} loading="lazy" />
                     </div>
                     <div className="diet-right">
-                        {/* проверить для нулевого рейтинга */}
-                        <span className="diet-rating" title={`Рейтинг ${post.diet_rating} из 5`}>
-                            {post.diet_rating}
+                        <span className="diet-rating">
+                            <RatingStatic rating={post.diet_rating ?? 0} />
                         </span>
 
                         <h3>
