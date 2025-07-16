@@ -7,10 +7,10 @@ import 'swiper/css/navigation';
 import '../assets/styles/swiper.css';
 
 interface PostsSwiperProps {
-    drugs?: WPBolezniMetadata['drugs'];
+    data?: WPBolezniMetadata['drugs'];
 }
 
-const PostsSwiper = ({ drugs }: PostsSwiperProps) => {
+const PostsSwiper = ({ data }: PostsSwiperProps) => {
     const prevRef = useRef<HTMLDivElement | null>(null);
     const nextRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +35,7 @@ const PostsSwiper = ({ drugs }: PostsSwiperProps) => {
                     }
                 }}
             >
-                {drugs?.map((post) => (
+                {data?.map((post) => (
                     <SwiperSlide key={post.id}>
                         <a href={`/${post.slug}`} title={post.name} target="_blank" rel="noopener noreferrer">
                             <img src={post.image} alt={post.name} loading="lazy" />

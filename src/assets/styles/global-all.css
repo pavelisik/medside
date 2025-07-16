@@ -1453,7 +1453,7 @@ sup {
     }
 }
 
-/* --- Рейтинг Stars Raiting --------------- */
+/* --- Рейтинг Stars Rating --------------- */
 .wp-stars-wrapper {
     display: inline-block;
     position: relative;
@@ -1783,7 +1783,7 @@ sup {
     color: #242424;
     text-decoration: none;
 }
-.main-image-block .clinic-raiting {
+.main-image-block .clinic-rating {
     margin: 10px 0 0 0;
 }
 .main-image-block .clinic-numrew {
@@ -1967,7 +1967,7 @@ sup {
     .main-image-block span {
         width: 282px;
     }
-    .main-image-block .clinic-raiting,
+    .main-image-block .clinic-rating,
     .main-image-block .clinic-numrew {
         width: auto;
     }
@@ -2533,7 +2533,7 @@ sup {
     font-size: 1.06rem;
     max-width: calc(100% - 120px);
 }
-.diets-block .diet-raiting {
+.diets-block .diet-rating {
     position: absolute;
     right: 0px;
     top: -2px;
@@ -2568,7 +2568,7 @@ sup {
     }
 }
 @media (max-width: 600px) {
-    .diets-block .diet-raiting {
+    .diets-block .diet-rating {
         display: block;
         position: relative;
         left: -3px;
@@ -2836,7 +2836,7 @@ sup {
 .doctors-block-big .hidden-doctor {
     display: none;
 }
-.doctors-block-big .doctor-raiting {
+.doctors-block-big .doctor-rating {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -2928,7 +2928,7 @@ sup {
     .doctors-block-big h3 {
         max-width: none;
     }
-    .doctors-block-big .doctor-raiting {
+    .doctors-block-big .doctor-rating {
         position: static;
     }
     .doctors-block-big .doctor-numrew {

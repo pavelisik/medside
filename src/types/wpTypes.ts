@@ -110,8 +110,14 @@ export interface WPBolezniMetadata {
         image: string;
     }[];
     diets?: {
+        id: number;
         name: string;
         slug: string;
+        image: string;
+        diet_rating?: number;
+        diet_result?: string;
+        diet_time?: string;
+        diet_cost?: string;
     }[];
     mkb10?: string;
 }

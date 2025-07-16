@@ -2,6 +2,7 @@ import parse, { domToReact } from 'html-react-parser';
 import type { HTMLReactParserOptions, DOMNode, Element } from 'html-react-parser';
 import type { WPBolezniMetadata } from '../types/wpTypes';
 import PostsSwiper from '../components/PostsSwiper';
+import DietsBlock from '../components/DietsBlock';
 
 interface ParseContentArgs {
     content: string;
@@ -35,9 +36,12 @@ export const parseContent = ({ content, drugs, diets }: ParseContentArgs) => {
                 );
             }
 
-            // вставляем компонент PostsSwiper на месте [drugs]
             if (domNode.type === 'tag' && domNode.name === 'div' && 'attribs' in domNode && domNode.attribs['data-component'] === 'drugs-swiper') {
-                return <PostsSwiper drugs={drugs} />;
+                return <PostsSwiper data={drugs} />;
+            }
+
+            if (domNode.type === 'tag' && domNode.name === 'div' && 'attribs' in domNode && domNode.attribs['data-component'] === 'diets-block') {
+                return <DietsBlock data={diets} />;
             }
 
             return undefined;
