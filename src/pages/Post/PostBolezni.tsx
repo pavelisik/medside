@@ -3,6 +3,7 @@ import CategoryLabel from '../../components/CategoryLabel';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
+import SourcesBlock from '../../components/SourcesBlock';
 import { parseContent } from '../../utils/parseContent';
 import type { WPBolezniData } from '../../types/wpTypes';
 
@@ -35,14 +36,17 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                     <div className="right-inner-block">
                         <CategoryLabel categories={categories} count={parents_count} first={parent_cat_first} second={parent_cat_second} />
                         <DataList data={metadata} />
-                        <ShareBlock title={title} description={head_description} image={featured_image} />
+                        <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>
             </div>
             <div id="page-content">
                 {menu_data.length > 1 && <PageMenu data={menu_data} />}
                 {parseContent({ content, drugs: metadata.drugs, diets: metadata.diets })}
+                {metadata.sources && <SourcesBlock data={metadata.sources} />}
             </div>
+
+            <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
         </div>
     );
 };

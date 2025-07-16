@@ -22,8 +22,8 @@ const DataList = ({ data }: { data: WPBolezniMetadata }) => {
                     {data.diets && (
                         <li>
                             Диеты при болезни:{' '}
-                            {data.diets.map(({ name, slug }, index, arr) => (
-                                <span key={slug}>
+                            {data.diets.map(({ name, slug, id }, index, arr) => (
+                                <span key={id}>
                                     <a href={`/${slug}`} title={name} target="_blank" rel="noopener noreferrer">
                                         {name}
                                     </a>
