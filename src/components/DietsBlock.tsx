@@ -1,4 +1,4 @@
-import RatingStatic from './RatingStatic';
+import RatingStatic from './Rating/RatingStatic';
 import type { WPBolezniMetadata } from '../types/wpTypes';
 
 interface DietsBlockProps {

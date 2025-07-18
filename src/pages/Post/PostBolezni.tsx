@@ -1,4 +1,4 @@
-import Rating from '../../components/Rating';
+import Rating from '../../components/Rating/Rating';
 import CategoryLabel from '../../components/CategoryLabel';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
