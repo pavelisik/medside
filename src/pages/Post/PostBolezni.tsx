@@ -50,12 +50,9 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                 {parseContent({ content, drugs: metadata.drugs, diets: metadata.diets })}
                 {metadata.sources && <SourcesBlock data={metadata.sources} />}
             </div>
-
             <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
             <AuthorBlock author={post_author} />
-
             <CommentsBlock />
-
             {tags_posts && <SimilarBottomBlock posts={tags_posts} />}
         </div>
     );
