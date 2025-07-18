@@ -1,5 +1,9 @@
-import { useForm, Controller, type SubmitHandler } from 'react-hook-form';
+import clsx from 'clsx';
+import { useForm, Controller, type FieldErrors, type SubmitHandler } from 'react-hook-form';
 import RatingInput from './Rating/RatingInput';
+import { AiOutlineExclamationCircle } from 'react-icons/ai';
+
+import styles from './CommentsBlock.module.css';
 
 interface CommentForm {
     rating: 0 | 1 | 2 | 3 | 4 | 5;
@@ -23,6 +27,20 @@ const CommentsBlock = () => {
         },
     });
 
+    const getFirstErrorMessage = (errors: FieldErrors<CommentForm>) => {
+        const fields: (keyof CommentForm)[] = ['name', 'email', 'commentText'];
+
+        const firstErrorField = fields.find((field) => errors[field]?.message);
+        const message = firstErrorField && errors[firstErrorField]?.message;
+
+        return (
+            <span className={clsx(styles.error, !message && styles.hidden)} aria-live="polite">
+                <AiOutlineExclamationCircle size={18} />
+                {message || '\u00A0'}
+            </span>
+        );
+    };
+
     const onSubmit: SubmitHandler<CommentForm> = (data) => {
         // тут буду отправлять валидные данные запросом на сервер
         console.log('Отправлено: ', data);
@@ -34,13 +52,7 @@ const CommentsBlock = () => {
             <div id="respond">
                 <div id="comments-form">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {errors.name?.message ? (
-                            <p className="error">{errors.name.message}</p>
-                        ) : errors.email?.message ? (
-                            <p className="error">{errors.email.message}</p>
-                        ) : errors.commentText?.message ? (
-                            <p className="error">{errors.commentText.message}</p>
-                        ) : null}
+                        {getFirstErrorMessage(errors)}
 
                         <div className="rating-comments">
                             <span>Оцените статью: </span>
@@ -77,7 +89,7 @@ const CommentsBlock = () => {
                                 },
                                 pattern: {
                                     value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                    message: 'Введите корректный email',
+                                    message: 'введите корректный e-mail',
                                 },
                             })}
                             placeholder="E-mail (обязательно)"
