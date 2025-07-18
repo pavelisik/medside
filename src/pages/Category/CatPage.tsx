@@ -22,7 +22,7 @@ const CatPage = () => {
     return isNoMatch ? (
         <NoMatch />
     ) : (
-        <Content data={loading ? undefined : data}>
+        <Content breadcrumbsData={loading ? undefined : data?.data.breadcrumbs_data}>
             {loading || !data ? (
                 <p>Загрузка ...</p>
             ) : error ? (

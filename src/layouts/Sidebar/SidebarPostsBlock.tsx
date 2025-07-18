@@ -1,11 +1,8 @@
+import type { WPSimplePost } from '../../types/wpTypes';
+
 interface SidebarSimilarBlockProps {
     title: string;
-    posts: {
-        post_ID: number;
-        post_slug: string;
-        post_title: string;
-        post_image: string;
-    }[];
+    posts: WPSimplePost[];
 }
 
 const SidebarPostsBlock = ({ title, posts }: SidebarSimilarBlockProps) => {

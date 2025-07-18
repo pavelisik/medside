@@ -2,17 +2,23 @@ import SidebarPostsBlock from './SidebarPostsBlock';
 import SidebarSocialBlock from './SidebarSocialBlock';
 import SidebarCommentsBlock from './SidebarCommentsBlock';
 import SidebarRusfondBanner from './SidebarRusfondBanner';
-import type { WPDataBySlug } from '../../types/wpTypes';
-import { isPostData } from '../../types/wpTypeGuards';
+import type { WPSidebarData } from '../../types/wpTypes';
 
-const Sidebar = ({ data }: { data?: WPDataBySlug }) => {
+interface SidebarProps {
+    data?: WPSidebarData;
+}
+
+const Sidebar = ({ data }: SidebarProps) => {
+    const { sim_block_title, sim_posts, tags_posts } = data || {};
+
+    const hasSimPosts = Array.isArray(sim_posts) && sim_posts.length > 0 && !!sim_block_title;
+    const hasTagPosts = Array.isArray(tags_posts) && tags_posts.length > 0;
+
     return (
         <div id="right">
-            {data && isPostData(data) && data.data.sim_block_title && data.data.sim_block_array && (
-                <SidebarPostsBlock title={data.data.sim_block_title} posts={data.data.sim_block_array} />
-            )}
+            {hasSimPosts && <SidebarPostsBlock title={sim_block_title} posts={sim_posts} />}
             <SidebarSocialBlock />
-            {data && isPostData(data) && data.data.tags_block_array && <SidebarPostsBlock title="Статьи по теме" posts={data.data.tags_block_array} />}
+            {hasTagPosts && <SidebarPostsBlock title="Статьи по теме" posts={tags_posts} />}
             <SidebarCommentsBlock />
             <SidebarRusfondBanner />
         </div>

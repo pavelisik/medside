@@ -1,31 +1,30 @@
 import BreadcrumbsList from './BreadcrumbsList';
 import BreadcrumbsItem from './BreadcrumbsItem';
-import type { WPDataBySlug } from '../../types/wpTypes';
-import { isCategoryData, isPageData, isPostData, isDoctorData, isClinicData } from '../../types/wpTypeGuards';
+import type { WPBreadcrumbsData } from '../../types/wpTypes';
 
 interface BreadcrumbsProps {
-    data?: WPDataBySlug;
+    data?: WPBreadcrumbsData;
     isNoMatch?: boolean;
 }
 
 const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
-    if (data && isCategoryData(data)) {
-        const { name, parent_name, parent_slug } = data.data;
+    if (data?.type === 'category') {
+        const { name, parent_name, parent_slug } = data;
         return (
             <BreadcrumbsList>
                 {parent_name && parent_slug && <BreadcrumbsItem title={parent_name} slug={`/${parent_slug}`} position={2} />}
-                <BreadcrumbsItem title={name} position={parent_slug ? 3 : 2} showSeparator={false} />
+                <BreadcrumbsItem title={name!} position={parent_slug ? 3 : 2} showSeparator={false} />
             </BreadcrumbsList>
         );
-    } else if (data && isPageData(data)) {
-        const { title } = data.data;
+    } else if (data?.type === 'page') {
+        const { title } = data;
         return (
             <BreadcrumbsList>
-                <BreadcrumbsItem title={title} position={2} showSeparator={false} />
+                <BreadcrumbsItem title={title!} position={2} showSeparator={false} />
             </BreadcrumbsList>
         );
-    } else if (data && isPostData(data)) {
-        const { categories, parents_count, parent_cat_first, parent_cat_second } = data.data;
+    } else if (data?.type === 'post') {
+        const { categories, parents_count, parent_cat_first, parent_cat_second } = data;
         if (!categories?.[0]) return null;
         return (
             <BreadcrumbsList>
@@ -54,8 +53,8 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
                 )}
             </BreadcrumbsList>
         );
-    } else if (data && isDoctorData(data)) {
-        const { categories, parent_cat_first } = data.data;
+    } else if (data?.type === 'doctor') {
+        const { categories, parent_cat_first } = data;
         if (!categories?.[0]) return null;
         return (
             <BreadcrumbsList>
@@ -72,8 +71,8 @@ const Breadcrumbs = ({ data, isNoMatch }: BreadcrumbsProps) => {
                 )}
             </BreadcrumbsList>
         );
-    } else if (data && isClinicData(data)) {
-        const { parent_cat_first } = data.data;
+    } else if (data?.type === 'clinic') {
+        const { parent_cat_first } = data;
         return (
             <BreadcrumbsList>
                 {parent_cat_first && <BreadcrumbsItem title={parent_cat_first.name} slug={`/${parent_cat_first.slug}`} position={2} showSeparator={false} />}

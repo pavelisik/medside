@@ -52,30 +52,10 @@ export interface WPPostData {
             slug: string;
         };
         parents_count: 0 | 1 | 2;
-        cat_type:
-            | 'bolezni'
-            | 'symptoms'
-            | 'diets'
-            | 'lekarstva'
-            | 'active-substances'
-            | 'stati'
-            | 'novosti-meditsinyi'
-            | 'diagnostics'
-            | 'services'
-            | 'meditsinskiy-slovar';
-        sim_block_title?: string;
-        sim_block_array?: {
-            post_ID: number;
-            post_slug: string;
-            post_title: string;
-            post_image: string;
-        }[];
-        tags_block_array?: {
-            post_ID: number;
-            post_slug: string;
-            post_title: string;
-            post_image: string;
-        }[];
+        cat_type: CatType;
+        sidebar_data: WPSidebarData;
+        breadcrumbs_data: WPBreadcrumbsData;
+        tags_posts?: WPSimplePost[];
         post_author: {
             id: number;
             slug: string;
@@ -98,6 +78,59 @@ export interface WPPostData {
         }[];
         content: string;
         metadata?: WPBolezniMetadata | WPDietsMetadata | WPDrugsMetadata | WPSubstancesMetadata | WPStatiMetadata | WPServicesMetadata;
+    };
+}
+
+// тип данных категорий постов
+export type CatType =
+    | 'bolezni'
+    | 'symptoms'
+    | 'diets'
+    | 'lekarstva'
+    | 'active-substances'
+    | 'stati'
+    | 'novosti-meditsinyi'
+    | 'diagnostics'
+    | 'services'
+    | 'meditsinskiy-slovar';
+
+export interface WPSimplePost {
+    post_ID: number;
+    post_slug: string;
+    post_title: string;
+    post_image?: string;
+}
+
+// тип данных для сайдбара
+export interface WPSidebarData {
+    cat_type: CatType;
+    sim_block_title: string;
+    sim_posts?: WPSimplePost[];
+    tags_posts?: WPSimplePost[];
+}
+
+// тип данных для хлебных крошек
+export interface WPBreadcrumbsData {
+    type: 'post' | 'page' | 'category' | 'clinic' | 'doctor';
+    title?: string;
+    name?: string;
+    parent_name?: string;
+    parent_slug?: string;
+    categories?: {
+        term_id: number;
+        name: string;
+        slug: string;
+    }[];
+    parents_count?: 0 | 1 | 2;
+    parent_cat_first?: {
+        term_id: number;
+        name: string;
+        slug: string;
+    };
+    parent_cat_second?: {
+        term_id: number;
+        name: string;
+        slug: string;
     };
 }
 
@@ -254,6 +287,8 @@ export interface WPPageData {
         title: string;
         date: string;
         content: string;
+        breadcrumbs_data: WPBreadcrumbsData;
+        sidebar_data?: WPSidebarData;
     };
 }
 
@@ -280,6 +315,8 @@ export interface WPDoctorData {
         cat_type: 'doctors';
         sim_block_title: string;
         content: string;
+        breadcrumbs_data: WPBreadcrumbsData;
+        sidebar_data?: WPSidebarData;
         metadata: {
             name: string;
             alias: string;
@@ -333,6 +370,8 @@ export interface WPClinicData {
         cat_type: 'clinics';
         sim_block_title: string;
         content: string;
+        breadcrumbs_data: WPBreadcrumbsData;
+        sidebar_data?: WPSidebarData;
         metadata: {
             name: string;
             shortname: string;
@@ -382,6 +421,8 @@ export interface WPCategoryData {
         parent_slug?: string;
         parent_name?: string;
         is_with_posts: boolean;
+        breadcrumbs_data: WPBreadcrumbsData;
+        sidebar_data?: WPSidebarData;
         cats_array?: {
             cat_ID: number;
             cat_slug: string;

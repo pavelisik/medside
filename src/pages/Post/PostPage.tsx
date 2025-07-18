@@ -18,7 +18,7 @@ const PostPage = () => {
     return isNoMatch ? (
         <NoMatch />
     ) : (
-        <Content data={data} loading={loading}>
+        <Content sidebarData={data?.data.sidebar_data} breadcrumbsData={data?.data.breadcrumbs_data} loading={loading}>
             {loading ? (
                 <p>Загрузка...</p>
             ) : error ? (
