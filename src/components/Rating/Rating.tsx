@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import StarRating from 'react-star-ratings';
+import { showSuccess, showWarning } from '../../utils/toast';
 import axios from 'axios';
 
 interface RatingProps {
@@ -9,21 +10,13 @@ interface RatingProps {
     initialVoteCount: number;
 }
 
-const Rating = ({
-    postId,
-    initialRatingSum,
-    initialVoteCount,
-}: RatingProps) => {
+const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => {
     // проверка на голосование
     const [voted, setVoted] = useState(false);
     // общая сумма голосов у поста
     const [ratingSum, setRatingSum] = useState(initialRatingSum);
     // общее число голосов у поста
     const [voteCount, setVoteCount] = useState(initialVoteCount);
-    // отображение всплывающего окна
-    const [tooltipVisible, setTooltipVisible] = useState(false);
-    // текст всплывающего окна
-    const [tooltipText, setTooltipText] = useState('');
     // отображение нового рейтинга
     const [showNewRating, setShowNewRating] = useState(false);
 
@@ -33,12 +26,6 @@ const Rating = ({
     useEffect(() => {
         setVoted(Boolean(Cookies.get(cookieName)));
     }, [postId]);
-
-    const showTooltip = (text: string) => {
-        setTooltipText(text);
-        setTooltipVisible(true);
-        setTimeout(() => setTooltipVisible(false), 3000);
-    };
 
     const markAsVoted = () => {
         setVoted(true);
@@ -58,7 +45,7 @@ const Rating = ({
             const data = response.data;
 
             if (!data.success) {
-                showTooltip(data.message || 'Ошибка');
+                showWarning(data.message || 'Ошибка');
                 markAsVoted();
                 return;
             }
@@ -67,10 +54,11 @@ const Rating = ({
             setRatingSum((prev) => prev + newRating);
             setVoteCount((prev) => prev + 1);
             markAsVoted();
-            showTooltip('Ваш голос учтен');
+            showSuccess('Ваш голос учтен');
         } catch (error) {
             console.error('Ошибка при голосовании:', error);
-            showTooltip('Ошибка при отправке');
+
+            showWarning('Ошибка при отправке');
         }
     };
 
@@ -82,18 +70,13 @@ const Rating = ({
                 itemScope
                 itemType="https://schema.org/AggregateRating"
                 data-post-id={postId}
-                {...(tooltipVisible ? { 'data-tooltip': tooltipText } : {})}
                 onMouseLeave={() => {
                     if (voted) setShowNewRating(true);
                 }}
             >
                 <StarRating
                     rating={averageRating}
-                    key={
-                        showNewRating && !tooltipVisible
-                            ? 'readonly'
-                            : 'interactive'
-                    }
+                    key={showNewRating ? 'readonly' : 'interactive'}
                     changeRating={!voted ? handleChangeRating : undefined}
                     starEmptyColor="rgb(210, 210, 210)"
                     starHoverColor="rgb(165, 165, 165)"
