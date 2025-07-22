@@ -1,5 +1,11 @@
 import axios from 'axios';
-import type { WPPostImg, WPCategory, WPComment, WPRusfondData, WPDataBySlug } from '../../types/wpTypes';
+import type {
+    WPPostImg,
+    WPCategory,
+    WPComment,
+    WPRusfondData,
+    WPDataBySlug,
+} from '../../types/wpTypes';
 
 const api = axios.create({
     baseURL: 'https://medside.ru/wp-json/wp/v2',
@@ -9,7 +15,9 @@ const custom_api = axios.create({
 });
 const defaultFieldsPosts = { _fields: 'id,title,slug,featured_image' };
 const defaultFieldsCategories = { _fields: 'id,count,name,slug' };
-const defaultFieldsComments = { _fields: 'id,author_name,comment_excerpt,date,post,post_slug,post_title' };
+const defaultFieldsComments = {
+    _fields: 'id,author_name,comment_excerpt,date,post,post_slug,post_title',
+};
 
 const handleAxiosError = (error: unknown) => {
     if (axios.isAxiosError(error)) {
@@ -25,7 +33,10 @@ const handleAxiosError = (error: unknown) => {
     }
 };
 
-export const getPosts = async <T = WPPostImg>(url: string, params: Record<string, any>): Promise<T[] | undefined> => {
+export const getPosts = async <T = WPPostImg>(
+    url: string,
+    params: Record<string, any>
+): Promise<T[] | undefined> => {
     try {
         const mergedParams = { ...defaultFieldsPosts, ...params };
         const res = await api.get<T[]>(url, { params: mergedParams });
@@ -35,7 +46,10 @@ export const getPosts = async <T = WPPostImg>(url: string, params: Record<string
     }
 };
 
-export const getCategories = async <T = WPCategory>(url: string, params: Record<string, any>): Promise<T[] | undefined> => {
+export const getCategories = async <T = WPCategory>(
+    url: string,
+    params: Record<string, any>
+): Promise<T[] | undefined> => {
     try {
         const mergedParams = { ...defaultFieldsCategories, ...params };
         const res = await api.get<T[]>(url, { params: mergedParams });
@@ -45,7 +59,10 @@ export const getCategories = async <T = WPCategory>(url: string, params: Record<
     }
 };
 
-export const getComments = async (url: string, params: Record<string, any>): Promise<WPComment[] | undefined> => {
+export const getComments = async (
+    url: string,
+    params: Record<string, any>
+): Promise<WPComment[] | undefined> => {
     try {
         const mergedParams = { ...defaultFieldsComments, ...params };
         const res = await api.get<WPComment[]>(url, { params: mergedParams });
@@ -55,14 +72,14 @@ export const getComments = async (url: string, params: Record<string, any>): Pro
     }
 };
 
-export const getDataBySlug = async (slug: string, type: 'post' | 'cat', page?: number): Promise<WPDataBySlug | undefined> => {
+export const getDataBySlug = async (
+    slug: string,
+    type: 'post' | 'cat',
+    page?: number
+): Promise<WPDataBySlug | undefined> => {
     try {
-        const queryParams = new URLSearchParams();
-        queryParams.set('cache_bust', Date.now().toString());
-        if (page !== undefined) {
-            queryParams.set('page', page.toString());
-        }
-        const url = `/${type}/${slug}?${queryParams.toString()}`;
+        const query = page !== undefined ? `?page=${page}` : '';
+        const url = `/${type}/${slug}${query}`;
         const res = await custom_api.get<WPDataBySlug>(url);
         return res.data;
     } catch (error) {
@@ -70,7 +87,9 @@ export const getDataBySlug = async (slug: string, type: 'post' | 'cat', page?: n
     }
 };
 
-export const getRusfondData = async (url: string): Promise<WPRusfondData[] | undefined> => {
+export const getRusfondData = async (
+    url: string
+): Promise<WPRusfondData[] | undefined> => {
     try {
         const res = await custom_api.get<WPRusfondData[]>(url);
         return res.data;

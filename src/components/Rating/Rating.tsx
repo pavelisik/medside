@@ -9,7 +9,11 @@ interface RatingProps {
     initialVoteCount: number;
 }
 
-const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => {
+const Rating = ({
+    postId,
+    initialRatingSum,
+    initialVoteCount,
+}: RatingProps) => {
     // проверка на голосование
     const [voted, setVoted] = useState(false);
     // общая сумма голосов у поста
@@ -46,7 +50,6 @@ const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => 
 
         try {
             const url = new URL('https://medside.ru/wp-json/custom/v1/rate');
-            url.searchParams.set('cache_bust', Date.now().toString());
             const response = await axios.post(url.toString(), {
                 post_id: postId,
                 rating: newRating,
@@ -86,7 +89,11 @@ const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => 
             >
                 <StarRating
                     rating={averageRating}
-                    key={showNewRating && !tooltipVisible ? 'readonly' : 'interactive'}
+                    key={
+                        showNewRating && !tooltipVisible
+                            ? 'readonly'
+                            : 'interactive'
+                    }
                     changeRating={!voted ? handleChangeRating : undefined}
                     starEmptyColor="rgb(210, 210, 210)"
                     starHoverColor="rgb(165, 165, 165)"
