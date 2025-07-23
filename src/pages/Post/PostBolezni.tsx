@@ -5,7 +5,7 @@ import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
 import SourcesBlock from '../../components/SourcesBlock';
 import AuthorBlock from '../../components/AuthorBlock';
-import CommentsBlock from '../../components/CommentsBlock';
+import CommentsBlock from '../../components/Comments/CommentsBlock';
 import SimilarBottomBlock from '../../components/SimilarBottomBlock';
 import { parseContent } from '../../utils/parseContent';
 import type { WPBolezniData } from '../../types/wpTypes';
@@ -52,7 +52,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
             </div>
             <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
             <AuthorBlock author={post_author} />
-            <CommentsBlock />
+            <CommentsBlock postId={id} isDrugs />
             {tags_posts && <SimilarBottomBlock posts={tags_posts} />}
         </div>
     );

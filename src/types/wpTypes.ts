@@ -14,6 +14,9 @@ export interface WPComment extends WP_REST_API_Comment {
     comment_excerpt: string;
     post_slug: string;
     post_title: string;
+    meta: {
+        rating: string;
+    };
 }
 
 // тип данных для блока Rusfond

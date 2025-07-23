@@ -3872,6 +3872,7 @@ sup {
 #page-comments .reviews-more {
     width: 100%;
     text-align: center;
+    user-select: none;
 }
 #page-comments .reviews-more span {
     display: inline-block;
