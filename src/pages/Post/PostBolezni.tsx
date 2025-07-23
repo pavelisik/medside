@@ -52,7 +52,7 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
             </div>
             <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
             <AuthorBlock author={post_author} />
-            <CommentsBlock postId={id} isDrugs />
+            <CommentsBlock postId={id} />
             {tags_posts && <SimilarBottomBlock posts={tags_posts} />}
         </div>
     );

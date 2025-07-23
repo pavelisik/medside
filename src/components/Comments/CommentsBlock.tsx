@@ -9,9 +9,9 @@ interface CommentsBlockProps {
 const CommentsBlock = ({ postId, isDrugs = false }: CommentsBlockProps) => {
     return (
         <div id="page-comments">
-            {isDrugs ? <h2>Отзывы</h2> : <h2>Комментарии</h2>}
-            <CommentsList postId={postId} />
-            <CommentsForm />
+            <h2>{isDrugs ? 'Отзывы' : 'Комментарии'}</h2>
+            <CommentsList postId={postId} isDrugs={isDrugs} />
+            <CommentsForm isDrugs={isDrugs} />
         </div>
     );
 };

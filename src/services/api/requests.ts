@@ -9,10 +9,9 @@ const custom_api = axios.create({
 });
 const defaultFieldsPosts = { _fields: 'id,title,slug,featured_image' };
 const defaultFieldsCategories = { _fields: 'id,count,name,slug' };
-// const defaultFieldsComments = {
-//     _fields: 'id,author_name,comment_excerpt,date,post,post_slug,post_title,meta',
-// };
-const defaultFieldsComments = {};
+const defaultFieldsComments = {
+    _fields: 'id,author_name,author,comment_excerpt,date,post,post_slug,post_title,meta,comment_text',
+};
 
 const handleAxiosError = (error: unknown) => {
     if (axios.isAxiosError(error)) {

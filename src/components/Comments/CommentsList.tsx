@@ -1,17 +1,18 @@
 import clsx from 'clsx';
 import { useState, useMemo, useCallback } from 'react';
-import { format, parseISO } from 'date-fns';
-import { ru } from 'date-fns/locale';
-import parse from 'html-react-parser';
 import useComments from '../../hooks/useComments';
-import RatingStatic from '../Rating/RatingStatic';
-import { ucFirst } from '../../utils/ucFirst';
+import Comment from './Comment';
 
-const CommentsList = ({ postId }: { postId: number }) => {
+interface CommentsListProps {
+    postId: number;
+    isDrugs: boolean;
+}
+
+const initialCount = 15;
+
+const CommentsList = ({ postId, isDrugs }: CommentsListProps) => {
     const { comments, loading, error } = useComments({ per_page: 100, post: postId });
     const [showAll, setShowAll] = useState(false);
-
-    const initialCount = 15;
 
     const toggleShow = useCallback(() => {
         const willShowAll = !showAll;
@@ -37,26 +38,16 @@ const CommentsList = ({ postId }: { postId: number }) => {
                 <p className="error">{error}</p>
             ) : (
                 <>
-                    {visibleComments.map(({ id, author_name, meta, date, content }) => (
-                        <div className="comment" key={id}>
-                            <span className="icon-image comment-avatar patient"></span>
-                            <div className="comment-right">
-                                <span className="comment-autor">{ucFirst(author_name)}</span>
-                                <span className="comment-right-up">
-                                    {Number(meta.rating) > 0 && (
-                                        <span className="comment-rating">
-                                            <RatingStatic rating={Number(meta.rating)} />
-                                        </span>
-                                    )}
-                                    <span className="comment-date">{format(parseISO(date), 'd MMMM yyyy, HH:mm', { locale: ru })}</span>
-                                </span>
-                                {content.rendered && parse(content.rendered)}
-                            </div>
-                        </div>
+                    {visibleComments.map((comment) => (
+                        <Comment key={comment.id} comment={comment} isDrugs={isDrugs} />
                     ))}
                     {comments.length > initialCount && (
                         <div className={clsx('reviews-more', showAll && 'more-up')} onClick={toggleShow}>
-                            <span>{showAll ? 'свернуть комментарии' : `показать еще комментарии (${comments.length - initialCount})`}</span>
+                            <span>
+                                {showAll
+                                    ? `свернуть ${isDrugs ? 'отзывы' : 'комментарии'}`
+                                    : `показать еще ${isDrugs ? 'отзывы' : 'комментарии'} (${comments.length - initialCount})`}
+                            </span>
                         </div>
                     )}
                 </>

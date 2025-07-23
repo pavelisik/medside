@@ -9,12 +9,17 @@ interface CommentForm {
     commentText: string;
 }
 
-const CommentsForm = () => {
+interface CommentsFormProps {
+    isDrugs: boolean;
+}
+
+const CommentsForm = ({ isDrugs }: CommentsFormProps) => {
     const {
         register,
         handleSubmit,
         control,
         formState: { errors },
+        reset,
     } = useForm<CommentForm>({
         defaultValues: {
             rating: 0,
@@ -37,7 +42,8 @@ const CommentsForm = () => {
     const onSubmit: SubmitHandler<CommentForm> = (data) => {
         // тут буду отправлять валидные данные запросом на сервер
         console.log('Отправлено: ', data);
-        showSuccess('Комментарий отправлен');
+        showSuccess(`${isDrugs ? 'Отзыв' : 'Комментарий'} отправлен`);
+        reset();
     };
 
     return (
@@ -47,9 +53,10 @@ const CommentsForm = () => {
                     onSubmit={handleSubmit(onSubmit, (errors) => {
                         showFirstErrorToast(errors);
                     })}
+                    noValidate
                 >
                     <div className="rating-comments">
-                        <span>Оцените статью: </span>
+                        <span>Оцените {isDrugs ? 'препарат' : 'статью'}: </span>
                         <Controller
                             name="rating"
                             control={control}
@@ -73,7 +80,7 @@ const CommentsForm = () => {
                     />
 
                     <input
-                        type="text"
+                        type="email"
                         id="email"
                         {...register('email', {
                             required: 'Введите e-mail',
@@ -94,19 +101,19 @@ const CommentsForm = () => {
                     <textarea
                         id="comment"
                         {...register('commentText', {
-                            required: 'Введите текст комментария',
+                            required: `Введите текст ${isDrugs ? 'отзыва' : 'комментария'}`,
                             maxLength: {
                                 value: 1000,
-                                message: 'Текст комментария не должен превышать 1000 символов',
+                                message: `Текст ${isDrugs ? 'отзыва' : 'комментария'} не должен превышать 1000 символов`,
                             },
                         })}
-                        placeholder="Ваш комментарий"
+                        placeholder={`Ваш ${isDrugs ? 'отзыв' : 'комментарий'}`}
                         aria-required="true"
                         aria-invalid={!!errors.commentText}
                     ></textarea>
 
                     <button type="submit" id="submit">
-                        Отправить комментарий
+                        Отправить {isDrugs ? 'отзыв' : 'комментарий'}
                     </button>
                 </form>
             </div>
