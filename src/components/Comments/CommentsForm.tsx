@@ -1,4 +1,5 @@
 import { useForm, Controller, type FieldErrors, type SubmitHandler } from 'react-hook-form';
+import axios from 'axios';
 import RatingInput from '../Rating/RatingInput';
 import { showSuccess, showWarning } from '../../utils/toast';
 
@@ -7,13 +8,15 @@ interface CommentForm {
     name: string;
     email: string;
     commentText: string;
+    website?: string; // скрытое поле для проверки ботов
 }
 
 interface CommentsFormProps {
+    postId: number;
     isDrugs: boolean;
 }
 
-const CommentsForm = ({ isDrugs }: CommentsFormProps) => {
+const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
     const {
         register,
         handleSubmit,
@@ -39,11 +42,40 @@ const CommentsForm = ({ isDrugs }: CommentsFormProps) => {
         }
     };
 
-    const onSubmit: SubmitHandler<CommentForm> = (data) => {
-        // тут буду отправлять валидные данные запросом на сервер
-        console.log('Отправлено: ', data);
-        showSuccess(`${isDrugs ? 'Отзыв' : 'Комментарий'} отправлен`);
-        reset();
+    const onSubmit: SubmitHandler<CommentForm> = async (data) => {
+        try {
+            const response = await axios.post('https://medside.ru/wp-json/custom/v1/comment', {
+                post_id: postId,
+                rating: data.rating,
+                name: data.name,
+                email: data.email,
+                comment_text: data.commentText,
+                website: data.website, // скрытое поле
+            });
+
+            if (response.data.success) {
+                showSuccess(`${isDrugs ? 'Отзыв' : 'Комментарий'} отправлен`);
+                // console.log('Отправлено: ', data);
+                reset();
+            }
+        } catch (error: any) {
+            if (error.response && error.response.data) {
+                const { status, message } = error.response.data;
+
+                if (status === 'bot') {
+                    showWarning('Подозрение на бота. Отправка заблокирована.');
+                } else if (status === 'spam') {
+                    showWarning('Комментарий распознан как спам.');
+                } else if (status === 'limit') {
+                    showWarning('Вы недавно уже оставляли комментарий. Попробуйте позже.');
+                } else {
+                    showWarning(message || 'Произошла ошибка при отправке.');
+                }
+            } else {
+                // Ошибки сети или что-то совсем сломано
+                showWarning('Ошибка соединения с сервером.');
+            }
+        }
     };
 
     return (
@@ -55,6 +87,9 @@ const CommentsForm = ({ isDrugs }: CommentsFormProps) => {
                     })}
                     noValidate
                 >
+                    {/* скрытое поле */}
+                    <input type="text" style={{ display: 'none' }} autoComplete="off" {...register('website')} />
+
                     <div className="rating-comments">
                         <span>Оцените {isDrugs ? 'препарат' : 'статью'}: </span>
                         <Controller

@@ -11,7 +11,7 @@ const CommentsBlock = ({ postId, isDrugs = false }: CommentsBlockProps) => {
         <div id="page-comments">
             <h2>{isDrugs ? 'Отзывы' : 'Комментарии'}</h2>
             <CommentsList postId={postId} isDrugs={isDrugs} />
-            <CommentsForm isDrugs={isDrugs} />
+            <CommentsForm postId={postId} isDrugs={isDrugs} />
         </div>
     );
 };
