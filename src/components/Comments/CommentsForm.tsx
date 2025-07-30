@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react';
 import { useForm, Controller, type FieldErrors, type SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import RatingInput from '../Rating/RatingInput';
 import { showSuccess, showWarning } from '../../utils/toast';
+import clsx from 'clsx';
 
 interface CommentForm {
     rating: 0 | 1 | 2 | 3 | 4 | 5;
@@ -17,6 +20,15 @@ interface CommentsFormProps {
 }
 
 const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isLocked, setIsLocked] = useState(false);
+
+    useEffect(() => {
+        setIsLocked(!!Cookies.get(`comments_lock_${postId}`));
+    }, [postId]);
+
+    const COMMENT_COOKIE_EXPIRATION = 1 / 24;
+
     const {
         register,
         handleSubmit,
@@ -32,7 +44,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
         },
     });
 
-    const showFirstErrorToast = (errors: FieldErrors<CommentForm>) => {
+    const toastFirstFieldError = (errors: FieldErrors<CommentForm>) => {
         const errorFields: (keyof CommentForm)[] = ['name', 'email', 'commentText'];
         const firstErrorField = errorFields.find((field) => errors[field]?.message);
         const message = firstErrorField && errors[firstErrorField]?.message;
@@ -42,7 +54,22 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
         }
     };
 
+    const handleError = (code: string, serverMessage?: string) => {
+        const messages: Record<string, string> = {
+            bot: 'Подозрение на бота. Отправка заблокирована',
+            spam: 'Комментарий распознан как спам. Отправка заблокирована',
+            limit: 'Вы недавно уже оставляли комментарий. Попробуйте позже',
+        };
+
+        Cookies.set(`comments_lock_${postId}`, '1', { expires: COMMENT_COOKIE_EXPIRATION });
+        setIsLocked(true);
+        if (code !== 'limit') reset();
+
+        showWarning(messages[code] || serverMessage || 'Ошибка при отправке комментария');
+    };
+
     const onSubmit: SubmitHandler<CommentForm> = async (data) => {
+        setIsSubmitting(true);
         try {
             const response = await axios.post('https://medside.ru/wp-json/custom/v1/comment', {
                 post_id: postId,
@@ -50,31 +77,24 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                 name: data.name,
                 email: data.email,
                 comment_text: data.commentText,
-                website: data.website, // скрытое поле
+                website: data.website,
             });
 
             if (response.data.success) {
                 showSuccess(`${isDrugs ? 'Отзыв' : 'Комментарий'} отправлен`);
-                // console.log('Отправлено: ', data);
+                Cookies.set(`comments_lock_${postId}`, '1', { expires: COMMENT_COOKIE_EXPIRATION });
+                setIsLocked(true);
                 reset();
             }
         } catch (error: any) {
-            if (error.response && error.response.data) {
-                const { status, message } = error.response.data;
-
-                if (status === 'bot') {
-                    showWarning('Подозрение на бота. Отправка заблокирована.');
-                } else if (status === 'spam') {
-                    showWarning('Комментарий распознан как спам.');
-                } else if (status === 'limit') {
-                    showWarning('Вы недавно уже оставляли комментарий. Попробуйте позже.');
-                } else {
-                    showWarning(message || 'Произошла ошибка при отправке.');
-                }
+            if (error.response?.data) {
+                const { error_code, message } = error.response.data;
+                handleError(error_code, message);
             } else {
-                // Ошибки сети или что-то совсем сломано
-                showWarning('Ошибка соединения с сервером.');
+                showWarning('Ошибка соединения с сервером');
             }
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -83,7 +103,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
             <div id="comments-form">
                 <form
                     onSubmit={handleSubmit(onSubmit, (errors) => {
-                        showFirstErrorToast(errors);
+                        toastFirstFieldError(errors);
                     })}
                     noValidate
                 >
@@ -101,7 +121,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
 
                     <input
                         type="text"
-                        id="author"
+                        className="author"
                         {...register('name', {
                             required: 'Введите имя',
                             maxLength: {
@@ -116,7 +136,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
 
                     <input
                         type="email"
-                        id="email"
+                        className="email"
                         {...register('email', {
                             required: 'Введите e-mail',
                             maxLength: {
@@ -134,7 +154,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                     />
 
                     <textarea
-                        id="comment"
+                        className="comment-text"
                         {...register('commentText', {
                             required: `Введите текст ${isDrugs ? 'отзыва' : 'комментария'}`,
                             maxLength: {
@@ -147,8 +167,8 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                         aria-invalid={!!errors.commentText}
                     ></textarea>
 
-                    <button type="submit" id="submit">
-                        Отправить {isDrugs ? 'отзыв' : 'комментарий'}
+                    <button type="submit" className={clsx('submit', (isSubmitting || isLocked) && 'disabled')} disabled={isSubmitting || isLocked}>
+                        {isSubmitting ? 'Отправка...' : `Отправить ${isDrugs ? 'отзыв' : 'комментарий'}`}
                     </button>
                 </form>
             </div>
