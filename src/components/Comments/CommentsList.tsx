@@ -2,15 +2,17 @@ import clsx from 'clsx';
 import { useState, useMemo, useCallback } from 'react';
 import useComments from '../../hooks/useComments';
 import Comment from './Comment';
+import type { WPComment } from '../../types/wpTypes';
 
 interface CommentsListProps {
     postId: number;
+    newComment?: WPComment | null;
     isDrugs: boolean;
 }
 
 const initialCount = 15;
 
-const CommentsList = ({ postId, isDrugs }: CommentsListProps) => {
+const CommentsList = ({ postId, newComment, isDrugs }: CommentsListProps) => {
     const { comments, loading, error } = useComments({ per_page: 100, post: postId });
     const [showAll, setShowAll] = useState(false);
 
@@ -26,9 +28,16 @@ const CommentsList = ({ postId, isDrugs }: CommentsListProps) => {
         }
     }, [showAll]);
 
+    const fullList = useMemo(() => {
+        if (newComment && !comments.some((c) => c.id === newComment.id)) {
+            return [newComment, ...comments];
+        }
+        return comments;
+    }, [comments, newComment]);
+
     const visibleComments = useMemo(() => {
-        return showAll ? comments : comments.slice(0, initialCount);
-    }, [comments, showAll]);
+        return showAll ? fullList : fullList.slice(0, initialCount);
+    }, [showAll, fullList]);
 
     return (
         <div className="comments-box">

@@ -5,6 +5,7 @@ import Cookies from 'js-cookie';
 import RatingInput from '../Rating/RatingInput';
 import { showSuccess, showWarning } from '../../utils/toast';
 import clsx from 'clsx';
+import type { WPComment } from '../../types/wpTypes';
 
 interface CommentForm {
     rating: 0 | 1 | 2 | 3 | 4 | 5;
@@ -16,10 +17,11 @@ interface CommentForm {
 
 interface CommentsFormProps {
     postId: number;
+    setNewComment: (newComment: WPComment) => void;
     isDrugs: boolean;
 }
 
-const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
+const CommentsForm = ({ postId, setNewComment, isDrugs }: CommentsFormProps) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isLocked, setIsLocked] = useState(false);
 
@@ -84,6 +86,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                 showSuccess(`${isDrugs ? 'Отзыв' : 'Комментарий'} отправлен`);
                 Cookies.set(`comments_lock_${postId}`, '1', { expires: COMMENT_COOKIE_EXPIRATION });
                 setIsLocked(true);
+                setNewComment(response.data.comment);
                 reset();
             }
         } catch (error: any) {
@@ -108,7 +111,7 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                     noValidate
                 >
                     {/* скрытое поле */}
-                    <input type="text" style={{ display: 'none' }} autoComplete="off" {...register('website')} />
+                    <input type="text" tabIndex={-1} aria-hidden="true" style={{ display: 'none' }} autoComplete="off" {...register('website')} />
 
                     <div className="rating-comments">
                         <span>Оцените {isDrugs ? 'препарат' : 'статью'}: </span>
@@ -125,8 +128,8 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                         {...register('name', {
                             required: 'Введите имя',
                             maxLength: {
-                                value: 30,
-                                message: 'Имя не должно превышать 30 символов',
+                                value: 40,
+                                message: 'Имя не должно превышать 40 символов',
                             },
                         })}
                         placeholder="Имя (обязательно)"
@@ -140,8 +143,8 @@ const CommentsForm = ({ postId, isDrugs }: CommentsFormProps) => {
                         {...register('email', {
                             required: 'Введите e-mail',
                             maxLength: {
-                                value: 30,
-                                message: 'E-mail не должен превышать 30 символов',
+                                value: 50,
+                                message: 'E-mail не должен превышать 50 символов',
                             },
                             pattern: {
                                 value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
