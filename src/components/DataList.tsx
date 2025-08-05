@@ -1,9 +1,14 @@
-import type { WPBolezniMetadata } from '../types/wpTypes';
+import type { WPBolezniMetadata, WPSimplePost } from '../types/wpTypes';
 
-const DataList = ({ data }: { data: WPBolezniMetadata }) => {
+interface DataListProps {
+    data: WPBolezniMetadata;
+    posts?: WPSimplePost[];
+}
+
+const DataList = ({ data, posts }: DataListProps) => {
     return (
         <>
-            {(data.doctors || data.diets) && (
+            {data.doctors || data.diets ? (
                 <ul>
                     {data.doctors && (
                         <li>
@@ -33,6 +38,21 @@ const DataList = ({ data }: { data: WPBolezniMetadata }) => {
                         </li>
                     )}
                 </ul>
+            ) : (
+                posts && (
+                    <>
+                        Статьи по теме:
+                        <ul className="post-list">
+                            {posts.map(({ post_ID, post_slug, post_title }) => (
+                                <li key={post_ID}>
+                                    <a href={`/${post_slug}`} target="_blank" rel="noopener noreferrer">
+                                        {post_title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </>
+                )
             )}
         </>
     );

@@ -56,8 +56,6 @@ const Rating = ({ postId, initialRatingSum, initialVoteCount }: RatingProps) => 
             markAsVoted();
             showSuccess('Ваш голос учтен');
         } catch (error) {
-            console.error('Ошибка при голосовании:', error);
-
             showWarning('Ошибка при отправке');
         }
     };
