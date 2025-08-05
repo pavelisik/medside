@@ -165,7 +165,7 @@ export interface WPBolezniMetadata {
 }
 
 // тип метаданных в постах категории Диеты
-interface WPDietsMetadata {
+export interface WPDietsMetadata {
     diet_result?: string;
     diet_time?: string;
     diet_cost?: string;

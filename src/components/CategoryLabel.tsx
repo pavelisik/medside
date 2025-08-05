@@ -1,4 +1,4 @@
-import { bolLabelIcons } from '../assets/images/bol-label';
+import { getIcon } from '../utils/getIcon';
 
 interface Category {
     term_id: number;
@@ -23,12 +23,9 @@ const CategoryLabel = ({ categories, count, first, second }: CategoryLabelProps)
         catHref = `/${second.slug}/${first.slug}/${categories[0].slug}`;
     }
 
-    const iconKey = `bolLabel${categories[0].term_id}` as keyof typeof bolLabelIcons;
-    const iconScr = bolLabelIcons[iconKey];
-
     return (
         <a className="up-label" href={catHref} title={catTitle} target="_blank" rel="noopener noreferrer">
-            <img src={iconScr} alt={catTitle} />
+            <img src={getIcon(categories[0].term_id, 'bol')} alt={catTitle} />
         </a>
     );
 };
