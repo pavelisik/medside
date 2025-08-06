@@ -1,6 +1,5 @@
 import MainImageBlock from '../../components/MainImageBlock';
 import Rating from '../../components/Rating/Rating';
-import CatIconsList from '../../components/CatIconsList';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
@@ -9,29 +8,34 @@ import AlertBlock from '../../components/AlertBlock';
 import CommentsBlock from '../../components/Comments/CommentsBlock';
 import SimilarBottomBlock from '../../components/SimilarBottomBlock';
 import { parseContent } from '../../utils/parseContent';
-import type { WPDietsData } from '../../types/wpTypes';
+import type { WPDrugsData } from '../../types/wpTypes';
 
-const PostDiets = ({ data }: { data: WPDietsData }) => {
+const PostDrugs = ({ data }: { data: WPDrugsData }) => {
     const { id, title, featured_image, date, head_description, rating, rating_count, categories, menu_data, content, metadata, post_author, tags_posts } =
         data.data;
 
     return (
-        <div itemScope itemType="https://schema.org/WebPage">
+        <div itemScope itemType="https://schema.org/Product">
             <h1 itemProp="name">{title}</h1>
+            {/* 1 тут сделать вывод минимальной цены (новое поле в метаданных в эндпоинте) (но надо предусмотреть чтобы хлебные крошки и тайтл обрезались price-limit при наличии блока с ценой) */}
             <div className="title-bar">
-                <MainImageBlock image={featured_image} title={title} />
-                <div className="right-block">
+                <MainImageBlock image={featured_image} title={title} alt={'Фото препарата'} />
+                <div className="right-block long-date">
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
-                    <span className="date">{date}</span>
-                    <CatIconsList categories={categories} labels={metadata.labels} />
+                    <span className="date">
+                        {/* поменять формат вывода даты */}
+                        Описание актуально на <strong>{date}</strong>
+                    </span>
+                    {/* <span className="date">{date}</span> */}
                     <div className="right-inner-block">
-                        <DataList catType={'diets'} diet_result={metadata.diet_result} diet_time={metadata.diet_time} diet_cost={metadata.diet_cost} />
+                        <DataList catType={'lekarstva'} />
                         <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>
             </div>
             <div id="page-content">
                 {menu_data.length > 1 && <PageMenu data={menu_data} />}
+                {/* сделать интеграцию блока с источником и слайдера аналогов (пока только его) */}
                 {parseContent({ content })}
             </div>
             <ShareBlock className="share-block-bottom" title={title} description={head_description} image={featured_image} />
@@ -46,4 +50,4 @@ const PostDiets = ({ data }: { data: WPDietsData }) => {
     );
 };
 
-export default PostDiets;
+export default PostDrugs;

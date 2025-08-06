@@ -1,3 +1,4 @@
+import MainImageBlock from '../../components/MainImageBlock';
 import Rating from '../../components/Rating/Rating';
 import CatIcon from '../../components/CatIcon';
 import DataList from '../../components/DataList';
@@ -34,14 +35,13 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
         <div itemScope itemType="https://schema.org/WebPage">
             <h1 itemProp="name">{title}</h1>
             <div className="title-bar">
-                <div className="main-image-block">{featured_image && <img src={featured_image} alt={title} itemProp="image" />}</div>
+                <MainImageBlock image={featured_image} title={title} />
                 <div className="right-block">
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     <span className="date">{date}</span>
                     <div className="right-inner-block">
                         <CatIcon categories={categories} count={parents_count} first={parent_cat_first} second={parent_cat_second} />
                         <DataList catType={'bolezni'} doctors={metadata.doctors} diets={metadata.diets} />
-                        {/* <DataList data={metadata} /> */}
                         <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>

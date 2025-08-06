@@ -1,3 +1,4 @@
+import MainImageBlock from '../../components/MainImageBlock';
 import Rating from '../../components/Rating/Rating';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
@@ -16,7 +17,7 @@ const PostSymptoms = ({ data }: { data: WPSymptomsData }) => {
         <div itemScope itemType="https://schema.org/WebPage">
             <h1 itemProp="name">{title}</h1>
             <div className="title-bar">
-                <div className="main-image-block">{featured_image && <img src={featured_image} alt={title} itemProp="image" />}</div>
+                <MainImageBlock image={featured_image} title={title} />
                 <div className="right-block">
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     <span className="date">{date}</span>

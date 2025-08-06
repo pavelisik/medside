@@ -39,7 +39,7 @@ export interface WPPostData {
         title: string;
         date: string;
         date_m: string;
-        featured_image: string | null;
+        featured_image: string;
         categories: {
             term_id: number;
             name: string;
