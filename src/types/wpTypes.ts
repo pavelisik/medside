@@ -166,12 +166,15 @@ export interface WPBolezniMetadata {
 
 // тип метаданных в постах категории Диеты
 export interface WPDietsMetadata {
+    labels?: {
+        id: number;
+        name: string;
+    }[];
     diet_result?: string;
     diet_time?: string;
     diet_cost?: string;
     diet_products_ok?: string;
     diet_products_not_ok?: string;
-    diet_label?: string;
 }
 
 // тип метаданных в постах категории Лекарства

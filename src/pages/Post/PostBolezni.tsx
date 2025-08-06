@@ -1,5 +1,5 @@
 import Rating from '../../components/Rating/Rating';
-import CategoryLabel from '../../components/CategoryLabel';
+import CatIcon from '../../components/CatIcon';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
@@ -39,8 +39,9 @@ const PostBolezni = ({ data }: { data: WPBolezniData }) => {
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     <span className="date">{date}</span>
                     <div className="right-inner-block">
-                        <CategoryLabel categories={categories} count={parents_count} first={parent_cat_first} second={parent_cat_second} />
-                        <DataList data={metadata} />
+                        <CatIcon categories={categories} count={parents_count} first={parent_cat_first} second={parent_cat_second} />
+                        <DataList catType={'bolezni'} doctors={metadata.doctors} diets={metadata.diets} />
+                        {/* <DataList data={metadata} /> */}
                         <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>

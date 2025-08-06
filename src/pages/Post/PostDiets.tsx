@@ -1,5 +1,5 @@
 import Rating from '../../components/Rating/Rating';
-import DietsLabels from '../../components/DietsLabels';
+import CatIconsList from '../../components/CatIconsList';
 import DataList from '../../components/DataList';
 import ShareBlock from '../../components/ShareBlock';
 import PageMenu from '../../components/PageMenu';
@@ -22,9 +22,9 @@ const PostDiets = ({ data }: { data: WPDietsData }) => {
                 <div className="right-block">
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     <span className="date">{date}</span>
-                    <DietsLabels categories={categories} data={metadata} />
+                    <CatIconsList categories={categories} labels={metadata.labels} />
                     <div className="right-inner-block">
-                        {/* <DataList data={metadata} posts={tags_posts?.slice(0, 3)} /> */}
+                        <DataList catType={'diets'} diet_result={metadata.diet_result} diet_time={metadata.diet_time} diet_cost={metadata.diet_cost} />
                         <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>

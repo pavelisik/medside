@@ -21,7 +21,7 @@ const PostSymptoms = ({ data }: { data: WPSymptomsData }) => {
                     <Rating postId={id} initialRatingSum={rating} initialVoteCount={rating_count} />
                     <span className="date">{date}</span>
                     <div className="right-inner-block">
-                        <DataList data={metadata} posts={tags_posts?.slice(0, 3)} />
+                        <DataList catType={'symptoms'} doctors={metadata.doctors} diets={metadata.diets} posts={tags_posts?.slice(0, 3)} />
                         <ShareBlock className="share-block-top" title={title} description={head_description} image={featured_image} />
                     </div>
                 </div>

@@ -16,15 +16,15 @@ import dietCat5060 from './diet-cat-5060.png';
 import dietCat5061 from './diet-cat-5061.png';
 import dietCat5062 from './diet-cat-5062.png';
 import dietCat5063 from './diet-cat-5063.png';
-import dietLabel01 from './diet-label-1.png';
-import dietLabel02 from './diet-label-2.png';
-import dietLabel03 from './diet-label-3.png';
-import dietLabel04 from './diet-label-4.png';
-import dietLabel05 from './diet-label-5.png';
-import dietLabel06 from './diet-label-6.png';
-import dietLabel07 from './diet-label-7.png';
-import dietLabel08 from './diet-label-8.png';
-import dietLabel09 from './diet-label-9.png';
+import dietLabel1 from './diet-label-1.png';
+import dietLabel2 from './diet-label-2.png';
+import dietLabel3 from './diet-label-3.png';
+import dietLabel4 from './diet-label-4.png';
+import dietLabel5 from './diet-label-5.png';
+import dietLabel6 from './diet-label-6.png';
+import dietLabel7 from './diet-label-7.png';
+import dietLabel8 from './diet-label-8.png';
+import dietLabel9 from './diet-label-9.png';
 import dietLabel10 from './diet-label-10.png';
 import dietLabel11 from './diet-label-11.png';
 import dietLabel12 from './diet-label-12.png';
@@ -53,15 +53,15 @@ export const dietCatIcons = {
 };
 
 export const dietLabelIcons = {
-    dietLabel01,
-    dietLabel02,
-    dietLabel03,
-    dietLabel04,
-    dietLabel05,
-    dietLabel06,
-    dietLabel07,
-    dietLabel08,
-    dietLabel09,
+    dietLabel1,
+    dietLabel2,
+    dietLabel3,
+    dietLabel4,
+    dietLabel5,
+    dietLabel6,
+    dietLabel7,
+    dietLabel8,
+    dietLabel9,
     dietLabel10,
     dietLabel11,
     dietLabel12,

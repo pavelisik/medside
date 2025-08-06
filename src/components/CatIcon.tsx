@@ -9,11 +9,11 @@ interface Category {
 interface CategoryLabelProps {
     categories: Category[];
     count: 0 | 1 | 2;
-    first: Category | undefined;
-    second: Category | undefined;
+    first?: Category;
+    second?: Category;
 }
 
-const CategoryLabel = ({ categories, count, first, second }: CategoryLabelProps) => {
+const CatIcon = ({ categories, count, first, second }: CategoryLabelProps) => {
     const catTitle = categories[0].name;
     let catHref;
 
@@ -30,4 +30,4 @@ const CategoryLabel = ({ categories, count, first, second }: CategoryLabelProps)
     );
 };
 
-export default CategoryLabel;
+export default CatIcon;
